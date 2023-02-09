@@ -2,55 +2,30 @@
   font-family: "portal";
   src: url("../../assets/fonts/portal.ttf") format("truetype");
 }
+@font-face {
+  font-family: "quicksand";
+  src: url("../../assets/fonts/Quicksand-VariableFont_wght.ttf")
+    format("opentype");
+}
+@font-face {
+  font-family: "quicksand-regular";
+  src: url("../../assets/fonts/Ruicksand-Regular.ttf")
+    format("opentype");
+}
+
+.font-portal {
+  font-family: "portal", system-ui, sans-serif;
+}
+.font-quicksand {
+  font-family: "quicksand", system-ui, sans-serif;
+}
+.font-quicksand-r {
+  font-family: "quicksand-regular", system-ui, sans-serif;
+}
 
 html {
-  font-family: 'portal', system-ui, sans-serif;
 }
 
 body {
-  background: rgb(218, 229, 248);
-  background: linear-gradient(
-    306deg,
-    rgba(218, 229, 248, 1) 0%,
-    rgba(209, 229, 246, 1) 31%,
-    rgba(242, 243, 247, 1) 55%
-  );
-}
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* GRID STYLING */
-.circle-border {
-  background: rgb(6, 28, 37);
-  background: linear-gradient(
-    90deg,
-    rgba(6, 28, 37, 1) 38%,
-    rgba(131, 106, 58, 1) 38%
-  );
-  animation: spin 4s linear 0s infinite;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.circle-core {
-  border-radius: 50%;
-}
-
-.spinner-box {
-  width: 300px;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
 }
