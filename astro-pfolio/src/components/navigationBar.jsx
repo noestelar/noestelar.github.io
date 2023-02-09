@@ -6,13 +6,13 @@ function NavigationBar() {
       icon: "../../assets/icons/linkedin.svg",
     },
     {
-      name: "Github",
-      url: "https://github.com/Noe-ali",
+      name: "Twitter",
+      url: "https://twitter.com/noestelar",
       icon: "../../assets/icons/twitter.svg",
     },
     {
-      name: "Twitter",
-      url: "https://twitter.com/noestelar",
+      name: "Github",
+      url: "https://github.com/Noe-ali",
       icon: "../../assets/icons/github.svg",
     },
   ];
@@ -36,29 +36,35 @@ function NavigationBar() {
     },
   ];
   return (
-    <div className="flex items-center lg:justify-center sm:justify-end h-15 border border-gray-200 bg-slate-100 shadow rounded px-5 ">
-      <div className=" w-1/3 xs:text-left xs:w-2/3 text-center ">
-        <h1 className=" ">Navigation</h1>
-      </div>
+    <nav className="  border-gray-200 bg-slate-100 shadow rounded  font-quicksand ">
+      <div className=" h-12 flex flex-row sm:justify-between items-center p-6 lg:justify-center">
+        <h1 className=" w-1/3 text-gray-600 font-portal text-left md:text-center">
+          NOÉ RIVERA
+        </h1>
 
-      <div className="xs:hidden text-right flex-wrap w-1/3 xs:w-auto ">
-        <ul className=" ">
-          {menu.map((menuItem) => (
-            <li className="inline-block mr-4 cursor-pointer hover:text-blue-400">
-              {menuItem.name}
-            </li>
+        <div className="sm:hidden  w-1/3  md:w-2/3">
+          <ul className="flex flex-row float-right">
+            {menu.map((menuItem) => (
+              <li className="inline-block cursor-pointer hover:text-blue-400 mx-4">
+                {menuItem.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="flex flex-row md:w-1/3">
+          {socialNetworks.map((socialNetwork) => (
+            <a
+              href={socialNetwork.url}
+              target="_blank"
+              className="cursor-pointer "
+            >
+              <img className="w-7 mx-1" src={socialNetwork.icon} />
+            </a>
           ))}
-        </ul>
+        </div>
       </div>
-
-      <div className=" mt-2 ml-5 text-left w-1/3 xs:w-1/3 xs:text-right ">
-        {socialNetworks.map((socialNetwork) => (
-          <a className=" inline-block mr-2 cursor-pointer hover:fill-current">
-            <img className=" w-7" src={socialNetwork.icon} />
-          </a>
-        ))}
-      </div>
-    </div>
+    </nav>
   );
 }
 
