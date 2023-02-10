@@ -1,41 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PresentationCard from "../components/presentationCard/presentationCard";
+import Skills from "../components/skills/skills";
 ---
 
 <Layout title="Noé Rivera - Portfolio">
-  <main  >
+  <main>
     <PresentationCard />
   </main>
 
   <section>
-    <article class="flex justify-center mt-10">
-      <h2 class=" text-left mr-10 w-1/2 font-portal text-[30px]">Skills</h2>
-      <h2 class=" text-right font-portal">Skills</h2>
-    </article>
-    <div class="flex">
-      <div class="w-1/2">
-        <p class=" text-center">
-          I'm a software engineer from Mexico, I love to learn new things and
-          I'm always looking for new challenges.
-        </p>
-      </div>
-      <div class="w-1/2">
-        <p class=" text-center">
-          I'm a software engineer from Mexico, I love to learn new things and
-          I'm always looking for new challenges.
-        </p>
-      </div>
-    </div>
+    <article class="flex justify-center mt-10"></article>
   </section>
-
+  <Skills />
   <section>
-    <h2 class=" text-center">Enterprises</h2>
+    <h2 class="text-center">Enterprises</h2>
   </section>
 
-  <section><h2 class=" text-center">Projects</h2></section>
+  <section><h2 class="text-center">Projects</h2></section>
 
   <footer>
-    <section><h2 class=" text-center">footer</h2></section>
+    <section><h2 class="text-center">footer</h2></section>
   </footer>
 </Layout>
