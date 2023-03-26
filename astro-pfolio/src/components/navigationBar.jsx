@@ -36,7 +36,7 @@ function NavigationBar() {
     },
   ];
   return (
-    <nav className="  border-gray-200 bg-slate-100 shadow rounded  font-quicksand ">
+    <nav className=" fixed w-full z-10 bg-opacity-75 backdrop-filter backdrop-blur-lg  font-quicksand ">
       <div className=" h-12 flex flex-row sm:justify-between items-center p-6 lg:justify-center">
         <h1 className=" w-1/3 text-gray-600 font-portal text-left md:text-center">
           NOÉ RIVERA
