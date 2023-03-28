@@ -36,13 +36,10 @@ function NavigationBar() {
     },
   ];
   return (
-    <nav className=" fixed w-full z-10 bg-opacity-75 backdrop-filter backdrop-blur-lg  font-quicksand ">
-      <div className=" h-12 flex flex-row sm:justify-between items-center p-6 lg:justify-center">
-        <h1 className=" w-1/3 text-gray-600 font-portal text-left md:text-center">
-          NOÉ RIVERA
-        </h1>
-
-        <div className="sm:hidden  w-1/3  md:w-2/3">
+    <nav className=" fixed w-full z-10 bg-opacity-35 backdrop-filter backdrop-blur-lg font-quicksand mt-10">
+      <div className="flex flex-row items-center justify-center font-quicksand">
+        <h1 className=" font-portal mr-3">NOÉ RIVERA</h1>
+        <div className="">
           <ul className="flex flex-row float-right">
             {menu.map((menuItem) => (
               <li className="inline-block cursor-pointer hover:text-blue-400 mx-4">
@@ -51,8 +48,7 @@ function NavigationBar() {
             ))}
           </ul>
         </div>
-
-        <div className="flex flex-row md:w-1/3">
+        <div className="flex flex-row ml-1">
           {socialNetworks.map((socialNetwork) => (
             <a
               href={socialNetwork.url}
