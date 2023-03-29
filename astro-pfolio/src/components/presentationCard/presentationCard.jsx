@@ -2,11 +2,21 @@ import "./presentationCard.css";
 function PresentationCard() {
   const img = "../../../assets/img/yo.jpg";
   return (
-    <section class="bg-gradient items-center flex lg:justify-evenly pt-20 pb-20 sm:flex-col md:flex-col ">
-      <div className="sm:flex-col lg:w-1/3 sm:2/3 sm:p-10 sm:text-center md:p-10 md:text-center">
-        <h1 className="font-portal text-[70px] ">Noé Rivera</h1>
-        <p className="text-xl">Information Technology Engineer</p>
-        <p className="text-lg font-quicksand-3 font-[400] text-gray-500">
+    <section class="max-w-screen-md w-full sm:mx-0 md:p-20 p-10 ">
+      <div className="flex pt-20 pb-10 md:flex-row items-center justify-center sm:justify-between flex-col" >
+        <article className="">
+          <h1 className="font-portal md:text-[60px] text-[30px]">Noé Rivera</h1>
+          <p className="text-xl">Information Technology Engineer</p>
+        </article>
+        <figure class="md:ml-10 flex md:mt-0 mt-5">
+          <div className="profile-card">
+            <img src={img} className="circle-core grayscale w-[120px]" />
+          </div>
+        </figure>
+      </div>
+
+      <div className="flex flex-col w-full">
+        <p className="text-lg font-quicksand-3 font-[400]">
           Software Engineer with experience in full-stack development, including
           technologies such as React and Angular on front end and C# and Python
           on back end. I'm able to join your team because I learn fast.
@@ -15,14 +25,6 @@ function PresentationCard() {
           </strong>
         </p>
       </div>
-      <figure class="sm:flex-col sm:order-first md:order-first sm:w-2/3">
-        <div className="profile-card">
-          <img
-            src={img}
-            className="circle-core grayscale lg:w-[600px] sm:w-[500px] md:w-[400px]"
-          />
-        </div>
-      </figure>
     </section>
   );
 }
