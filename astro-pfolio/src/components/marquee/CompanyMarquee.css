@@ -1,0 +1,24 @@
+@keyframes marquee {
+    0% {
+        transform: translate(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+  .marquee-content {
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .marquee-container {
+    display: flex;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch; /* enable smooth scrolling on iOS */
+  }
+  
+  img {
+    flex-shrink: 0;
+  }
