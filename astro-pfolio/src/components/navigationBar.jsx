@@ -58,7 +58,7 @@ function NavigationBar() {
               <img className="w-7 mx-1" src={socialNetwork.icon} />
             </a>
           ))}
-        <button className="bg-white text-gray-500 md:hidden ">placeholder</button>
+        <button className="rounded-md bg-white text-gray-500 md:hidden ">placeholder</button>
         </div>
       </div>
     </nav>
