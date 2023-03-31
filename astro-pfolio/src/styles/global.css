@@ -2,7 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
+html {
     background-color: rgb(32 32 36);
     color: #efeff0;
+}
+
+.text-discord {
+    color: #7289da;
+}
+
+.text-pinked {
+    color: #f963c4;
+}
+
+.text-cyaned {
+    color: #81e6d9;
 }

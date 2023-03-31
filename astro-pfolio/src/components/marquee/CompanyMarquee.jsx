@@ -10,8 +10,8 @@ function CompanyMarquee() {
   const logosConcat = logos.concat(logos); // duplicate the logos and concatenate them together
   return (
     <div className="max-w-screen-md w-full mx-auto sm:mx-0 md:p-20 p-10">
-      <h3 className="font-portal text-xl mb-10">
-        Enterprises that believed in me
+      <h3 className="font-portal text-lg underline underline-offset-4  mb-10 ">
+        Companies that believed in me
       </h3>
 
       <div className="marquee-container  overflow-hidden pt-4">
