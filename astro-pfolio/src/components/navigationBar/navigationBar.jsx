@@ -59,7 +59,7 @@ function NavigationBar() {
               target="_blank"
               className="cursor-pointer "
             >
-              <div className="mx-2" style={{ fontSize: "24px" }}>
+              <div className="mx-2 hidden md:block" style={{ fontSize: "24px" }}>
                 {React.createElement(socialNetwork.icon)}
               </div>
             </a>
