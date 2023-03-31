@@ -3,7 +3,7 @@ function PresentationCard() {
   const img = "../../../assets/img/yo.jpg";
   return (
     <section class="max-w-screen-md w-full sm:mx-0 md:p-20 p-10 ">
-      <div className="flex pt-20 pb-10 md:flex-row items-center justify-center sm:justify-between flex-col">
+      <div className="flex  pb-10 md:flex-row items-center justify-center sm:justify-between flex-col">
         <article className="">
           <h1 className="font-portal md:text-[60px] text-[30px]">Noé Rivera</h1>
           <p className="text-lg">
