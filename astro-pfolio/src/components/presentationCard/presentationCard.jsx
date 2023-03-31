@@ -10,7 +10,7 @@ function PresentationCard() {
             Information Technology Engineer and Developer
           </p>
         </article>
-        <figure class="md:ml-10 flex md:mt-0 mt-5">
+        <figure className="md:ml-10 flex md:mt-0 mt-5">
           <div className="profile-card">
             <img src={img} className="circle-core grayscale w-[120px]" />
           </div>

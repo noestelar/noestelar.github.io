@@ -11,12 +11,10 @@ function BioTimeLine() {
         "Completed studies in Computer Science and Technology Engineering at the Polytechnic University of Puebla, México",
     },
     {
-      date: "May 2022",
       title:
         "Worked at IDT Consulting as a Full Stack Developer doing Ecommerce, Web and Mobile Apps",
     },
     {
-      date: "August 2022",
       title:
         "Worked at Schaeffler Transmission Systems as a Full Stack Developer doing Web Services and Web Apps focused on security",
     },
@@ -36,7 +34,7 @@ function BioTimeLine() {
               <div className="timeline-badge ">
                 <span className=" text-cyaned font-bold">{event.date}</span>
               </div>
-              <div className="">
+              <div className="mt-2">
                 <div className="">
                   <h3 className="font-quicksand-3 text-md">{event.title}</h3>
                 </div>
