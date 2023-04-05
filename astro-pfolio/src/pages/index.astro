@@ -4,14 +4,17 @@ import Content from "../components/Content.astro";
 import PresentationCard from "../components/presentationCard/presentationCard";
 import BioTimeLine from "../components/indexPage/bioTimeLine/bioTimeLine";
 import CompanyMarquee from "../components/indexPage/marquee/CompanyMarquee.astro";
+import NavigationBar from "../components/navigationBar/navigationBar.astro";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <Layout title="Noé Rivera - Portfolio" />
-  </head>
   <Content>
+    <head>
+      <Layout title="Noé Rivera - Portfolio" />
+    </head>
+    <NavigationBar />
+
     <main class="flex items-center justify-center">
       <PresentationCard />
     </main>
@@ -20,7 +23,6 @@ import CompanyMarquee from "../components/indexPage/marquee/CompanyMarquee.astro
         <BioTimeLine />
       </article>
     </section>
- 
 
     <!--
     <section><h2 class="text-center">Projects</h2></section>
