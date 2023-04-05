@@ -7,16 +7,17 @@ import CompanyMarquee from "../components/indexPage/marquee/CompanyMarquee.astro
 import NavigationBar from "../components/navigationBar/navigationBar.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
   <head>
     <Layout title="Noé Rivera - Portfolio" />
   </head>
   <Content>
+    
     <NavigationBar />
 
     <main class="flex items-center justify-center">
-      <PresentationCard client:visible />
+      <PresentationCard client:visible/>
     </main>
     <section>
       <article class="flex items-center justify-center">
@@ -30,8 +31,9 @@ import NavigationBar from "../components/navigationBar/navigationBar.astro";
     <footer>
       <section><h2 class="text-center">footer</h2></section>
     </footer> -->
+    <section class="flex items-center justify-center">
+      <CompanyMarquee />
+    </section>
   </Content>
-  <section class="flex items-center justify-center">
-    <CompanyMarquee />
-  </section>
+  
 </html>
