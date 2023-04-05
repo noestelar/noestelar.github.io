@@ -1,30 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Content from "../components/Content.astro";
 import PresentationCard from "../components/presentationCard/presentationCard";
 import BioTimeLine from "../components/indexPage/bioTimeLine/bioTimeLine";
 import CompanyMarquee from "../components/indexPage/marquee/CompanyMarquee.astro";
-import "../styles/global.css";
 ---
 
-<Layout title="Noé Rivera - Portfolio">
-  <main class="flex items-center justify-center">
-    <PresentationCard />
-  </main>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <Layout title="Noé Rivera - Portfolio" />
+  </head>
+  <Content>
+    <main class="flex items-center justify-center">
+      <PresentationCard />
+    </main>
+    <section>
+      <article class="flex items-center justify-center">
+        <BioTimeLine />
+      </article>
+    </section>
+ 
 
-  <section>
-    <article class="flex items-center justify-center">
-      <BioTimeLine />
-    </article>
-  </section>
-
+    <!--
+    <section><h2 class="text-center">Projects</h2></section>
+  
+    <footer>
+      <section><h2 class="text-center">footer</h2></section>
+    </footer> -->
+  </Content>
   <section class="flex items-center justify-center">
     <CompanyMarquee />
   </section>
-
-  <!--
-  <section><h2 class="text-center">Projects</h2></section>
-
-  <footer>
-    <section><h2 class="text-center">footer</h2></section>
-  </footer> -->
-</Layout>
+</html>

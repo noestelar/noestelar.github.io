@@ -3,10 +3,10 @@ function PresentationCard() {
   const img = "../../../assets/img/yo.jpg";
   return (
     <section class="max-w-screen-md w-full sm:mx-0 md:p-20 p-10 mt-10">
-      <div className="flex  pb-10 md:flex-row items-center justify-center sm:justify-between flex-col">
+      <div className="flex pb-10 md:flex-row items-center justify-center sm:justify-between flex-col">
         <article className="">
           <h1 className="font-portal md:text-[60px] text-[30px]">Noé Rivera</h1>
-          <p className="text-lg">
+          <p className="text-lg mt-5">
             Information Technology Engineer and Developer
           </p>
         </article>
@@ -18,7 +18,7 @@ function PresentationCard() {
       </div>
 
       <div className="flex flex-col w-full">
-        <p className="text-md font-quicksand-3 font-[400]">
+        <p className="text-md font-quicksand-3 font-[400] text-justify">
           With experience in full-stack development, including Web technologies
           and languages such as C# and Python I'm able to join your team because
           I learn fast.

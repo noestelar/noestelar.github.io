@@ -2,9 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+/* html {
     background-color: rgb(32 32 36);
     color: #efeff0;
+} */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-wrap: break-word;
+}
+
+@font-face {
+    font-family: "portal";
+    src: url("../../assets/fonts/portal.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "quicksand";
+    src: url("../../assets/fonts/Quicksand-VariableFont_wght.ttf") format("opentype");
+}
+
+@font-face {
+    font-family: "quicksand-regular";
+    src: url("../../assets/fonts/Ruicksand-Regular.ttf") format("opentype");
+}
+
+.font-portal {
+    font-family: "portal", system-ui, sans-serif;
+}
+
+.font-quicksand {
+    font-family: "quicksand", system-ui, sans-serif;
+}
+
+.font-quicksand-r {
+    font-family: "quicksand-regular", system-ui, sans-serif;
 }
 
 .text-discord {

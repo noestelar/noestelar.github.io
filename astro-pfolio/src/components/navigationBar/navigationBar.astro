@@ -1,0 +1,88 @@
+---
+import {
+  IoLogoLinkedin,
+  IoLogoGithub,
+  IoLogoTwitter,
+  IoMenu,
+} from "react-icons/io5";
+import NavigationMenu from "./navigationMenu";
+import React from "react";
+import ThemeToggle from "./themeToggleButton";
+
+const menu = [
+  {
+    name: "Home",
+    url: "/",
+  },
+  {
+    name: "About",
+    url: "/about",
+  },
+  {
+    name: "Projects",
+    url: "/projects",
+  },
+  {
+    name: "Contact",
+    url: "/contact",
+  },
+];
+---
+
+<header class="fixed w-full">
+  <nav
+    class="z-10 bg-opacity-35 backdrop-filter backdrop-blur-md font-quicksand p-3"
+  >
+    <div
+      class="flex flex-row items-center md:justify-center font-quicksand justify-between"
+    >
+      <h1 class="font-portal mr-3">NOÉ RIVERA</h1>
+      <div class="hidden sm:flex mx-10">
+        <ul class="flex flex-row float-right">
+          {
+            menu.map((menuItem) => (
+              <li class="inline-block cursor-pointer hover:text-blue-400 mx-3">
+                {menuItem.name}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="flex flex-row ml-1 items-center">
+        <!-- Linkedin Anchor -->
+        <a
+          href="https://www.linkedin.com/in/noealirl/"
+          target="_blank"
+          class="cursor-pointer"
+        >
+          <div class="mx-2 hidden md:block" style="font-size: 24px;">
+            <IoLogoLinkedin />
+            <!-- {socialNetwork.icon({ size: 24 })} -->
+          </div>
+        </a>
+        <!-- Twitter Anchor -->
+        <a
+          href="https://twitter.com/noestelar"
+          target="_blank"
+          class="cursor-pointer"
+        >
+          <div class="mx-2 hidden md:block" style="font-size: 24px;">
+            <IoLogoTwitter />
+          </div>
+        </a>
+        <!-- Github Anchor -->
+        <a
+          href="https://github.com/Noe-ali"
+          target="_blank"
+          class="cursor-pointer"
+        >
+          <div class="mx-2 hidden md:block" style="font-size: 24px;">
+            <IoLogoGithub />
+          </div>
+        </a>
+        <NavigationMenu />
+        <ThemeToggle client:visible />
+      </div>
+    </div>
+  </nav>
+</header>

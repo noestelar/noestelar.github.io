@@ -1,24 +1,31 @@
 @keyframes marquee {
-    0% {
-        transform: translate(0%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
+.marquee-content {
+  white-space: nowrap;
+  display: inline-flex; /* Cambiar a inline-flex para evitar que los logos se envuelvan a la siguiente línea */
+  justify-content: flex-start; /* Alinear los logos desde el borde izquierdo del contenedor */
+  animation: marquee 20s linear infinite;
+}
 
-  .marquee-content {
-    white-space: nowrap;
-    display: inline-block;
-  }
+.marquee-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  width: 100%;
+}
 
-  .marquee-container {
-    display: flex;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch; /* enable smooth scrolling on iOS */
-  }
-  
-  img {
-    flex-shrink: 0;
-  }
+img {
+  width: 120px; /* Ajustar el ancho de los logos según sea necesario */
+  height: auto; /* Ajustar la altura de los logos según sea necesario */
+  margin-left: 20px; /* Agregar margen izquierdo para evitar que los logos se superpongan */
+  margin-right: 20px; /* Agregar margen derecho para separar los logos */
+}
