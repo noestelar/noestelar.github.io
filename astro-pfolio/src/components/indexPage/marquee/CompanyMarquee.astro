@@ -1,12 +1,16 @@
 ---
 import "./CompanyMarquee.css";
-const logos = [
-  "../../../assets/img/FordLogo.png",
-  "../../../assets/img/Schaeffler_logo.svg",
-  "../../../assets/img/idt-logo.png",
-  "../../../assets/img/Alten_logo.png",
-];
-const logosConcat = logos.concat(logos); // duplicate the logos and concatenate them together
+import FordLogo from "../../../assets/img/FordLogo.png";
+import SchaefflerLogo from "../../../assets/img/Schaeffler_logo.svg";
+import IdtLogo from "../../../assets/img/idt-logo.png";
+import AltenLogo from "../../../assets/img/Alten_logo.png";
+const logos = [FordLogo, SchaefflerLogo, IdtLogo, AltenLogo];
+
+let logosConcat = logos;
+
+while (logosConcat.length < 50) {
+  logosConcat = logosConcat.concat(logos);
+}
 ---
 
 <div class="max-w-screen-md w-full mx-auto sm:mx-0 md:p-20 p-10">
@@ -17,14 +21,14 @@ const logosConcat = logos.concat(logos); // duplicate the logos and concatenate 
   <div class="marquee-container overflow-hidden">
     <div
       class="marquee-content flex flex-nowrap top-0 left-0"
-      style={{ animation: "marquee 20s linear infinite" }}
+      style={{ animation: "marquee 30s linear infinite" }}
     >
       {
         logosConcat.map((logo, index) => (
           <img
             src={logo}
             alt="Company logo"
-            class="h-8 mx-4 w-auto grayscale"
+            class="h-8 mx-4 w-auto grayscale marquee-img"
           />
         ))
       }

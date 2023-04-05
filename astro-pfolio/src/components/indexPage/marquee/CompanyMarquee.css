@@ -23,8 +23,8 @@
   width: 100%;
 }
 
-img {
-  width: 120px; /* Ajustar el ancho de los logos según sea necesario */
+.marquee-img {
+  width: 100px; /* Ajustar el ancho de los logos según sea necesario */
   height: auto; /* Ajustar la altura de los logos según sea necesario */
   margin-left: 20px; /* Agregar margen izquierdo para evitar que los logos se superpongan */
   margin-right: 20px; /* Agregar margen derecho para separar los logos */
