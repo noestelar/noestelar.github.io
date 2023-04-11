@@ -8,7 +8,7 @@ const logos = [FordLogo, SchaefflerLogo, IdtLogo, AltenLogo];
 
 let logosConcat = logos;
 
-while (logosConcat.length < 50) {
+while (logosConcat.length < 10) {
   logosConcat = logosConcat.concat(logos);
 }
 ---
@@ -21,10 +21,11 @@ while (logosConcat.length < 50) {
   <div class="marquee-container overflow-hidden">
     <div
       class="marquee-content flex flex-nowrap top-0 left-0"
-      style={{ animation: "marquee 30s linear infinite" }}
+      style={{ animation: "marquee 10s linear infinite" }}
     >
       {
         logosConcat.map((logo, index) => (
+        // console.log('printing logo')
           <img
             src={logo}
             alt="Company logo"
