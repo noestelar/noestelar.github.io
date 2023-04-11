@@ -17,6 +17,12 @@ module.exports = {
       // 	lg: { min: '1024px', max: '1919px' },
       // 	xl: { min: '1920px' },
       // }
+      colors:{
+        cyaned: {
+          500: '#81e6d9',
+          700: '#319795',
+        }
+      }
     },
   },
   plugins: [],

@@ -55,3 +55,10 @@ body {
 .text-cyaned-500 {
     color: #319795;
 }
+
+.bg-cyaned {
+    background-color: #81e6d9;
+}
+.bg-cyaned-500 {
+    background-color: #319795;
+}

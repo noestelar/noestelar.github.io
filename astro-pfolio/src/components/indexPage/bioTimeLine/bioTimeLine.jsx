@@ -32,7 +32,7 @@ function BioTimeLine() {
           {events.map((event, key) => (
             <li key={key}>
               <div className="timeline-badge ">
-                <span className=" dark:text-cyaned text-cyaned-500 font-bold">{event.date}</span>
+                <span className=" dark:text-cyaned-500 text-cyaned-700 font-bold">{event.date}</span>
               </div>
               <div className="mt-2">
                 <div className="">

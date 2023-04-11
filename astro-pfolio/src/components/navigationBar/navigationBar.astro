@@ -42,7 +42,7 @@ const menu = [
           {
             menu.map((menuItem) => (
               <li class="inline-block cursor-pointer hover:underline mx-3">
-                {menuItem.name}
+                <a href={menuItem.url}>{menuItem.name}</a>
               </li>
             ))
           }
