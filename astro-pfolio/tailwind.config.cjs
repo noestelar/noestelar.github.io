@@ -19,8 +19,10 @@ module.exports = {
       // }
       colors:{
         cyaned: {
+          50: '#e6fffa',
           500: '#81e6d9',
           700: '#319795',
+          900: '#2c3c3e',
         }
       }
     },
