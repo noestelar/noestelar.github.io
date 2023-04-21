@@ -17,16 +17,22 @@ body {
 @font-face {
     font-family: "portal";
     src: url("../../assets/fonts/portal.ttf") format("truetype");
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @font-face {
     font-family: "quicksand";
     src: url("../../assets/fonts/Quicksand-VariableFont_wght.ttf") format("opentype");
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @font-face {
     font-family: "quicksand-regular";
     src: url("../../assets/fonts/Ruicksand-Regular.ttf") format("opentype");
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .font-portal {

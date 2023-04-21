@@ -5,14 +5,13 @@ import NavigationBar from "../components/navigationBar/navigationBar.astro";
 import RepoCard from "../components/projects/projectCard";
 
 let repos: any = [];
-fetch("https://api.github.com/users/Noe-ali/repos", {})
+await fetch("https://api.github.com/users/Noe-ali/repos", {headers: {
+  Authorization: `Bearer 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`,
+}})
   .then((response) => response.json())
   .then((data) => {
-    // console.log(data);
     repos = data;
   });
-
-  console.log(repos);
 ---
 
 <!DOCTYPE html>
@@ -24,11 +23,9 @@ fetch("https://api.github.com/users/Noe-ali/repos", {})
   <Content>
     <NavigationBar />
     <main class="flex items-center justify-center">
-      <section class="max-w-screen-md w-full sm:mx-0 md:px-20 p-10 mt-10">
-        <h2>aa</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <!-- {repos.map((repo: any) => <RepoCard repo={repo} client:visible />)} -->
-          <div><span>{repos}</span></div>
+      <section class="max-w-screen-md w-full sm:mx-0 md: p-10 mt-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-24">
+          {repos.map((repo: any, key: number) => <RepoCard key={key} repo={repo} client:visible />)}
         </div>
       </section>
     </main>
