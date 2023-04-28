@@ -2,16 +2,10 @@
 import Content from "../components/Content.astro";
 import Layout from "../layouts/Layout.astro";
 import NavigationBar from "../components/navigationBar/navigationBar.astro";
-import RepoCard from "../components/projects/projectCard";
-
-let repos: any = [];
-await fetch("https://api.github.com/users/Noe-ali/repos", {headers: {
-  Authorization: `Bearer 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`,
-}})
-  .then((response) => response.json())
-  .then((data) => {
-    repos = data;
-  });
+import ProjectCard from "../components/projects/projectCard";
+import jeanneThumb from "/assets/img/Jeanne.png";
+import birthdayThumb from "/assets/img/SC.png";
+import jmnewsThumb from "/assets/img/JMNEWS1.png";
 ---
 
 <!DOCTYPE html>
@@ -24,8 +18,32 @@ await fetch("https://api.github.com/users/Noe-ali/repos", {headers: {
     <NavigationBar />
     <main class="flex items-center justify-center">
       <section class="max-w-screen-md w-full sm:mx-0 md: p-10 mt-10">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-24">
-          {repos.map((repo: any, key: number) => <RepoCard key={key} repo={repo} client:visible />)}
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-14">
+          <ProjectCard
+            title="Jeanne - Discord Bot"
+            url="https://google.com"
+            thumbnail={jeanneThumb}
+          >
+            DistortedEmerald Official Discord Bot (Deprecated)
+          </ProjectCard>
+
+          <ProjectCard
+            title="Birthday Date Countdown"
+            url="https://google.com"
+            thumbnail={birthdayThumb}
+          >
+            Funny and colorful countdown to your birthday party invitation
+          </ProjectCard>
+
+          <ProjectCard
+            title="JMNews - News App"
+            url="https://google.com"
+            thumbnail={jmnewsThumb}
+          >
+            Serious news app for Android
+          </ProjectCard>
+
+          
         </div>
       </section>
     </main>
