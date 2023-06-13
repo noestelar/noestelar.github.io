@@ -86,30 +86,7 @@ declare module 'astro:content' {
 	>;
 
 	const entryMap: {
-		"projects": {
-"BirthdayCountdown.md": {
-  id: "BirthdayCountdown.md",
-  slug: "birthdaycountdown",
-  body: string,
-  collection: "projects",
-  data: any
-} & { render(): Render[".md"] },
-"JMNews.md": {
-  id: "JMNews.md",
-  slug: "jmnews",
-  body: string,
-  collection: "projects",
-  data: any
-} & { render(): Render[".md"] },
-"JeanneBot.md": {
-  id: "JeanneBot.md",
-  slug: "jeannebot",
-  body: string,
-  collection: "projects",
-  data: any
-} & { render(): Render[".md"] },
-},
-
+		
 	};
 
 	type ContentConfig = never;
