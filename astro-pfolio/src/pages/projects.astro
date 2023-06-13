@@ -3,9 +3,14 @@ import Content from "../components/Content.astro";
 import Layout from "../layouts/Layout.astro";
 import NavigationBar from "../components/navigationBar/navigationBar.astro";
 import ProjectCard from "../components/projects/projectCard";
-import jeanneThumb from "/assets/img/Jeanne.png";
-import birthdayThumb from "/assets/img/SC.png";
-import jmnewsThumb from "/assets/img/JMNEWS1.png";
+
+interface Frontmatter {
+  title: string;
+  url: string;
+  thumbnail?: string;
+  description?: string;
+}
+const projects = await Astro.glob<Frontmatter>("../content/projects/*.md");
 ---
 
 <!DOCTYPE html>
@@ -19,29 +24,17 @@ import jmnewsThumb from "/assets/img/JMNEWS1.png";
     <main class="flex items-center justify-center">
       <section class="max-w-screen-md w-full sm:mx-0 md: p-10 mt-10">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-14">
-          <ProjectCard
-            title="Birthday Date Countdown"
-            url="https://google.com"
-            thumbnail={birthdayThumb}
-          >
-            Funny and colorful countdown to your birthday party invitation
-          </ProjectCard>
-
-          <ProjectCard
-            title="JMNews - News App"
-            url="https://google.com"
-            thumbnail={jmnewsThumb}
-          >
-            Serious news app for Android
-          </ProjectCard>
-
-          <ProjectCard
-            title="Jeanne - Discord Bot"
-            url="https://google.com"
-            thumbnail={jeanneThumb}
-          >
-            DistortedEmerald Official Discord Bot (Deprecated)
-          </ProjectCard>
+          {
+            projects.map((project) => (
+              <ProjectCard
+                title={project.frontmatter.title}
+                url={project.frontmatter.url}
+                thumbnail={project.frontmatter.thumbnail}
+              >
+                {project.frontmatter.description}
+              </ProjectCard>
+            ))
+          }
         </div>
       </section>
     </main>
