@@ -1,4 +1,4 @@
-const ProjectCard = ({ children, title, url, thumbnail }) => {
+const ProjectCard = ({ children, title, url, thumbnail }: any) => {
   return (
     <div className=" dark:bg-grayed-100 bg-grayed-50 backdrop-blur-sm shadow-md rounded-lg overflow-hidden  text-center">
       <img src={thumbnail} alt={title} className="" placeholder="blur"/>
