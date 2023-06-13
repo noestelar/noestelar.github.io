@@ -6,11 +6,11 @@ import ProjectCard from "../components/projects/projectCard";
 
 interface Frontmatter {
   title: string;
-  url: string;
+  link: string;
   thumbnail?: string;
   description?: string;
 }
-const projects = await Astro.glob<Frontmatter>("../content/projects/*.md");
+const projects = await Astro.glob<Frontmatter>("./content/projects/*.md");
 ---
 
 <!DOCTYPE html>
@@ -23,19 +23,23 @@ const projects = await Astro.glob<Frontmatter>("../content/projects/*.md");
     <NavigationBar />
     <main class="flex items-center justify-center">
       <section class="max-w-screen-md w-full sm:mx-0 md: p-10 mt-10">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-14">
+        <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-14">
           {
             projects.map((project) => (
-              <ProjectCard
-                title={project.frontmatter.title}
-                url={project.frontmatter.url}
-                thumbnail={project.frontmatter.thumbnail}
-              >
-                {project.frontmatter.description}
-              </ProjectCard>
+              <li>
+                <a href={project.url}>
+                  <ProjectCard
+                    title={project.frontmatter.title}
+                    url={project.frontmatter.link}
+                    thumbnail={project.frontmatter.thumbnail}
+                  >
+                    {project.frontmatter.description}
+                  </ProjectCard>
+                </a>
+              </li>
             ))
           }
-        </div>
+        </ul>
       </section>
     </main>
   </Content>
