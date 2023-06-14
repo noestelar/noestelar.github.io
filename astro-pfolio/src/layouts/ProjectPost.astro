@@ -3,23 +3,26 @@ import Layout from "../layouts/Layout.astro";
 import Body from "../components/Body.astro";
 import NavigationBar from "../components/navigationBar/navigationBar.astro";
 import Content from "../components/Content.astro";
-
+import { IoLogoGithub } from "react-icons/io5/index.js";
 export interface Props {
   content: {
     title: string;
     description: string;
     thumbnail?: string;
-    tags: string[];
+    githubLink: string;
+    website?: string;
+    platform: string;
+    stack: string;
   };
 }
 const {
-  content: { title, description, thumbnail },
+  content: { title, description, thumbnail, githubLink, website },
 } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-    <Layout title={'Noé Rivera - ' + title } />
+  <Layout title={"Noé Rivera - " + title} />
 
   <Body>
     <NavigationBar />
@@ -41,10 +44,56 @@ const {
         <h1 class="text-3xl my-1 font-quicksand">{title}</h1>
         <div>{description}</div>
         <hr class="border-top border-zinc-400 my-4" />
+
+        <ul class="flex flex-col gap-2 my-5 text-sm font-portal">
+          <template>
+            <div>
+
+            @if (website !== '')
+            <li>
+              <span
+                class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
+                >Website</span
+              >
+              <span class="">{website}</span>
+            </li>
+            @endif
+          </div>
+
+          </template>
+          <li>
+            <span
+              class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
+              >Platform</span
+            >
+          </li>
+          <li>
+            <span
+              class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
+              >Stack</span
+            >
+          </li>
+        </ul>
+
         <slot />
         <span
           class="underline underline-offset-2 hover:text-orange-500 decoration-orange-500 text-2xl list-disc"
         ></span>
+
+        <ul class="flex flex-row float-left mt-10">
+          <li class="inline-block">
+            <a
+              href={githubLink}
+              target="_blank"
+              class="bg-cyaned-50 dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:bg-cyaned-900"
+            >
+              <span style="font-size: 18px;">
+                <IoLogoGithub className={"inline"} />
+              </span>
+              <span class="mx-2"> Source</span>
+            </a>
+          </li>
+        </ul>
       </Content>
     </main>
   </Body>
