@@ -1,4 +1,5 @@
 ---
+layout: ../../../layouts/ProjectPost.astro
 title: Birthday Date Countdown
 link: https://google.com
 thumbnail: /assets/img/SC.png
