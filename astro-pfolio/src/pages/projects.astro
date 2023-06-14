@@ -1,8 +1,9 @@
 ---
-import Content from "../components/Content.astro";
 import Layout from "../layouts/Layout.astro";
 import NavigationBar from "../components/navigationBar/navigationBar.astro";
 import ProjectCard from "../components/projects/projectCard";
+import Body from "../components/Body.astro";
+import Content from "../components/Content.astro";
 
 interface Frontmatter {
   title: string;
@@ -19,8 +20,11 @@ const projects = await Astro.glob<Frontmatter>("./content/projects/*.md");
     <Layout title="Noé Rivera - Projects" />
   </head>
 
-  <Content>
+  <Body>
     <NavigationBar />
+
+    <Content>
+
     <main class="flex items-center justify-center">
       <section class="max-w-screen-md w-full sm:mx-0 md: p-10 mt-10">
         <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-14">
@@ -42,5 +46,6 @@ const projects = await Astro.glob<Frontmatter>("./content/projects/*.md");
         </ul>
       </section>
     </main>
-  </Content>
+    </Content>
+  </Body>
 </html>

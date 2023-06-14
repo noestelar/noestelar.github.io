@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Content from "../components/Content.astro";
+import Body from "../components/Body.astro";
 import PresentationCard from "../components/presentationCard/presentationCard";
 import BioTimeLine from "../components/indexPage/bioTimeLine/bioTimeLine";
 import CompanyMarquee from "../components/indexPage/marquee/CompanyMarquee.astro";
@@ -12,6 +12,7 @@ import {
   IoLogoTwitter,
   IoMenu,
 } from "react-icons/io5/index.js";
+import Content from "../components/Content.astro";
 ---
 
 <!DOCTYPE html>
@@ -19,9 +20,10 @@ import {
   <head>
     <Layout title="Noé Rivera - Portfolio" />
   </head>
-  <Content>
+  <Body>
     <NavigationBar />
 
+    <Content>
     <main class="flex items-center justify-center">
       <PresentationCard client:visible />
     </main>
@@ -81,4 +83,5 @@ import {
       </div>
     </section>
   </Content>
+  </Body>
 </html>
