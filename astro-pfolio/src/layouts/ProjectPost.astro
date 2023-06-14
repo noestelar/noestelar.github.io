@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Body from "../components/Body.astro";
+import NavigationBar from "../components/navigationBar/navigationBar.astro";
+import Content from "../components/Content.astro";
+
+export interface Props {
+  content: {
+    title: string;
+    description: string;
+    thumbnail?: string;
+    tags: string[];
+  };
+}
+const {
+  content: { title, description, thumbnail },
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <Layout title='proj name' />
+
+  <Body>
+    <NavigationBar />
+    <main class="pt-[56px]">
+      <Content className="pt-6">
+        <div class="mb-8">
+          {
+            thumbnail && (
+              <img
+                class="border border-slate-300 dark:border-zinc-700 rounded-xl"
+                width={720}
+                height={360}
+                src={thumbnail}
+                alt=""
+              />
+            )
+          }
+        </div>
+        <h1 class="text-3xl my-1 font-mplus">{title}</h1>
+        <div>{description}</div>
+        <hr class="border-top border-zinc-400 my-4" />
+        <slot />
+        <span
+          class="underline underline-offset-2 hover:text-orange-500 decoration-orange-500 text-2xl list-disc"
+        ></span>
+      </Content>
+    </main>
+  </Body>
+</html>
