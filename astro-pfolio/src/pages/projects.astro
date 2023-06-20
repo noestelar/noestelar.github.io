@@ -4,6 +4,7 @@ import NavigationBar from "../components/navigationBar/navigationBar.astro";
 import ProjectCard from "../components/projects/projectCard";
 import Body from "../components/Body.astro";
 import Content from "../components/Content.astro";
+import Footer from "../layouts/footer.astro";
 
 interface Frontmatter {
   title: string;
@@ -46,6 +47,7 @@ const projects = await Astro.glob<Frontmatter>("./content/projects/*.md");
         </ul>
       </section>
     </main>
+    <Footer />
     </Content>
   </Body>
 </html>
