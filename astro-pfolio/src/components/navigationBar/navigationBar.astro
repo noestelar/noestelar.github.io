@@ -5,9 +5,9 @@ import {
   IoLogoTwitter,
   IoMenu,
 } from "react-icons/io5/index.js";
-import NavigationMenu from "./navigationMenu";
 import React from "react";
 import ThemeToggle from "./themeToggleButton";
+import NavigationMenu from "./navigationMenu";
 
 const menu = [
   {
@@ -76,8 +76,11 @@ const menu = [
             <IoLogoGithub />
           </div>
         </a> -->
-        <NavigationMenu client:visible />
+
         <ThemeToggle client:visible />
+        <div class="sm:hidden">
+          <NavigationMenu client:visible />
+        </div>
       </div>
     </div>
   </nav>
