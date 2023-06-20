@@ -4,6 +4,8 @@ import Body from "../components/Body.astro";
 import NavigationBar from "../components/navigationBar/navigationBar.astro";
 import Content from "../components/Content.astro";
 import { IoLogoGithub } from "react-icons/io5/index.js";
+import { IoChevronBackOutline } from "react-icons/io5/index.js";
+import Footer from "./footer.astro";
 export interface Props {
   content: {
     title: string;
@@ -16,7 +18,15 @@ export interface Props {
   };
 }
 const {
-  content: { title, description, thumbnail, githubLink, website },
+  content: {
+    title,
+    description,
+    thumbnail,
+    githubLink,
+    website,
+    platform,
+    stack,
+  },
 } = Astro.props;
 ---
 
@@ -28,6 +38,14 @@ const {
     <NavigationBar />
     <main class="pt-[56px]">
       <Content className="pt-6">
+        <span class="my-10">
+          <a
+            href="/projects"
+            class="dark:text-cyaned-500 text-blue-500 text-md"
+          >
+            <IoChevronBackOutline className={"inline"} /> Projects</a
+          >
+        </span>
         <div class="mb-8">
           {
             thumbnail && (
@@ -46,41 +64,38 @@ const {
         <hr class="border-top border-zinc-400 my-4" />
 
         <ul class="flex flex-col gap-2 my-5 text-sm font-portal">
-          <template>
-            <div>
-
-            @if (website !== '')
-            <li>
-              <span
-                class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
-                >Website</span
-              >
-              <span class="">{website}</span>
-            </li>
-            @endif
-          </div>
-
-          </template>
+          <li>
+            <span
+              class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
+              >Website</span
+            >
+            <a
+              class="ml-1 dark:text-pink-400 text-blue-500"
+              href={website !== "" ? website : ""}
+              target="_blank">{website ? website : "Not available"}</a
+            >
+          </li>
           <li>
             <span
               class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
               >Platform</span
             >
+            <span class="ml-1">{platform}</span>
           </li>
           <li>
             <span
               class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
               >Stack</span
             >
+            <span class="ml-1">{stack}</span>
           </li>
         </ul>
-
         <slot />
         <span
           class="underline underline-offset-2 hover:text-orange-500 decoration-orange-500 text-2xl list-disc"
         ></span>
 
-        <ul class="flex flex-row float-left mt-10">
+        <ul class="flex flex-row mt-10">
           <li class="inline-block">
             <a
               href={githubLink}
@@ -97,4 +112,5 @@ const {
       </Content>
     </main>
   </Body>
+  <Footer />
 </html>
