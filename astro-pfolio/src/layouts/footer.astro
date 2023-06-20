@@ -4,7 +4,9 @@ import "../styles/global.css";
 const today = new Date();
 ---
 
-<footer class="text-zinc-500 p-4 text-center">
-    &copy;{ today.getFullYear() }
-    <a href="/">Noé Rivera</a>
+<footer class="text-zinc-500 p-4 text-center text-sm">
+  Created with Astro and <span class="text-red-500">&hearts;</span>
+  <br />
+  &copy; {today.getFullYear()}
+  <a href="/">Noé Rivera.</a> All rights reserved.
 </footer>
