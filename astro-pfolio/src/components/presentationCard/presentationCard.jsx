@@ -1,5 +1,5 @@
 import "./presentationCard.css";
-import { IoChevronForwardOutline } from "react-icons/io5";
+import { IoChevronForwardOutline } from "react-icons/io5/index.js";
 function PresentationCard() {
   const img = "../../../assets/img/yo.jpg";
   return (

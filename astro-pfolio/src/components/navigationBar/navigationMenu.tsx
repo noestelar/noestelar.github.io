@@ -1,6 +1,6 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, type ReactNode } from "react";
-import { IoMenuOutline } from "react-icons/io5";
+import { IoMenuOutline } from "react-icons/io5/index.js";
 const links = [
   { name: "Home", href: "/" },
   { name: "Works", href: "/projects" },
