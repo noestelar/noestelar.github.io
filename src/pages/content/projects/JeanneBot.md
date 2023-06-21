@@ -13,7 +13,7 @@ The official bot of the Distorted Emerald Discord community, which is no longer 
 
 <br>
 
-![Working Example](/assets/img/jeanne1.png)
+![Working Example](https://user-images.githubusercontent.com/95829890/247707915-8ea3bffe-5e44-4ebd-b1df-5475a3507b40.png)
 
 <br>
 The list of commands is as follows:
