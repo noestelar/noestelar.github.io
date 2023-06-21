@@ -1,6 +1,5 @@
 ---
 layout: ../../../layouts/ProjectPost.astro
-website: 'Not available'
 title: "Jeanne - Discord Bot"
 link: "https://google.com"
 thumbnail: /assets/img/Jeanne.png
@@ -10,7 +9,7 @@ platform: Discord
 stack: JavaScript, Express, Node, Sqlite, HTML, CSS
 ---
 
-The official bot of the Distorted Emerald Discord community, which is no longer active, but the project remains here for future development and for other bot developers who are interested in looking at similar examples. As expected, all channel IDs, users, databases, and requests have been modified to protect the original information, replaced by random number strings as a place holder. 
+The official bot of the Distorted Emerald Discord community, which is no longer active, but the project remains here for future development and for other bot developers who are interested in looking at similar examples. As expected, all channel IDs, users, databases, and requests have been modified to protect the original information, replaced by random number strings as a place holder.
 
 <br>
 
@@ -42,4 +41,3 @@ The list of commands is as follows:
 -- Special messages for each day of the week
 
 -- Magic 8-ball guessing game (with yes, no, maybe answers)
-
