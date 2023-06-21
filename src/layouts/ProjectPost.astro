@@ -38,15 +38,15 @@ const {
     <NavigationBar />
     <main class="pt-[56px]">
       <Content className="pt-6 px-8">
-        <span class="my-10">
+        <span class="">
           <a
             href="/projects"
-            class="dark:text-cyaned-500 text-blue-500 text-md"
+            class="dark:text-cyaned-500 text-blue-500 text-md "
           >
-            <IoChevronBackOutline className={"inline"} /> Projects</a
+            <IoChevronBackOutline className={"inline"} /> Works </a
           >
         </span>
-        <div class="mb-8">
+        <div class="mb-8 mt-2">
           {
             thumbnail && (
               <img
@@ -90,7 +90,9 @@ const {
             <span class="ml-1">{stack}</span>
           </li>
         </ul>
-        <slot />
+        <div class="text-justify">
+          <slot />
+        </div>
         <span
           class="underline underline-offset-2 hover:text-orange-500 decoration-orange-500 text-2xl list-disc"
         ></span>
