@@ -8,5 +8,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://noe-ali.github.io',
+  // base: '/Astropfolio',
   integrations: [tailwind(), react()],
 });
