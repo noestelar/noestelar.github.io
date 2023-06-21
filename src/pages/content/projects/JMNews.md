@@ -13,8 +13,8 @@ Variety of topics available, COVID information and Olympic Games charts. Also of
 <br>
 <br>
 
-![App Overview](/public/assets/img/JMNEWS2.png)
 
+![App Overview](/assets/img/JMNEWS2.png)
 <br>
 
 This app project is free to use and open sourced, you can contribute to it's development.
