@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/ProjectPost.astro
 title: JMNews
-thumbnail: /assets/img/JMNEWS1.png
+thumbnail: /assets/img/JMNEWS1.webp
 description: Serious news app for Android
 githubLink: https://github.com/Noe-ali/JMNews
 platform: Android
@@ -14,7 +14,7 @@ Variety of topics available, COVID information and Olympic Games charts. Also of
 <br>
 
 
-![App Overview](/assets/img/JMNEWS2.png)
+![App Overview](/assets/img/JMNEWS2.webp)
 <br>
 
 This app project is free to use and open sourced, you can contribute to it's development.
