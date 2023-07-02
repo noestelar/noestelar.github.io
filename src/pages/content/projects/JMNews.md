@@ -2,7 +2,7 @@
 layout: ../../../layouts/ProjectPost.astro
 title: JMNews
 thumbnail: /assets/img/JMNEWS1.webp
-description: Serious news app for Android
+description: Serious and reliable news app for Android
 githubLink: https://github.com/Noe-ali/JMNews
 platform: Android
 stack: Kotlin
