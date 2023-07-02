@@ -1,7 +1,7 @@
 import "./presentationCard.css";
 import { IoChevronForwardOutline } from "react-icons/io5/index.js";
 function PresentationCard() {
-  const img = "../../../assets/img/yo.jpg";
+  const img = "../../../assets/img/yo.webp";
   return (
     <section className="max-w-screen-md w-full sm:mx-0 md:px-20 p-10 mt-10">
       <div className="flex pb-10 md:flex-row items-center justify-center sm:justify-between flex-col">
