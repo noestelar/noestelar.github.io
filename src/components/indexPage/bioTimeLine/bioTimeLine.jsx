@@ -2,8 +2,8 @@ import "./bioTimeLine.css";
 function BioTimeLine() {
   const events = [
     {
-      date: "1999",
-      title: "Born in México City, México",
+      date: "2023",
+      title: "Started to work at Ford Motor Company as an Automation Engineer",
     },
     {
       date: "2022",
@@ -19,15 +19,15 @@ function BioTimeLine() {
         "Worked at Schaeffler Transmission Systems as a Full Stack Developer doing Web Services and Web Apps focused on security",
     },
     {
-      date: "2023",
-      title: "Started to work at Ford Motor Company as an Automation Engineer",
+      date: "1999",
+      title: "Born in México City, México",
     },
   ];
   return (
     <section className="max-w-screen-md w-full sm:mx-0 md:px-20 px-10">
       <h1 className="text-lg font-bold underline underline-offset-2">Bio</h1>
 
-      <div className="max-w-3xl mx-auto p-4 text-justify">
+      <div className="max-w-3xl mx-auto p-4 ">
         <ul className="timeline">
           {events.map((event, key) => (
             <li key={key}>
@@ -36,7 +36,7 @@ function BioTimeLine() {
                   {event.date}
                 </span>
               </div>
-              <div className="mt-2">
+              <div className="my-2">
                 <div className="">
                   <h3 className="font-quicksand-3 text-md">{event.title}</h3>
                 </div>
