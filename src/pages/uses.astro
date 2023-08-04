@@ -1,10 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import NavigationBar from "../components/navigationBar/navigationBar.astro";
-import ProjectCard from "../components/projects/projectCard";
 import Body from "../components/Body.astro";
 import Content from "../components/Content.astro";
 import Footer from "../layouts/footer.astro";
+import EquipmentPost from "../components/projects/equipmentPost";
 
 interface Frontmatter {
   title: string;
@@ -12,7 +12,7 @@ interface Frontmatter {
   thumbnail?: string;
   description?: string;
 }
-const projects = await Astro.glob<Frontmatter>("./content/projects/*.md");
+const uses = await Astro.glob<Frontmatter>("./content/uses/*.md");
 ---
 
 <!DOCTYPE html>
@@ -25,10 +25,10 @@ const projects = await Astro.glob<Frontmatter>("./content/projects/*.md");
     <NavigationBar />
 
     <Content>
-      <!-- <section class="relative mb-6 h-80 flex justify-center items-center">
-        <div class="absolute w-full h-full overflow-hidden"> -->
-      <!-- <img src="/assets/img/Jeanne.png" alt="Workspageimg"> -->
-      <!-- <video
+      <section class="relative mb-6 h-80 flex justify-center items-center">
+        <div class="absolute w-full h-full overflow-hidden">
+          <!-- <img src="/assets/img/Jeanne.png" alt="Workspageimg">  -->
+          <!-- <video
             class="absolute inset-0 min-w-full min-h-full object-cover opacity-30"
             poster="/masthead-poster.jpg"
             autoplay="autoplay"
@@ -36,7 +36,7 @@ const projects = await Astro.glob<Frontmatter>("./content/projects/*.md");
             loop="loop"
             playsinline
             > -->
-      <!-- <source
+          <!-- <source
               src={baseAssetUrl + '/masthead.webm'}
               type="video/webm; codecs=vp9"
             />
@@ -44,30 +44,34 @@ const projects = await Astro.glob<Frontmatter>("./content/projects/*.md");
               src={baseAssetUrl + '/masthead.m4v'}
               type="video/mp4; codecs=hvc1"
             /> -->
-      <!-- </video> -->
-      <!-- </div>
+          <!-- </video> -->
+        </div>
         <div class="z-10 text-center px-8 drop-shadow-lg shadow-black">
           <div class="uppercase text-sm mb-4"></div>
-          <div class="text-4xl font-mplus font-medium">
-            <span class="text-cyaned-500">Works</span>
+          <div class="text-4xl font-mplus font-medium mb-5">
+            <span class="text-cyaned-500">What I use</span>
           </div>
+          <span class=""
+            >A list of the equipment that I use in everyday work</span
+          >
         </div>
-      </section> -->
-
-      <main class="flex items-center justify-center">
-        <section class="max-w-screen-md w-full sm:mx-0 p-10 mt-10">
-          <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-14">
+      </section>
+      <main class="">
+        <section class="p-10 mt-10 md:p-0 sm:p-20">
+          <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-10">
             {
-              projects.map((project) => (
+              uses.map((eq) => (
                 <li>
-                  <a href={project.url}>
-                    <ProjectCard
-                      title={project.frontmatter.title}
-                      url={project.frontmatter.link}
-                      thumbnail={project.frontmatter.thumbnail}
+                  <a href={eq.url}>
+                    <EquipmentPost
+                      title={eq.frontmatter.title}
+                      url={eq.frontmatter.link}
+                      thumbnail={eq.frontmatter.thumbnail}
                     >
-                      {project.frontmatter.description}
-                    </ProjectCard>
+                      <span class="text-gray-400">
+                        {eq.frontmatter.description}
+                      </span>
+                    </EquipmentPost>
                   </a>
                 </li>
               ))

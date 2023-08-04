@@ -4,6 +4,7 @@ import { IoMenuOutline } from "react-icons/io5/index.js";
 const links = [
   { name: "Home", href: "/" },
   { name: "Works", href: "/projects" },
+  { name: "Uses", href: "/uses" },
 ];
 
 function navigationMenu() {
