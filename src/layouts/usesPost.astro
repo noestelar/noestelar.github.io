@@ -11,10 +11,6 @@ export interface Props {
     title: string;
     description: string;
     thumbnail?: string;
-    githubLink: string;
-    website?: string;
-    platform: string;
-    stack: string;
   };
 }
 const {
@@ -22,10 +18,6 @@ const {
     title,
     description,
     thumbnail,
-    githubLink,
-    website,
-    platform,
-    stack,
   },
 } = Astro.props;
 ---
@@ -40,10 +32,10 @@ const {
       <Content className="pt-6 px-8">
         <span class="">
           <a
-            href="/projects"
+            href="/uses"
             class="dark:text-cyaned-500 text-blue-500 text-md "
           >
-            <IoChevronBackOutline className={"inline"} /> Works </a
+            <IoChevronBackOutline className={"inline"} /> Back </a
           >
         </span>
         <div class="mb-8 mt-2">
@@ -62,55 +54,12 @@ const {
         <h1 class="text-3xl my-1 font-quicksand">{title}</h1>
         <div>{description}</div>
         <hr class="border-top border-zinc-400 my-4" />
-
-        <ul class="flex flex-col gap-2 my-5 text-sm font-portal">
-          <li>
-            <span
-              class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
-              >Website</span
-            >
-            <a
-              class="ml-1 dark:text-pink-400 text-blue-500"
-              href={website !== "" ? website : ""}
-              target="_blank">{website ? website : "Not available"}</a
-            >
-          </li>
-          <li>
-            <span
-              class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
-              >Platform</span
-            >
-            <span class="ml-1">{platform}</span>
-          </li>
-          <li>
-            <span
-              class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
-              >Stack</span
-            >
-            <span class="ml-1">{stack}</span>
-          </li>
-        </ul>
-        <div class="text-justify">
+        <div class="">
           <slot />
         </div>
         <span
           class="underline underline-offset-2 hover:text-orange-500 decoration-orange-500 text-2xl list-disc"
         ></span>
-
-        <ul class="flex flex-row mt-10">
-          <li class="inline-block">
-            <a
-              href={githubLink}
-              target="_blank"
-              class="bg-cyaned-50 dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:bg-cyaned-900"
-            >
-              <span style="font-size: 18px;">
-                <IoLogoGithub className={"inline"} />
-              </span>
-              <span class="mx-2"> Source</span>
-            </a>
-          </li>
-        </ul>
       </Content>
     </main>
   </Body>
