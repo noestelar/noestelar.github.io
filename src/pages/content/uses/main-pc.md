@@ -5,11 +5,10 @@ thumbnail:
 description: My main PC for coding and gaming
 ---
 
-This computer is my main workstation, for app developing, designing, video editing, gaming and everything else. It’s very powerful and really a good foundation to create digital stuff. often I connect through remote desktop from other devices to work when I’m outside.
+This computer serves as my primariy workstation for app development, design, video editing, gaming and various other tasks. It’s very powerful and provides an excellent foundation for creating digital content. Often when I'm outside, I connect it through remote desktop from other devices to continue working.
 
 [**IMG**]()
-
-It runs both Windows 11 and MacOS Ventura thanks to hackintosh dual booting, I often use both for coding but my daily driver is MacOS.
+It's set up to run both Windows 11 and MacOS Ventura thanks to hackintosh dual booting, While I frequently use both for coding, MacOS is my daily driver.
 
 
 ➡️ <span class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"> [10th generation Intel Core i5 10400F up to 4.30GHz](https://www.amazon.com.mx/Procesador-Intel-I5-10400F-Frecuencia-Compatibles/dp/B0883PYCB4/ref=sr_1_1?__mk_es_MX=ÅMÅŽÕÑ&crid=3A5VN4D6BIK1F&keywords=i5+10400f&qid=1692648739&sprefix=i5+10400f%2Caps%2C143&sr=8-1) </span>
