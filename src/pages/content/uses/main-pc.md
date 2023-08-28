@@ -10,6 +10,7 @@ This computer serves as my primariy workstation for app development, design, vid
 [**IMG**]()
 It's set up to run both Windows 11 and MacOS Ventura thanks to hackintosh dual booting, While I frequently use both for coding, MacOS is my daily driver.
 
+Here are the specs:
 
 ➡️ <span class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"> [10th generation Intel Core i5 10400F up to 4.30GHz](https://www.amazon.com.mx/Procesador-Intel-I5-10400F-Frecuencia-Compatibles/dp/B0883PYCB4/ref=sr_1_1?__mk_es_MX=ÅMÅŽÕÑ&crid=3A5VN4D6BIK1F&keywords=i5+10400f&qid=1692648739&sprefix=i5+10400f%2Caps%2C143&sr=8-1) </span>
 
