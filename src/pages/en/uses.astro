@@ -1,18 +1,22 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import NavigationBar from "../components/navigationBar/navigationBar.astro";
-import Body from "../components/Body.astro";
-import Content from "../components/Content.astro";
-import Footer from "../layouts/footer.astro";
-import EquipmentPost from "../components/projects/equipmentPost";
+import Layout from "../../layouts/Layout.astro";
+import NavigationBar from "../../components/navigationBar/navigationBar.astro";
+import Body from "../../components/Body.astro";
+import Content from "../../components/Content.astro";
+import Footer from "../../layouts/footer.astro";
+import EquipmentPost from "../../components/projects/equipmentPost";
+import { getCollection } from 'astro:content';
 
+const uses = await getCollection('uses', ({ id }) => {
+  return id.startsWith('en/');
+});
 interface Frontmatter {
   title: string;
   link: string;
   thumbnail?: string;
   description?: string;
 }
-const uses = await Astro.glob<Frontmatter>("./content/uses/*.md");
+// const uses = await Astro.glob<Frontmatter>("./content/uses/*.md");
 ---
 
 <!DOCTYPE html>
@@ -62,14 +66,14 @@ const uses = await Astro.glob<Frontmatter>("./content/uses/*.md");
             {
               uses.map((eq) => (
                 <li>
-                  <a href={eq.url}>
+                  <a href={eq.slug}>
                     <EquipmentPost
-                      title={eq.frontmatter.title}
-                      url={eq.frontmatter.link}
-                      thumbnail={eq.frontmatter.thumbnail}
+                      title={eq.data.title}
+                      url={eq.slug}
+                      thumbnail={eq.data.thumbnail}
                     >
                       <span class="text-gray-400">
-                        {eq.frontmatter.description}
+                        {eq.data.description}
                       </span>
                     </EquipmentPost>
                   </a>
