@@ -1,4 +1,5 @@
 ---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import {
   IoLogoLinkedin,
   IoLogoGithub,
@@ -9,16 +10,23 @@ import React from "react";
 import ThemeToggle from "./themeToggleButton";
 import NavigationMenu from "./navigationMenu";
 
-const menu = [
-  {
-    name: "Projects",
-    url: "/projects",
-  },
-  {
-    name: "Uses",
-    url: "/uses",
-  },
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const links = [
+  { name: t("nav.home"), href: `/${lang}` },
+  { name: t("nav.works"), href: `/${lang}/works` },
+  { name: t("nav.uses"), href: `/${lang}/uses` },
 ];
+// const menu = [
+//   {
+//     name: "Projects",
+//     url: "/projects",
+//   },
+//   {
+//     name: "Uses",
+//     url: "/uses",
+//   },
+// ];
 ---
 
 <header class="">
@@ -28,13 +36,13 @@ const menu = [
     <div
       class="flex flex-row items-center md:justify-center font-quicksand justify-between"
     >
-      <h1 class="font-portal mr-3"><a href="/">NOÉ RIVERA</a></h1>
+      <h1 class="font-portal mr-3"><a href={`/${lang}`}>NOÉ RIVERA</a></h1>
       <div class="hidden sm:flex mx-10">
         <ul class="flex flex-row float-right">
           {
-            menu.map((menuItem) => (
+            links.map((menuItem) => (
               <li class="inline-block cursor-pointer hover:underline mx-3">
-                <a href={menuItem.url}>{menuItem.name}</a>
+                <a href={menuItem.href}>{menuItem.name}</a>
               </li>
             ))
           }
@@ -71,7 +79,7 @@ const menu = [
 
         <ThemeToggle client:visible />
         <div class="sm:hidden">
-          <NavigationMenu client:visible />
+          <NavigationMenu client:visible links={links} />
         </div>
       </div>
     </div>

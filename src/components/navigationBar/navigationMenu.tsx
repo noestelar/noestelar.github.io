@@ -1,13 +1,8 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, type ReactNode } from "react";
 import { IoMenuOutline } from "react-icons/io5/index.js";
-const links = [
-  { name: "Home", href: "/" },
-  { name: "Works", href: "/projects" },
-  { name: "Uses", href: "/uses" },
-];
 
-function navigationMenu() {
+function navigationMenu(props: { links: { name: string; href: string }[] }) {
   return (
     <>
       <Menu as="div" className="relative inline-block text-left">
@@ -42,7 +37,7 @@ function navigationMenu() {
           </Menu.Items> */}
           <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md dark:bg-grayed-100 bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1">
-              {links.map((link) => (
+              {props.links.map((link: any) => (
                 /* Use the `active` state to conditionally style the active item. */
                 <Menu.Item key={link.href} as={Fragment}>
                   {({ active }) => (
