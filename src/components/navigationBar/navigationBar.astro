@@ -9,6 +9,7 @@ import {
 import React from "react";
 import ThemeToggle from "./themeToggleButton";
 import NavigationMenu from "./navigationMenu";
+import LanguagePicker from '@components/languagePicker/LanguagePicker.astro'
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -76,7 +77,7 @@ const links = [
             <IoLogoGithub />
           </div>
         </a> -->
-
+        <LanguagePicker />
         <ThemeToggle client:visible />
         <div class="sm:hidden">
           <NavigationMenu client:visible links={links} />
