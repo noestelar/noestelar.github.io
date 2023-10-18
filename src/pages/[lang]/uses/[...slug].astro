@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import UsesPost from "../../../layouts/usesPost.astro";
+import UsesPost from "@layouts/usesPost.astro";
 export async function getStaticPaths() {
-  const pages = await getCollection("uses");
+  const pages = await getCollection('uses');
 
   const paths = pages.map((page) => {
     const [lang, ...slug] = page.slug.split("/");
