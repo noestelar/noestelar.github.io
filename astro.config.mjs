@@ -26,8 +26,8 @@ export default defineConfig({
           img: 'border border-slate-300 dar:border-zinc-700 rounded-xl mb-6',
           p: 'mb-6',
           a: 'underline underline-offset-2 hover:text-cyaned-500 decoration-cyaned-500',
-          li: 'mb-2',
-          ul: 'list-disc list-inside mb-6',
+          li: 'mb-2  ',
+          ul: 'list-disc marker:text-cyaned-500 list-disc list-inside mb-6  ',
         },
       ]
     ]
