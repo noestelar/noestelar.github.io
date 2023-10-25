@@ -20,8 +20,11 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const translations = {
-  PRESENTATION_WORKS: t("index.works"),
-}
+  PRESENTATION_TITLE: t("index.description"),
+  PRESENTATION_SUBTITLE: t("index.paragraph"),
+  PRESENTATION_IMPACT: t("index.paragraph.impact"),
+  PRESENTATION_BUTTON: t("index.button"),
+};
 ---
 
 <!DOCTYPE html>
