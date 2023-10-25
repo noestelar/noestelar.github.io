@@ -4,7 +4,10 @@ import FordLogo from "/assets/img/FordLogo.webp";
 import SchaefflerLogo from "/assets/img/Schaeffler_logo.svg";
 import IdtLogo from "/assets/img/idt-logo.webp";
 import AltenLogo from "/assets/img/Alten_logo.webp";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 const logos = [IdtLogo, SchaefflerLogo, FordLogo, AltenLogo];
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 let logosConcat = logos;
 
@@ -15,7 +18,7 @@ while (logosConcat.length < 10) {
 
 <div class="max-w-screen-md w-full mx-auto sm:mx-0 md:p-20 p-10">
   <h3 class="font-portal text-lg underline underline-offset-4 mb-10">
-    Companies that believed in me
+    {t("marquee.title")}
   </h3>
 
   <div class="marquee-container overflow-hidden">

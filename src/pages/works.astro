@@ -3,14 +3,16 @@ import Body from "@components/Body.astro";
 import Content from "@components/Content.astro";
 import NavigationBar from "@components/navigationBar/navigationBar.astro";
 import ProjectCard from "@components/projects/projectCard";
+import { getLangFromUrl, useTranslatedPath } from "@i18n/utils";
 import Layout from "@layouts/Layout.astro";
 import Footer from "@layouts/footer.astro";
 import { getCollection } from "astro:content";
 
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
 const pages = await getCollection("projects", ({ id }) => {
-  return id.startsWith("en/");
+  return id.startsWith(lang);
 });
-
 const posts = pages.map((page) => {
   const [lang, ...slug] = page.slug.split("/");
   return {
@@ -66,7 +68,11 @@ const posts = pages.map((page) => {
             {
               posts.map((project) => (
                 <li>
-                  <a href={`works/${project.params.slug}`}>
+                  <a
+                    href={
+                      `../en/works/` + translatePath(`${project.params.slug}`)
+                    }
+                  >
                     <ProjectCard
                       title={project.data.title}
                       url={project.data.website}

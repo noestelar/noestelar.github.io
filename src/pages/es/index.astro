@@ -14,32 +14,25 @@ import {
 } from "react-icons/io5/index.js";
 import Content from "../../components/Content.astro";
 import Footer from "../../layouts/footer.astro";
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { getLangFromUrl, useTranslatedPath, useTranslations } from "@i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const translations = {
-  PRESENTATION_TITLE: t("index.description"),
-  PRESENTATION_SUBTITLE: t("index.paragraph"),
-  PRESENTATION_IMPACT: t("index.paragraph.impact"),
-  PRESENTATION_BUTTON: t("index.button"),
-};
 ---
 
 <!DOCTYPE html>
-    <Layout title="Noé Rivera - Portfolio" />
-  <Body>
-    <NavigationBar />
+<Layout title="Noé Rivera - Portfolio" />
+<Body>
+  <NavigationBar />
 
-    <Content>
+  <Content>
     <main class="flex items-center justify-center">
-      <PresentationCard translations={translations} client:visible />
-
+      <PresentationCard lang={lang} client:visible />
     </main>
     <section>
       <article class="flex items-center justify-center">
-        <BioTimeLine client:visible />
+        <BioTimeLine lang={lang} client:visible />
       </article>
     </section>
 
@@ -50,7 +43,7 @@ const translations = {
     <section class="flex items-center justify-center">
       <div class="max-w-screen-md w-full sm:mx-0 md:px-20 px-10">
         <h1 class="text-lg font-bold underline underline-offset-2">
-          Find me on:
+          {t("index.findme")}
         </h1>
         <ul class="mt-4">
           <li class="my-3">
@@ -94,5 +87,4 @@ const translations = {
     </section>
     <Footer />
   </Content>
-  </Body>
-</Layout>
+</Body>

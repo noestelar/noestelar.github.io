@@ -3,7 +3,6 @@ import { useState } from "react";
 
 import { languages } from "@i18n/ui";
 import {
-  getLangFromUrl,
   useTranslations,
   useTranslatedPath,
 } from "@i18n/utils";

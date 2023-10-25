@@ -1,31 +1,32 @@
 import "./bioTimeLine.css";
-function BioTimeLine() {
+import { useTranslations } from "@i18n/utils";
+function BioTimeLine({ lang }) {
+  const t = useTranslations(lang);
   const events = [
     {
       date: "2023",
-      title: "Started to work at Ford Motor Company as an Automation Engineer",
+      title: t("index.bioTimeline.2023"),
     },
     {
       date: "2022",
-      title:
-        "Completed studies in Computer Science and Technology Engineering at the Polytechnic University of Puebla, México",
+      title: t("index.bioTimeline.2022-1"),
     },
     {
-      title:
-        "Worked at IDT Consulting as a Full Stack Developer doing Ecommerce, Web and Mobile Apps",
+      title: t("index.bioTimeline.2022-2"),
     },
     {
-      title:
-        "Worked at Schaeffler Transmission Systems as a Full Stack Developer doing Web Services and Web Apps focused on security",
+      title: t("index.bioTimeline.2022-3"),
     },
     {
       date: "1999",
-      title: "Born in México City, México",
+      title: t("index.bioTimeline.1999"),
     },
   ];
   return (
     <section className="max-w-screen-md w-full sm:mx-0 md:px-20 px-10">
-      <h1 className="text-lg font-bold underline underline-offset-2">Bio</h1>
+      <h1 className="text-lg font-bold underline underline-offset-2">
+        {t("index.bioTimeline.title")}
+      </h1>
 
       <div className="max-w-3xl mx-auto p-4 ">
         <ul className="timeline">
