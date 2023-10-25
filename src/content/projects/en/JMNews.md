@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/ProjectPost.astro
+
 title: JMNews
 thumbnail: /assets/img/JMNEWS1.webp
 description: Serious and reliable news app for Android
@@ -15,6 +15,5 @@ Variety of topics available, COVID information and Olympic Games charts. Also of
 
 
 ![App Overview](/assets/img/JMNEWS2.webp)
-<br>
 
 This app project is free to use and open sourced, you can contribute to it's development.

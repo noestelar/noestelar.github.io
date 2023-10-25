@@ -1,7 +1,7 @@
 ---
-layout: ../../../layouts/usesPost.astro
+# layout: ../../../layouts/usesPost.astro
 title: BUILD PC WORKSTATION
-thumbnail: 
+thumbnail: /none/
 description: My main PC for coding and gaming
 ---
 

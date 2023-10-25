@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/usesPost.astro
+# layout: ../../../layouts/usesPost.astro
 title: Game Factor WG400 
 thumbnail: /assets/img/uses/
 description: Desktop Camera

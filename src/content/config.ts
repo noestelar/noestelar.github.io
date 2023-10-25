@@ -13,16 +13,16 @@ const projectsCollection = defineCollection({
   }),
 });
 
-// const usesCollection = defineCollection({
-//   type: "content",
-//   schema: z.object({
-//     title: z.string(),
-//     thumbnail: z.string(),
-//     description: z.string(),
-//   }),
-// });
+const usesCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    thumbnail: z.string(),
+    description: z.string(),
+  }),
+});
 
 export const collections = {
-  projects: projectsCollection,
-  // uses: usesCollection,
+  'projects': projectsCollection,
+  'uses': usesCollection,
 };

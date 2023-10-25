@@ -1,24 +1,34 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import NavigationBar from "../components/navigationBar/navigationBar.astro";
-import ProjectCard from "../components/projects/projectCard";
-import Body from "../components/Body.astro";
-import Content from "../components/Content.astro";
-import Footer from "../layouts/footer.astro";
+import Body from "@components/Body.astro";
+import Content from "@components/Content.astro";
+import NavigationBar from "@components/navigationBar/navigationBar.astro";
+import ProjectCard from "@components/projects/projectCard";
+import { getLangFromUrl } from "@i18n/utils";
+import Layout from "@layouts/Layout.astro";
+import Footer from "@layouts/footer.astro";
+import { getCollection } from "astro:content";
 
-interface Frontmatter {
-  title: string;
-  link: string;
-  thumbnail?: string;
-  description?: string;
-}
-const projects = await Astro.glob<Frontmatter>("./content/projects/*.md");
+const pages = await getCollection("projects", ({ id }) => {
+  return id.startsWith("es/");
+});
+
+const posts = pages.map((page) => {
+  const [lang, ...slug] = page.slug.split("/");
+  return {
+    params: { lang, slug: slug.join("/") || undefined },
+    props: page,
+    data: page.data,
+  };
+});
+
+
+
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <Layout title="Noé Rivera - Projects" />
+    <Layout title="Noé Rivera - Proyectos" />
   </head>
 
   <Body>
@@ -58,15 +68,15 @@ const projects = await Astro.glob<Frontmatter>("./content/projects/*.md");
         <section class="max-w-screen-md w-full sm:mx-0 p-10 mt-10">
           <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-14">
             {
-              projects.map((project) => (
+              posts.map((project) => (
                 <li>
-                  <a href={project.url}>
+                  <a href={`${project.params.slug}`}>
                     <ProjectCard
-                      title={project.frontmatter.title}
-                      url={project.frontmatter.link}
-                      thumbnail={project.frontmatter.thumbnail}
+                      title={project.data.title}
+                      url={project.data.website}
+                      thumbnail={project.data.thumbnail}
                     >
-                      {project.frontmatter.description}
+                      {project.data.description}
                     </ProjectCard>
                   </a>
                 </li>

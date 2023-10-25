@@ -1,5 +1,4 @@
 ---
-layout: ../../../layouts/ProjectPost.astro
 title: "Jeanne - Discord Bot"
 link: "https://google.com"
 thumbnail: /assets/img/Jeanne.webp
@@ -16,28 +15,19 @@ The official bot of the Distorted Emerald Discord community, which is no longer 
 ![Working Example](https://user-images.githubusercontent.com/95829890/247707915-8ea3bffe-5e44-4ebd-b1df-5475a3507b40.png)
 
 <br>
+<ul>
 The list of commands is as follows:
-
--- Make announcements in a channel
-
--- Log channel for moderators
-
--- Ban users
-
--- Warn users
-
--- Post images of Super Smash Bros and its characters
-
--- Display community networks
-
--- Remove users from the server
-
--- Calculate the attraction percentage between two users
-
--- Wedding system for users
-
--- Suggestion mailbox channel
-
--- Special messages for each day of the week
-
--- Magic 8-ball guessing game (with yes, no, maybe answers)
+<li>Make announcements in a channel</li>
+<li>Send messages to a channel</li>
+<li> Log channel for moderators</li>
+<li> Ban users</li>
+<li> Warn users</li>
+<li> Post images of Super Smash Bros and its characters</li>
+<li> Display community networks</li>
+<li> Remove users from the server</li>
+<li> Calculate the attraction percentage between two users</li>
+<li> Wedding system for users</li>
+<li> Suggestion mailbox channel</li>
+<li> Special messages for each day of the week</li>
+<li> Magic 8-ball guessing game (with yes, no, maybe answers)</li>
+</ul>

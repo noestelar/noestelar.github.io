@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/usesPost.astro
+# layout: ../../../layouts/usesPost.astro
 title: Xbox Series Controller
 thumbnail: /assets/img/uses/
 description: Game Controller

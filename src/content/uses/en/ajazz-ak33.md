@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/usesPost.astro
+# layout: ../../../layouts/usesPost.astro
 title: Ajazz AK33
 thumbnail: /assets/img/uses/ajazz33-3.webp
 description: Mechanical keyboard

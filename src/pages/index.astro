@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 import Body from "../components/Body.astro";
 import PresentationCard from "../components/presentationCard/presentationCard";
 import BioTimeLine from "../components/indexPage/bioTimeLine/bioTimeLine";
@@ -14,77 +14,77 @@ import {
 } from "react-icons/io5/index.js";
 import Content from "../components/Content.astro";
 import Footer from "../layouts/footer.astro";
+import { getLangFromUrl, useTranslatedPath, useTranslations } from "@i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+
 ---
 
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <Layout title="Noé Rivera - Portfolio" />
-  </head>
+<Layout title="Noé Rivera - Portfolio">
   <Body>
     <NavigationBar />
 
     <Content>
-    <main class="flex items-center justify-center">
-      <PresentationCard client:visible />
+      <main class="flex items-center justify-center">
+        <PresentationCard lang={lang} client:visible />
+      </main>
+      <section>
+        <article class="flex items-center justify-center">
+          <BioTimeLine lang={lang} client:visible />
+        </article>
+      </section>
 
-    </main>
-    <section>
-      <article class="flex items-center justify-center">
-        <BioTimeLine client:visible />
-      </article>
-    </section>
+      <section class="flex items-center justify-center">
+        <CompanyMarquee />
+      </section>
 
-    <section class="flex items-center justify-center">
-      <CompanyMarquee />
-    </section>
-
-    <section class="flex items-center justify-center">
-      <div class="max-w-screen-md w-full sm:mx-0 md:px-20 px-10">
-        <h1 class="text-lg font-bold underline underline-offset-2">
-          Find me on:
-        </h1>
-        <ul class="mt-4">
-          <li class="my-3">
-            <a
-              href="https://github.com/Noe-ali"
-              target="_blank"
-              class="bg-transparent dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:hover:bg-cyaned-900 hover:bg-cyaned-50"
-            >
-              <span style="font-size: 18px;">
-                <IoLogoGithub className={"inline"} />
-              </span>
-              <span class="mx-2"> @noe-ali</span>
-            </a>
-          </li>
-          <li class="my-3">
-            <a
-              href="https://www.linkedin.com/in/noealirl/"
-              target="_blank"
-              class="bg-transparent dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:hover:bg-cyaned-900 hover:bg-cyaned-50"
-            >
-              <span style="font-size: 18px;">
-                <IoLogoLinkedin className={"inline"} />
-              </span>
-              <span class="mx-2"> Noealirl</span>
-            </a>
-          </li>
-          <li class="my-3">
-            <a
-              href="https://twitter.com/noestelar"
-              target="_blank"
-              class="bg-transparent dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:hover:bg-cyaned-900 hover:bg-cyaned-50"
-            >
-              <span style="font-size: 18px;">
-                <IoLogoTwitter className={"inline"} />
-              </span>
-              <span class="mx-2"> @NoeStelar</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-    <Footer />
-  </Content>
+      <section class="flex items-center justify-center">
+        <div class="max-w-screen-md w-full sm:mx-0 md:px-20 px-10">
+          <h1 class="text-lg font-bold underline underline-offset-2">
+            Find me on:
+          </h1>
+          <ul class="mt-4">
+            <li class="my-3">
+              <a
+                href="https://github.com/Noe-ali"
+                target="_blank"
+                class="bg-transparent dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:hover:bg-cyaned-900 hover:bg-cyaned-50"
+              >
+                <span style="font-size: 18px;">
+                  <IoLogoGithub className={"inline"} />
+                </span>
+                <span class="mx-2"> @noe-ali</span>
+              </a>
+            </li>
+            <li class="my-3">
+              <a
+                href="https://www.linkedin.com/in/noealirl/"
+                target="_blank"
+                class="bg-transparent dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:hover:bg-cyaned-900 hover:bg-cyaned-50"
+              >
+                <span style="font-size: 18px;">
+                  <IoLogoLinkedin className={"inline"} />
+                </span>
+                <span class="mx-2"> Noealirl</span>
+              </a>
+            </li>
+            <li class="my-3">
+              <a
+                href="https://twitter.com/noestelar"
+                target="_blank"
+                class="bg-transparent dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:hover:bg-cyaned-900 hover:bg-cyaned-50"
+              >
+                <span style="font-size: 18px;">
+                  <IoLogoTwitter className={"inline"} />
+                </span>
+                <span class="mx-2"> @NoeStelar</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <Footer />
+    </Content>
   </Body>
-</html>
+</Layout>

@@ -5,14 +5,20 @@ import Body from "../components/Body.astro";
 import Content from "../components/Content.astro";
 import Footer from "../layouts/footer.astro";
 import EquipmentPost from "../components/projects/equipmentPost";
+import { getCollection } from "astro:content";
 
-interface Frontmatter {
-  title: string;
-  link: string;
-  thumbnail?: string;
-  description?: string;
-}
-const uses = await Astro.glob<Frontmatter>("./content/uses/*.md");
+const pages = await getCollection("uses", ({ id }) => {
+  return id.startsWith("en/");
+});
+
+const posts = pages.map((page) => {
+  const [lang, ...slug] = page.slug.split("/");
+  return {
+    params: { lang, slug: slug.join("/") || undefined },
+    props: page,
+    data: page.data,
+  };
+});
 ---
 
 <!DOCTYPE html>
@@ -32,15 +38,9 @@ const uses = await Astro.glob<Frontmatter>("./content/uses/*.md");
           muted="muted"
           loop="loop"
           playsinline
-          > 
-         <source
-            src={'/assets/video' + '/TEST1PF.mp4'}
-            type="video/mp4"
-          />
-          <source
-            src={'/assets/video' + '/TEST1PF.mp4'}
-            type="video/mp4"
-          /> 
+        >
+          <source src={"/assets/video" + "/TEST1PF.mp4"} type="video/mp4" />
+          <source src={"/assets/video" + "/TEST1PF.mp4"} type="video/mp4" />
         </video>
       </div>
       <div class="z-10 text-center px-8 drop-shadow-lg shadow-black">
@@ -48,29 +48,31 @@ const uses = await Astro.glob<Frontmatter>("./content/uses/*.md");
         <div class="text-4xl font-mplus font-medium mb-5">
           <span class="text-cyaned-500">What I use</span>
         </div>
-        <span class=""
-          >A list of the equipment that I use in everyday work</span
+        <span class="">A list of the equipment that I use in everyday work</span
         >
       </div>
     </section>
     <Content>
-
       <main class="">
         <section class="p-10 mt-20 md:p-0 sm:p-20">
-          <p class="mt-10 mb-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat molestias unde consequuntur eum facere sint, facilis, nam ipsa maxime deleniti possimus illum repudiandae, neque rem dicta sunt in eligendi magni!</p>
+          <p class="mt-10 mb-10">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
+            molestias unde consequuntur eum facere sint, facilis, nam ipsa
+            maxime deleniti possimus illum repudiandae, neque rem dicta sunt in
+            eligendi magni!
+          </p>
           <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-10">
             {
-              uses.map((eq) => (
+              posts.map((eq) => (
                 <li>
-                  <a href={eq.url}>
+                  <h1>{eq.params.slug}</h1>
+                  <a href={`uses/${eq.params.slug}`}>
                     <EquipmentPost
-                      title={eq.frontmatter.title}
-                      url={eq.frontmatter.link}
-                      thumbnail={eq.frontmatter.thumbnail}
+                      title={eq.data.title}
+                      url={eq.params.slug}
+                      thumbnail={eq.data.thumbnail}
                     >
-                      <span class="text-gray-400">
-                        {eq.frontmatter.description}
-                      </span>
+                      <span class="text-gray-400">{eq.data.description}</span>
                     </EquipmentPost>
                   </a>
                 </li>
