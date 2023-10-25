@@ -14,6 +14,14 @@ import {
 } from "react-icons/io5/index.js";
 import Content from "../../components/Content.astro";
 import Footer from "../../layouts/footer.astro";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const translations = {
+  PRESENTATION_WORKS: t("index.works"),
+}
 ---
 
 <!DOCTYPE html>
@@ -23,7 +31,7 @@ import Footer from "../../layouts/footer.astro";
 
     <Content>
     <main class="flex items-center justify-center">
-      <PresentationCard client:visible />
+      <PresentationCard translations={translations} client:visible />
 
     </main>
     <section>
