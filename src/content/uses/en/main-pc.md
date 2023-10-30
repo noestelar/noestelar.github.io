@@ -1,6 +1,6 @@
 ---
 # layout: ../../../layouts/usesPost.astro
-title: BUILD PC WORKSTATION
+title: BUILT WORKSTATION
 thumbnail: /none/
 description: My main PC for coding and gaming
 ---
