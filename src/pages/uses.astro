@@ -6,9 +6,12 @@ import Content from "../components/Content.astro";
 import Footer from "../layouts/footer.astro";
 import EquipmentPost from "../components/projects/equipmentPost";
 import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslatedPath } from "@i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
 const pages = await getCollection("uses", ({ id }) => {
-  return id.startsWith("en/");
+  return id.startsWith(lang);
 });
 
 const posts = pages.map((page) => {
@@ -54,7 +57,7 @@ const posts = pages.map((page) => {
     </section>
     <Content>
       <main class="">
-        <section class="p-10 mt-20 md:p-0 sm:p-20">
+        <section class="p-10 mt-20">
           <p class="mt-10 mb-10">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
             molestias unde consequuntur eum facere sint, facilis, nam ipsa
@@ -65,9 +68,9 @@ const posts = pages.map((page) => {
             {
               posts.map((eq) => (
                 <li>
-                  <h1>{eq.params.slug}</h1>
-                  <a href={`uses/${eq.params.slug}`}>
+                  <a href={`../en/uses/` + translatePath(`${eq.params.slug}`)}>
                     <EquipmentPost
+                      client:visible
                       title={eq.data.title}
                       url={eq.params.slug}
                       thumbnail={eq.data.thumbnail}

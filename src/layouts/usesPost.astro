@@ -32,9 +32,7 @@ const {
           {
             thumbnail && (
               <img
-                class="border border-slate-300 dark:border-zinc-700 rounded-xl"
-                width={720}
-                height={360}
+                class="border border-slate-300 dark:border-zinc-700 rounded-xl  object-cover "
                 src={thumbnail}
                 alt=""
               />
@@ -48,7 +46,7 @@ const {
           <slot />
         </div>
         <span
-          class="underline underline-offset-2 hover:text-orange-500 decoration-orange-500 text-2xl list-disc"
+          class="underline underline-offset-2 hover:text-cyaned-500 decoration-cyaned-500 text-2xl list-disc"
         ></span>
       </Content>
     </main>
