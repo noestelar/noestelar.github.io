@@ -14,29 +14,28 @@ import React from "react";
 import ThemeToggle from "./themeToggleButton";
 import NavigationMenu from "./navigationMenu";
 import { LanguagePicker } from "./LanguagePicker";
-
+import LogoIcon from "../icons/logo";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 const links = [
-  { name: t("nav.home"), href: translatePath("/") },
+  // { name: t("nav.home"), href: translatePath("/") },
   { name: t("nav.works"), href: translatePath("/works/") },
   { name: t("nav.uses"), href: translatePath("/uses/") },
 ];
 ---
 
-<header class="">
-  <nav
-    class="fixed w-full z-10 bg-opacity-35 backdrop-filter backdrop-blur-md font-quicksand p-3"
-  >
-    <div
-      class="flex flex-row items-center md:justify-center font-quicksand justify-between"
-    >
-      <h1 class="font-portal mr-3">
-        <a href={translatePath("/")}>NOÉ RIVERA</a>
-      </h1>
-      <div class="hidden sm:flex mx-10">
-        <ul class="flex flex-row float-right">
+<header class="fixed w-full p-2 z-20 backdrop-blur-md">
+  <div class="mx-auto max-w-3xl">
+    <nav class="flex items-center gap-3 text-base font-quicksand">
+      <a href={translatePath("/")} class="group ">
+        <h2 class="font-semibold tracking-tighter text-lg font-portal">
+          <LogoIcon client:visible />
+        </h2>
+        <h2 class="font-portal">NOE RIVERA</h2>
+      </a>
+      <div class="hidden sm:flex gap-6 items-center md:flex">
+        <ul class="inline-flex items-center">
           {
             links.map((menuItem) => (
               <li class="inline-block cursor-pointer hover:underline mx-3">
@@ -46,13 +45,13 @@ const links = [
           }
         </ul>
       </div>
-      <div class="flex flex-row ml-1 items-center">
-        <LanguagePicker lang={lang} client:visible />
-        <ThemeToggle client:visible />
-        <div class="sm:hidden">
-          <NavigationMenu client:visible links={links} />
-        </div>
+
+      <div class="flex-1"></div>
+      <LanguagePicker lang={lang} client:visible />
+      <ThemeToggle client:visible />
+      <div class="sm:hidden">
+        <NavigationMenu client:visible links={links} />
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
