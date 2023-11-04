@@ -35,6 +35,12 @@ export const ui = {
     "marquee.title": "Companies that believed in me",
 
     "index.findme": "Find me on:",
+
+    //uses page
+    "uses.button": "Uses",
+
+    //works page
+    "works.button": "Works",
   },
 
   es: {
@@ -64,5 +70,11 @@ export const ui = {
     "marquee.title": "Compañías que creyeron en mí",
 
     "index.findme": "Encuéntrame en:",
+
+    //uses page
+    "uses.button": "Regresar",
+
+    //works page
+    "works.button": "Regresar",
   },
 } as const;
