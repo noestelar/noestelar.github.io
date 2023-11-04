@@ -32,9 +32,8 @@ const posts = pages.map((page) => {
 
   <Body>
     <NavigationBar />
-
     <section class="relative mb-6 h-80 flex justify-center items-center">
-      <div class="absolute w-full h-full overflow-hidden mt-28 mb-10">
+      <div class="absolute w-full h-full overflow-hidden mt-32 mb-10">
         <video
           class="absolute inset-0 min-w-full min-h-full object-cover opacity-30"
           autoplay="autoplay"
@@ -42,8 +41,14 @@ const posts = pages.map((page) => {
           loop="loop"
           playsinline
         >
-          <source src={"/assets/video" + "/TEST1PF.mp4"} type="video/mp4" />
-          <source src={"/assets/video" + "/TEST1PF.mp4"} type="video/mp4" />
+          <source
+            src={"/assets/video" + "/uses_masthead.mp4"}
+            type="video/mp4"
+          />
+          <source
+            src={"/assets/video" + "/uses_masthead.mp4"}
+            type="video/mp4"
+          />
         </video>
       </div>
       <div class="z-10 text-center px-8 drop-shadow-lg shadow-black">
@@ -57,12 +62,12 @@ const posts = pages.map((page) => {
     </section>
     <Content>
       <main class="">
-        <section class="p-10 mt-20">
+        <section class="p-2">
           <p class="mt-10 mb-10">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-            molestias unde consequuntur eum facere sint, facilis, nam ipsa
-            maxime deleniti possimus illum repudiandae, neque rem dicta sunt in
-            eligendi magni!
+            As a developer, I have invested resources and time in the tools I
+            use to work, play or create. Sometimes people ask me what tools I
+            use. The below list are the ones I consider the most important for
+            my daily work. I hope you find it useful.
           </p>
           <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-10">
             {
