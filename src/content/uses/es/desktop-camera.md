@@ -1,12 +1,13 @@
 ---
-# layout: ../../../layouts/usesPost.astro
 title: Game Factor WG400 
-thumbnail: /assets/img/uses/
-description: Desktop Camera
+thumbnail: /assets/img/uses/camera-2.webp
+description: Cámara web
 ---
 
-I've been using this camera for almost a year; it was a present from my girlfriend when I told her I wanted to start streaming and recording videos. So, she gave me this camera to begin with. I don't think I'll need to replace it at the moment, as it really gets the job done for what I need.
+Llevo usando esta cámara casi un año; fue un regalo de mi novia cuando le dije que quería empezar a hacer streaming y grabar vídeos. Así que me regaló ésta para empezar. No creo que tenga que reemplazarla por el momento, ya que realmente hace el trabajo para lo que necesito.
 
-It records at 1080p, Full HD resolution, with an incorporated microphone and light. The light isn't very bright, but it can be supplemented with other sources of lighting. I find it useful for calls and streaming, but I've never used it for recording. It also boasts a nice design, thanks to the integrated light.
+Graba a 1080p, resolución Full HD, con un micrófono y una luz incorporados. La luz no es muy brillante, pero se puede complementar con otras fuentes de iluminación. Me resulta útil para las llamadas y el streaming, pero nunca la he usado para grabar. También presume de un bonito diseño, gracias a la luz integrada.
 
-Its only downfall is that it records only at 30 FPS, a point to improve and the main reason I might consider using another one for recording.
+Su único inconveniente es que graba sólo a 30 FPS, un punto a mejorar y la razón principal por la que podría considerar usar otra para grabar.
+
+![camera-1.webp](/assets/img/uses/camera-1.webp)

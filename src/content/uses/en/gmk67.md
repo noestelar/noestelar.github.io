@@ -8,7 +8,7 @@ This is my daily driver for programming and everything else, this keyboard was m
 
 ![keyboard-3.webp](/assets/img/uses/gmk67-3.webp)
 
-The keyboard is pretty solid, but the package only included the main pc and battery, I choose it for this reason in particular, I wanted to make my own keyboard with my own style and feel.
+The keyboard is pretty solid, but the package only included the main PCB and battery, I choose it for this reason in particular, I wanted to make my own keyboard with my own style and feel.
 That's why I bought the keycaps and switches separately, I wanted to make my own custom keyboard.
 
 The switches are the [**Gateron Pro Browns**](https://www.gateron.co/products/gateron-g-pro-3-0-switch-set?variant=40479582945369), which are tactile switches, and I'm very happy with them, they feel very smooth and the tactile bump is very noticeable, I'm very happy with them.

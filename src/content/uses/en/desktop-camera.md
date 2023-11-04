@@ -1,5 +1,4 @@
 ---
-# layout: ../../../layouts/usesPost.asto
 title: Game Factor WG400 
 thumbnail: /assets/img/uses/camera-2.webp
 description: Desktop Camera

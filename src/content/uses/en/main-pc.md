@@ -8,7 +8,7 @@ description: My main PC for coding and gaming
 This computer serves as my primariy workstation for app development, design, video editing, gaming and various other tasks. It’s very powerful and provides an excellent foundation for creating digital content. Often when I'm outside, I connect it through remote desktop from other devices to continue working.
 
 [**IMG**]()
-It's set up to run both Windows 11 and MacOS Ventura thanks to hackintosh dual booting, While I frequently use both for coding, MacOS is my daily driver.
+It's set up to run both Windows 11 and MacOS Sonoma thanks to hackintosh dual booting, While I frequently use both for coding, MacOS is my daily driver.
 
 Here are the specs:
 
