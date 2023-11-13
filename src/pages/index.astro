@@ -23,12 +23,12 @@ const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <Layout title="Noé Rivera - Portfolio">
-  <Body>
-    <NavigationBar />
+  <NavigationBar />
 
-    <Content>
+  <Body >
+    <Content >
       <main class="flex items-center justify-center">
         <PresentationCard lang={lang} client:visible />
       </main>
