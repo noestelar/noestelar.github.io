@@ -2,8 +2,9 @@
 # layout: ../../../layouts/usesPost.astro
 title: Xbox Series Controller
 thumbnail: /assets/img/uses/
-description: Game Controller
+description: Control para Juegos
 ---
-I have tried many controllers and game consoles along the way, but one of the most compatible ones is the Xbox Controller. More than a personal preference, this controller is highly compatible with most PC and console games. Its layout is standard for almost every game out there. I paired it with an 8BitDo adapter to play games on the Nintendo Switch, and its battery durability is enormous compared to other controllers.
 
-I really like its color as it matches my PC case and keyboard. I recommend this controller to everyone who wants to play games on any platform
+He probado muchos controles y consolas de juegos, pero uno de los más confiables es el controlador de Xbox. Más que una preferencia personal, este controlador es altamente compatible con la mayoría de los juegos de PC y consola. Su diseño es estándar para casi todos los juegos que hay. Lo emparejé con un adaptador 8BitDo para jugar en la Nintendo Switch, y su durabilidad de la batería es enorme en comparación con otros controladores.
+
+Realmente me gusta su color ya que coincide con mi gabinete del PC y mi teclado. Recomiendo este controlador a todos los que quieran jugar en cualquier plataforma.

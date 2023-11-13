@@ -14,18 +14,21 @@ import {
 } from "react-icons/io5/index.js";
 import Content from "../components/Content.astro";
 import Footer from "../layouts/footer.astro";
-import { getLangFromUrl, useTranslatedPath, useTranslations } from "@i18n/utils";
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from "@i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
-
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <Layout title="Noé Rivera - Portfolio">
-  <Body>
-    <NavigationBar />
+  <NavigationBar />
 
-    <Content>
+  <Body >
+    <Content >
       <main class="flex items-center justify-center">
         <PresentationCard lang={lang} client:visible />
       </main>

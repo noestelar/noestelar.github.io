@@ -1,0 +1,96 @@
+---
+import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslatedPath } from "@i18n/utils";
+import Body from "@components/Body.astro";
+import Content from "@components/Content.astro";
+import NavigationBar from "@components/navigationBar/navigationBar.astro";
+import EquipmentPost from "@components/projects/equipmentPost";
+import Layout from "@layouts/Layout.astro";
+import Footer from "@layouts/footer.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+
+const pages = await getCollection("uses", ({ id }) => {
+  return id.startsWith("es/");
+});
+
+const posts = pages.map((page) => {
+  const [lang, ...slug] = page.slug.split("/");
+  return {
+    params: { lang, slug: slug.join("/") || undefined },
+    props: page,
+    data: page.data,
+  };
+});
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <Layout title="Noé Rivera - Equipo que uso" />
+  </head>
+
+  <Body>
+    <NavigationBar />
+    <section class="relative mb-6 h-80 flex justify-center items-center">
+      <div class="absolute w-full h-full overflow-hidden mt-32 mb-10">
+        <video
+          class="absolute inset-0 min-w-full min-h-full object-cover opacity-30"
+          autoplay="autoplay"
+          muted="muted"
+          loop="loop"
+          playsinline
+        >
+          <source
+            src={"/assets/video" + "/uses_masthead.mp4"}
+            type="video/mp4"
+          />
+          <source
+            src={"/assets/video" + "/uses_masthead.mp4"}
+            type="video/mp4"
+          />
+        </video>
+      </div>
+      <div class="z-10 text-center px-8 drop-shadow-lg shadow-black">
+        <div class="uppercase text-sm mb-4"></div>
+        <div class="text-4xl font-mplus font-medium mb-5">
+          <span class="text-cyaned-500">Equipo que uso</span>
+        </div>
+        <span class="">La lista de equipamientos que uso en mi día a día.</span>
+      </div>
+    </section>
+    <Content>
+      <main class="">
+        <section class="p-2">
+          <p class="mt-10 mb-10">
+            Como desarrollador, he invertido recursos y tiempo en las
+            herramientas que uso para trabajar, jugar o crear. A veces la gente
+            me pregunta qué herramientas uso. La siguiente lista son las que
+            considero más importantes para mi trabajo diario. Espero que te sea
+            útil.
+          </p>
+          <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-10">
+            {
+              posts.map((eq) => (
+                <li>
+                  <a href={`${eq.params.slug}`}>
+                    <EquipmentPost
+                      client:visible
+                      title={eq.data.title}
+                      url={eq.params.slug}
+                      thumbnail={eq.data.thumbnail}
+                    >
+                      <span class="text-gray-400">{eq.data.description}</span>
+                    </EquipmentPost>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </main>
+      <Footer />
+    </Content>
+  </Body>
+</html>

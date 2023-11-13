@@ -5,6 +5,11 @@ import NavigationBar from "../components/navigationBar/navigationBar.astro";
 import Content from "../components/Content.astro";
 import { IoChevronBackOutline } from "react-icons/io5/index.js";
 import Footer from "./footer.astro";
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from "@i18n/utils";
 export interface Props {
   content: {
     title: string;
@@ -15,6 +20,10 @@ export interface Props {
 const {
   content: { title, description, thumbnail },
 } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const t = useTranslations(lang);
 ---
 
 <!DOCTYPE html>
@@ -24,17 +33,19 @@ const {
     <main class="pt-[56px]">
       <Content className="pt-6 px-8">
         <span class="">
-          <a href="/uses" class="dark:text-cyaned-500 text-blue-500 text-md">
-            <IoChevronBackOutline className={"inline"} /> Back
+          <a
+            href={translatePath("/uses/")}
+            class="dark:text-cyaned-500 text-blue-500 text-md"
+          >
+            <IoChevronBackOutline className={"inline"} />
+            {t("uses.button")}
           </a>
         </span>
         <div class="mb-8 mt-2">
           {
             thumbnail && (
               <img
-                class="border border-slate-300 dark:border-zinc-700 rounded-xl"
-                width={720}
-                height={360}
+                class="border border-slate-300 dark:border-zinc-700 rounded-xl  object-cover "
                 src={thumbnail}
                 alt=""
               />
@@ -48,7 +59,7 @@ const {
           <slot />
         </div>
         <span
-          class="underline underline-offset-2 hover:text-orange-500 decoration-orange-500 text-2xl list-disc"
+          class="underline underline-offset-2 hover:text-cyaned-500 decoration-cyaned-500 text-2xl list-disc"
         ></span>
       </Content>
     </main>
