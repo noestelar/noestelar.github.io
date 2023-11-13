@@ -24,10 +24,13 @@ const {
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
 const t = useTranslations(lang);
+
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <!DOCTYPE html>
 <Layout title={"Noé Rivera - " + title}>
+  <ViewTransitions />
   <Body>
     <NavigationBar />
     <main class="pt-[56px]">

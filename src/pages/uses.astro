@@ -7,6 +7,7 @@ import Footer from "../layouts/footer.astro";
 import EquipmentPost from "../components/projects/equipmentPost";
 import { getCollection } from "astro:content";
 import { getLangFromUrl, useTranslatedPath } from "@i18n/utils";
+import { ViewTransitions } from "astro:transitions";
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
@@ -28,6 +29,7 @@ const posts = pages.map((page) => {
 <html lang="en">
     <Layout title="Noé Rivera - Projects" />
     <NavigationBar />
+    <ViewTransitions />
   <Body >
     <section class="relative mb-6 h-80 flex justify-center items-center"  >
       <div class="absolute w-full h-full overflow-hidden mt-32 mb-10" >
@@ -66,7 +68,7 @@ const posts = pages.map((page) => {
             use. The below list are the ones I consider the most important for
             my daily work. I hope you find it useful.
           </p>
-          <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-10 ">
+          <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-10 " >
             {
               posts.map((eq) => (
                 <li>
