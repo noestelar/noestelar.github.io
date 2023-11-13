@@ -1,23 +1,22 @@
 ---
 import "../styles/global.css";
 import { getLangFromUrl } from "../i18n/utils";
-import favicon from "../../public/assets/img/favicon.svg";
-const lang = getLangFromUrl(Astro.url);
 
+const lang = getLangFromUrl(Astro.url);
 export interface Props {
   title: string;
   description?: string;
   image?: string;
 }
 
-const { title, description, image = "/assets/img/yo.webp" } = Astro.props;
+const { title, description, image = "/assets/img/favicon.svg" } = Astro.props;
 ---
 
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href={favicon} />
+    <link rel="icon" type="image/svg+xml" href={image} />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Primary Meta Tags -->
@@ -60,7 +59,6 @@ const { title, description, image = "/assets/img/yo.webp" } = Astro.props;
       }
     </script>
   </head>
-
   <body>
     <slot />
   </body>

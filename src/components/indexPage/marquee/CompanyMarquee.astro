@@ -1,9 +1,9 @@
 ---
 import "./CompanyMarquee.css";
-import FordLogo from "/assets/img/FordLogo.webp";
-import SchaefflerLogo from "/assets/img/Schaeffler_logo.svg";
-import IdtLogo from "/assets/img/idt-logo.webp";
-import AltenLogo from "/assets/img/Alten_logo.webp";
+import FordLogo from "public/assets/img/FordLogo.webp";
+import SchaefflerLogo from "public/assets/img/Schaeffler_logo.svg";
+import IdtLogo from "public/assets/img/idt-logo.webp";
+import AltenLogo from "public/assets/img/Alten_logo.webp";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 const logos = [IdtLogo, SchaefflerLogo, FordLogo, AltenLogo];
 const lang = getLangFromUrl(Astro.url);
@@ -29,7 +29,7 @@ while (logosConcat.length < 10) {
       {
         logosConcat.map((logo, index) => (
           <img
-            src={logo}
+            src={logo.src}
             alt="Company logo"
             class="h-8 mx-4 w-auto grayscale dark:invert marquee-img"
           />
