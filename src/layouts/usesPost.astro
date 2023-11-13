@@ -28,10 +28,10 @@ const t = useTranslations(lang);
 import { ViewTransitions } from "astro:transitions";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <Layout title={"Noé Rivera - " + title}>
-  <ViewTransitions />
   <Body>
+    <ViewTransitions />
     <NavigationBar />
     <main class="pt-[56px]">
       <Content className="pt-6 px-8">
