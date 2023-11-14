@@ -5,6 +5,7 @@ const EquipmentPost = ({ children, title, url, thumbnail }: any) => {
         <img
           src={thumbnail}
           alt={title}
+          width={720 * 2}
           aspectratio={2.0}
           className="object-top object-cover "
           placeholder="blur"
