@@ -1,7 +1,6 @@
 ---
-# layout: ../../../layouts/usesPost.astro
 title: BUILT WORKSTATION
-thumbnail: /none/
+thumbnail: "/assets/img/uses/gmk67-4.webp"
 description: My main PC for coding and gaming
 ---
 

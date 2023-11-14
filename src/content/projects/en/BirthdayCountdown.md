@@ -1,5 +1,4 @@
 ---
-# layout: ../../../layouts/ProjectPost.astro
 title: Birthday Date Countdown
 website: https://pfoliocountdown.netlify.app/
 thumbnail: /assets/img/SC.webp

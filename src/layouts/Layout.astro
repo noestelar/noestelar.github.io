@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 import { getLangFromUrl } from "../i18n/utils";
+import { ViewTransitions } from "astro:transitions";
+import NavigationBar from "../components/navigationBar/navigationBar.astro";
 
 const lang = getLangFromUrl(Astro.url);
 export interface Props {
@@ -37,29 +39,43 @@ const { title, description, image = "/assets/img/favicon.svg" } = Astro.props;
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
-
     <script is:inline>
-      const theme = (() => {
+      const theme = () => {
         if (
           typeof localStorage !== "undefined" &&
           localStorage.getItem("theme")
         ) {
           return localStorage.getItem("theme");
         }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
-        }
-        return "light";
-      })();
-
-      if (theme === "light") {
-        document.documentElement.classList.remove("dark");
-      } else {
-        document.documentElement.classList.add("dark");
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      };
+      const isDark = theme() === "dark";
+      document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+      if (typeof localSotrage !== "undefined") {
+        const observer = new MutationObserver(() => {
+          const isDark = document.documentElement.classList.contains("dark");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+        theme.addEventListener("change", () => {
+          const isDark = theme() === "dark";
+          document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+        });
+        document.addEventListener("astro:after-swap", () => {
+          const isDark = theme() === "dark";
+          document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+        });
       }
     </script>
   </head>
+  <ViewTransitions />
   <body>
+    <NavigationBar transition:persist />
     <slot />
   </body>
 </html>

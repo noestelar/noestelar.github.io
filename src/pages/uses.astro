@@ -7,7 +7,6 @@ import Footer from "../layouts/footer.astro";
 import EquipmentPost from "../components/projects/equipmentPost";
 import { getCollection } from "astro:content";
 import { getLangFromUrl, useTranslatedPath } from "@i18n/utils";
-import { ViewTransitions } from "astro:transitions";
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
@@ -25,14 +24,12 @@ const posts = pages.map((page) => {
 });
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <Layout title="Noé Rivera - Projects" />
-    <NavigationBar />
+  <Layout title="Noé Rivera - Projects" />
   <Body >
-    <ViewTransitions />
-    <section class="relative mb-6 h-80 flex justify-center items-center"  >
-      <div class="absolute w-full h-full overflow-hidden mt-32 mb-10" >
+    <section class="relative mb-6 h-80 flex justify-center items-center">
+      <div class="absolute w-full h-full overflow-hidden mt-32 mb-10">
         <video
           class="absolute inset-0 min-w-full min-h-full object-cover opacity-30"
           autoplay="autoplay"
@@ -61,14 +58,14 @@ const posts = pages.map((page) => {
     </section>
     <Content>
       <main class="">
-        <section class="p-2" >
+        <section class="p-2">
           <p class="mt-10 mb-10">
             As a developer, I have invested resources and time in the tools I
             use to work, play or create. Sometimes people ask me what tools I
             use. The below list are the ones I consider the most important for
             my daily work. I hope you find it useful.
           </p>
-          <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-10 " >
+          <ul class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-10">
             {
               posts.map((eq) => (
                 <li>
