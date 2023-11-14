@@ -73,7 +73,7 @@ const { title, description, image = "/assets/img/favicon.svg" } = Astro.props;
       }
     </script>
   </head>
-  <ViewTransitions />
+  <ViewTransitions fallback="none"/>
   <body>
     <NavigationBar transition:persist />
     <slot />
