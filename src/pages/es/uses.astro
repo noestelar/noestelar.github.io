@@ -10,9 +10,8 @@ import Footer from "@layouts/footer.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
-
 const pages = await getCollection("uses", ({ id }) => {
-  return id.startsWith("es/");
+  return id.startsWith(lang);
 });
 
 const posts = pages.map((page) => {
@@ -25,7 +24,7 @@ const posts = pages.map((page) => {
 });
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <Layout title="Noé Rivera - Equipo que uso" />
@@ -73,7 +72,7 @@ const posts = pages.map((page) => {
             {
               posts.map((eq) => (
                 <li>
-                  <a href={`${eq.params.slug}`}>
+                  <a href={`../es/uses/` + (`${eq.params.slug}`)}>
                     <EquipmentPost
                       client:visible
                       title={eq.data.title}
