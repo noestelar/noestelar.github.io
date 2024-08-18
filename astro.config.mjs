@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import addClasses from "rehype-add-classes";
+import path from 'path';
 
 // https://astro.build/config
 import tailwind from "@astrojs/tailwind";
@@ -10,8 +11,16 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: "https://noe-ali.github.io",
-  // base: '/Astropfolio',
+  // base: '/noe-ali.github.io',
   integrations: [tailwind(), react()],
+  vite: {
+    resolve: {
+      alias: {
+        '@public': path.resolve('./public'),
+        '@assets': path.resolve('./src/assets'),
+      },
+    },
+  },
   markdown: {
     // extendDefaultPlugins: true,
     rehypePlugins: [

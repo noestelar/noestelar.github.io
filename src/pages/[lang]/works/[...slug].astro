@@ -2,9 +2,9 @@
 import { getCollection } from "astro:content";
 import ProjectPost from "@layouts/ProjectPost.astro";
 export async function getStaticPaths() {
-  const pages = await getCollection('projects');
+  const pages = await getCollection("projects");
 
-  const paths = pages.map((page) => {
+  const paths = pages.map((page: any) => {
     const [lang, ...slug] = page.slug.split("/");
     return { params: { lang, slug: slug.join("/") || undefined }, props: page };
   });
@@ -13,9 +13,9 @@ export async function getStaticPaths() {
 }
 
 const { lang, slug } = Astro.params;
-const page = Astro.props;
+const page = Astro.props || {};
 
-const { Content } = await page.render();
+const { Content } = page && page.render ? await page.render() : {};
 ---
 
 <ProjectPost content={page.data}>
