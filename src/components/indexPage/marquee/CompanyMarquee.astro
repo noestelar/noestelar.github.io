@@ -1,9 +1,9 @@
 ---
 import "./CompanyMarquee.css";
-import FordLogo from "public/assets/img/FordLogo.webp";
-import SchaefflerLogo from "public/assets/img/Schaeffler_logo.svg";
-import IdtLogo from "public/assets/img/idt-logo.webp";
-import AltenLogo from "public/assets/img/Alten_logo.webp";
+import FordLogo from "@assets/img/FordLogo.webp";
+import SchaefflerLogo from "@assets/img/Schaeffler_logo.svg";
+import IdtLogo from "@assets/img/idt-logo.webp";
+import AltenLogo from "@assets/img/Alten_logo.webp";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 const logos = [IdtLogo, SchaefflerLogo, FordLogo, AltenLogo];
 const lang = getLangFromUrl(Astro.url);
@@ -16,14 +16,14 @@ while (logosConcat.length < 10) {
 }
 ---
 
-<div class="max-w-screen-md w-full mx-auto sm:mx-0 md:p-20 p-10">
-  <h3 class="font-portal text-lg underline underline-offset-4 mb-10">
+<div class="w-full max-w-screen-md p-10 mx-auto sm:mx-0 md:p-20">
+  <h3 class="mb-10 text-lg underline font-portal underline-offset-4">
     {t("marquee.title")}
   </h3>
 
-  <div class="marquee-container overflow-hidden">
+  <div class="overflow-hidden marquee-container">
     <div
-      class="marquee-content flex flex-nowrap top-0 left-0"
+      class="top-0 left-0 flex marquee-content flex-nowrap"
       style={{ animation: "marquee 10s linear infinite" }}
     >
       {
@@ -31,7 +31,7 @@ while (logosConcat.length < 10) {
           <img
             src={logo.src}
             alt="Company logo"
-            class="h-8 mx-4 w-auto grayscale dark:invert marquee-img"
+            class="w-auto h-8 mx-4 grayscale dark:invert marquee-img"
           />
         ))
       }

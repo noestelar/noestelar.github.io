@@ -1,7 +1,7 @@
 ---
 title: "Jeanne - Discord Bot"
 link: "https://google.com"
-thumbnail: /assets/img/Jeanne.webp
+thumbnail: /src/assets/img/Jeanne.webp
 description: DistortedEmerald Official Discord Bot (Deprecated)
 githubLink: https://github.com/Noe-ali/JeanneBot
 platform: Discord

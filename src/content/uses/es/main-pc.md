@@ -1,5 +1,4 @@
 ---
-# layout: ../../../layouts/usesPost.astro
 title: BUILT WORKSTATION
 thumbnail: /none/
 description: Mi computadora principal para programar y jugar
