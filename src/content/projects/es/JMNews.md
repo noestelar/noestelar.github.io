@@ -1,6 +1,6 @@
 ---
 title: JMNews
-thumbnail: /src/assets/img/JMNEWS1.webp
+thumbnail: /src/public/assets/img/JMNEWS1.webp
 description: Aplicación seria y confiable de noticias para Android
 githubLink: https://github.com/Noe-ali/JMNews
 platform: Android
