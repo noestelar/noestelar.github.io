@@ -21,7 +21,7 @@
         "src/i18n/*"
       ],
       "@assets/*": [
-        "./src/assets/*"
+        "src/assets/*"
       ]
     }
   }

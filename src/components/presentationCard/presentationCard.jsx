@@ -2,10 +2,10 @@ import "./presentationCard.css";
 import { IoChevronForwardOutline } from "react-icons/io5/index.js";
 import { useTranslations, useTranslatedPath } from "@i18n/utils";
 import pictureOfMyself from "@assets/img/yo.webp";
-
 function PresentationCard({ lang }) {
   const t = useTranslations(lang);
   const translatePath = useTranslatedPath(lang);
+  const pictureOfMyself = "/assets/img/yo.webp";
   return (
     <section className="w-full max-w-screen-md p-10 mt-10 sm:mx-0 md:px-20">
       <div className="flex flex-col items-center justify-center pb-10 md:flex-row sm:justify-between">
@@ -16,8 +16,15 @@ function PresentationCard({ lang }) {
           </p>
         </article>
         <figure className="flex mt-5 md:mt-0">
-          <div className="profile-card">
-            <img src={pictureOfMyself} className="circle-core grayscale w-[120px]" />
+          <div className="profile-card flex items-center justify-center">
+            <img 
+              src={pictureOfMyself} 
+              className="circle-core w-[120px] h-[120px] rounded-full object-cover object-top" 
+              alt="Profile picture"
+              loading="lazy"
+              decoding="async"
+              style={{ imageRendering: 'crisp-edges' }}
+            />
           </div>
         </figure>
       </div>
