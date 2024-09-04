@@ -1,17 +1,13 @@
 import { defineConfig } from "astro/config";
 import addClasses from "rehype-add-classes";
 import path from 'path';
-
-// https://astro.build/config
 import tailwind from "@astrojs/tailwind";
-
-// https://astro.build/config
 import react from "@astrojs/react";
 
-// https://astro.build/config
+
 export default defineConfig({
-  site: "https://noe-ali.github.io",
-  // base: '/noe-ali.github.io',
+  site: "https://noestelar.github.io",
+  base: '/',
   integrations: [tailwind(), react()],
   vite: {
     resolve: {
