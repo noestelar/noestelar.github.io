@@ -1,7 +1,7 @@
 ---
 title: Birthday Date Countdown
 website: https://pfoliocountdown.netlify.app/
-thumbnail: "/assets/img/SC.webp"
+thumbnail: ../../assets/img/SC.webp
 description: Funny and colorful countdown to your birthday party invitation
 githubLink: https://github.com/Noe-ali/SimpleCountdown
 platform: Web

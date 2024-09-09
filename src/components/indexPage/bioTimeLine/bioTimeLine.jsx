@@ -1,8 +1,13 @@
+import { date } from "astro/zod";
 import "./bioTimeLine.css";
 import { useTranslations } from "@i18n/utils";
 function BioTimeLine({ lang }) {
   const t = useTranslations(lang);
   const events = [
+    {
+      date: "2024",
+      title: t("index.bioTimeline.2024"),
+    },
     {
       date: "2023",
       title: t("index.bioTimeline.2023"),
@@ -17,10 +22,10 @@ function BioTimeLine({ lang }) {
     {
       title: t("index.bioTimeline.2022-3"),
     },
-    {
-      date: "1999",
-      title: t("index.bioTimeline.1999"),
-    },
+    // {
+    //   date: "1999",
+    //   title: t("index.bioTimeline.1999"),
+    // },
   ];
   return (
     <section className="max-w-screen-md w-full sm:mx-0 md:px-20 px-10">
