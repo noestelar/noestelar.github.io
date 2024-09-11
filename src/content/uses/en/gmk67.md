@@ -1,6 +1,6 @@
 ---
 title: ZOUYA GMK67
-thumbnail: "/assets/img/uses/gmk67-4.webp"
+thumbnail: ''
 description: Mechanical keyboard
 ---
 

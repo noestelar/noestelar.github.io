@@ -1,6 +1,6 @@
 ---
 title: BUILT WORKSTATION
-thumbnail: "/assets/img/uses/gmk67-4.webp"
+thumbnail: ''
 description: My main PC for coding and gaming
 ---
 

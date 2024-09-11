@@ -11,6 +11,8 @@ import {
   useTranslations,
 } from "@i18n/utils";
 import Footer from "./footer.astro";
+import { Image } from "astro:assets";
+
 export interface Props {
   content: {
     title: string;
@@ -22,6 +24,7 @@ export interface Props {
     stack: string;
   };
 }
+
 const {
   content: {
     title,
@@ -38,9 +41,13 @@ const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
 const t = useTranslations(lang);
 
+// Import the image dynamically
+const thumbnailImage = thumbnail
+  ? await import(`../assets/${thumbnail}`)
+  : null;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <Layout title={"Noé Rivera - " + title}>
   <Body>
     <main class="pt-[56px]">
@@ -48,50 +55,51 @@ const t = useTranslations(lang);
         <span class="">
           <a
             href={translatePath("/works/")}
-            class="dark:text-cyaned-500 text-blue-500 text-md"
+            class="text-blue-500 dark:text-cyaned-500 text-md"
           >
-            <IoChevronBackOutline className={"inline"} /> {t("works.button")}
+            <IoChevronBackOutline className={"inline"} />
+            {t("works.button")}
           </a>
         </span>
-        <div class="mb-8 mt-2">
+        <div class="mt-2 mb-8">
           {
-            thumbnail && (
-              <img
+            thumbnailImage && (
+              <Image
                 class="border border-slate-300 dark:border-zinc-700 rounded-xl"
+                src={thumbnailImage.default}
+                alt={title}
                 width={720}
                 height={360}
-                src={thumbnail}
-                alt=""
               />
             )
           }
         </div>
-        <h1 class="text-3xl my-1 font-quicksand">{title}</h1>
+        <h1 class="my-1 text-3xl font-quicksand">{title}</h1>
         <div>{description}</div>
-        <hr class="border-top border-zinc-400 my-4" />
+        <hr class="my-4 border-top border-zinc-400" />
 
         <ul class="flex flex-col gap-2 my-5 text-sm font-portal">
           <li>
             <span
-              class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
+              class="p-1 bg-green-300 rounded-lg text-cyaned-500 dark:bg-cyaned-900 dark:text-green-300"
               >Website</span
             >
             <a
-              class="ml-1 dark:text-pink-400 text-blue-500"
+              class="ml-1 text-blue-500 dark:text-pink-400"
               href={website !== "" ? website : ""}
               target="_blank">{website ? website : "Not available"}</a
             >
           </li>
           <li>
             <span
-              class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
+              class="p-1 bg-green-300 rounded-lg text-cyaned-500 dark:bg-cyaned-900 dark:text-green-300"
               >Platform</span
             >
             <span class="ml-1">{platform}</span>
           </li>
           <li>
             <span
-              class="text-cyaned-500 bg-green-300 rounded-lg dark:bg-cyaned-900 dark:text-green-300 p-1"
+              class="p-1 bg-green-300 rounded-lg text-cyaned-500 dark:bg-cyaned-900 dark:text-green-300"
               >Stack</span
             >
             <span class="ml-1">{stack}</span>
@@ -101,7 +109,7 @@ const t = useTranslations(lang);
           <slot />
         </div>
         <span
-          class="underline underline-offset-2 hover:text-cyaned-500 decoration-cyaned-500 text-2xl list-disc"
+          class="text-2xl underline list-disc underline-offset-2 hover:text-cyaned-500 decoration-cyaned-500"
         ></span>
 
         <ul class="flex flex-row mt-10">
@@ -109,7 +117,7 @@ const t = useTranslations(lang);
             <a
               href={githubLink}
               target="_blank"
-              class="bg-cyaned-50 dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:bg-cyaned-900"
+              class="px-4 py-2 rounded-lg bg-cyaned-50 dark:text-cyaned-500 text-cyaned-700 font-portal dark:bg-cyaned-900"
             >
               <span style="font-size: 18px;">
                 <IoLogoGithub className={"inline"} />

@@ -1,42 +1,53 @@
 ---
 import Body from "@components/Body.astro";
 import Content from "@components/Content.astro";
-import NavigationBar from "@components/navigationBar/navigationBar.astro";
 import ProjectCard from "@components/projects/projectCard";
 import { getLangFromUrl, useTranslatedPath } from "@i18n/utils";
 import Layout from "@layouts/Layout.astro";
 import Footer from "@layouts/footer.astro";
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
 const pages = await getCollection("projects", ({ id }) => {
   return id.startsWith(lang);
 });
-const posts = pages.map((page) => {
-  const [lang, ...slug] = page.slug.split("/");
-  return {
-    params: { lang, slug: slug.join("/") || undefined },
-    props: page,
-    data: page.data,
-  };
-});
+
+const posts = await Promise.all(
+  pages.map(async (page) => {
+    const [lang, ...slug] = page.slug.split("/");
+    let thumbnailUrl = "";
+    if (page.data.thumbnail) {
+      try {
+        const thumbnailImage = await import(`../assets/${page.data.thumbnail}`);
+        thumbnailUrl = thumbnailImage.default.src;
+      } catch (error) {
+        console.error(`Failed to load image: ${page.data.thumbnail}`, error);
+      }
+    }
+    return {
+      params: { lang, slug: slug.join("/") || undefined },
+      props: page,
+      data: { ...page.data, thumbnailUrl },
+    };
+  }),
+);
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <Layout title="Noé Rivera - Projects" />
   </head>
 
   <Body>
-
     <Content>
-      <!-- <section class="relative mb-6 h-80 flex justify-center items-center">
+      <!-- <section class="relative flex items-center justify-center mb-6 h-80">
         <div class="absolute w-full h-full overflow-hidden"> -->
       <!-- <img src="/assets/img/Jeanne.png" alt="Workspageimg"> -->
       <!-- <video
-            class="absolute inset-0 min-w-full min-h-full object-cover opacity-30"
+            class="absolute inset-0 object-cover min-w-full min-h-full opacity-30"
             poster="/masthead-poster.jpg"
             autoplay="autoplay"
             muted="muted"
@@ -53,29 +64,28 @@ const posts = pages.map((page) => {
             /> -->
       <!-- </video> -->
       <!-- </div>
-        <div class="z-10 text-center px-8 drop-shadow-lg shadow-black">
-          <div class="uppercase text-sm mb-4"></div>
-          <div class="text-4xl font-mplus font-medium">
+        <div class="z-10 px-8 text-center drop-shadow-lg shadow-black">
+          <div class="mb-4 text-sm uppercase"></div>
+          <div class="text-4xl font-medium font-mplus">
             <span class="text-cyaned-500">Works</span>
           </div>
         </div>
       </section> -->
 
       <main class="flex items-center justify-center">
-        <section class="max-w-screen-md w-full sm:mx-0 p-10 mt-10">
+        <section class="w-full max-w-screen-md p-10 mt-10 sm:mx-0">
           <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-14">
             {
               posts.map((project) => (
                 <li>
                   <a
-                    href={
-                      `../en/works/` + translatePath(`${project.params.slug}`)
-                    }
+                    href={`../en/works/${translatePath(project.params.slug ? project.params.slug : "")}`}
                   >
                     <ProjectCard
                       title={project.data.title}
                       url={project.data.website}
-                      thumbnail={project.data.thumbnail}
+                      thumbnail={project.data.thumbnailUrl}
+                      client:load
                     >
                       {project.data.description}
                     </ProjectCard>

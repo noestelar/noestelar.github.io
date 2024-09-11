@@ -1,6 +1,6 @@
 ---
 title: BUILT WORKSTATION
-thumbnail: /none/
+thumbnail: ''
 description: Mi computadora principal para programar y jugar
 ---
 

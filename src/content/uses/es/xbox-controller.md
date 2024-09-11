@@ -1,7 +1,7 @@
 ---
 # layout: ../../../layouts/usesPost.astro
 title: Xbox Series Controller
-thumbnail: /assets/img/uses/
+thumbnail: ''
 description: Control para Juegos
 ---
 

@@ -1,7 +1,7 @@
 ---
 # layout: ../../../layouts/usesPost.astro
 title: Nintendo Switch
-thumbnail: /assets/img/uses/
+thumbnail: ''
 description: Consola Portátil
 ---
 

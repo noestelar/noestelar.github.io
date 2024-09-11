@@ -5,6 +5,7 @@ import NavigationBar from "../components/navigationBar/navigationBar.astro";
 import Content from "../components/Content.astro";
 import { IoChevronBackOutline } from "react-icons/io5/index.js";
 import Footer from "./footer.astro";
+import { Image } from "astro:assets";
 import {
   getLangFromUrl,
   useTranslatedPath,
@@ -35,17 +36,17 @@ const t = useTranslations(lang);
         <span class="">
           <a
             href={translatePath("/uses/")}
-            class="dark:text-cyaned-500 text-blue-500 text-md"
+            class="text-blue-500 dark:text-cyaned-500 text-md"
           >
             <IoChevronBackOutline className={"inline"} />
             {t("uses.button")}
           </a>
         </span>
-        <div class="mb-8 mt-2">
+        <div class="mt-2 mb-8">
           {
             thumbnail && (
               <img
-                class="border border-slate-300 dark:border-zinc-700 rounded-xl  object-cover "
+                class="object-cover border border-slate-300 dark:border-zinc-700 rounded-xl "
                 width={720}
                 height={360}
                 src={thumbnail}
@@ -55,14 +56,14 @@ const t = useTranslations(lang);
             )
           }
         </div>
-        <h1 class="text-3xl my-1 font-quicksand">{title}</h1>
+        <h1 class="my-1 text-3xl font-quicksand">{title}</h1>
         <div>{description}</div>
-        <hr class="border-top border-zinc-400 my-4" />
+        <hr class="my-4 border-top border-zinc-400" />
         <div class="">
           <slot />
         </div>
         <span
-          class="underline underline-offset-2 hover:text-cyaned-500 decoration-cyaned-500 text-2xl list-disc"
+          class="text-2xl underline list-disc underline-offset-2 hover:text-cyaned-500 decoration-cyaned-500"
         ></span>
       </Content>
     </main>

@@ -1,8 +1,8 @@
 ---
-# layout: ../../../layouts/ProjectPost.astro
+
 title: Cuenta regresiva de cumpleaños
 website: https://pfoliocountdown.netlify.app/
-thumbnail: "@assets/img/SC.webp"
+thumbnail: img/SC.webp
 description: Divertida y colorida cuenta regresiva a tu fiesta de cumpleaños
 githubLink: https://github.com/Noe-ali/SimpleCountdown
 platform: Web

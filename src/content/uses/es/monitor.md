@@ -1,7 +1,8 @@
 ---
 # layout: ../../../layouts/usesPost.astro
 title: SAMSUNG LS24R350FZLXZX
-thumbnail: /assets/img/uses/monitor1.webp
+thumbnail: ''
+
 description: Pantalla
 ---
 

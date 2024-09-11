@@ -1,6 +1,6 @@
 ---
 title: Game Factor WG400 
-thumbnail: /assets/img/uses/camera-2.webp
+thumbnail: ''
 description: Desktop Camera
 ---
 
