@@ -7,7 +7,7 @@ import react from "@astrojs/react";
 
 export default defineConfig({
   site: "https://noestelar.github.io",
-  base: '/',
+  // base: '/',
   integrations: [tailwind(), react()],
   vite: {
     resolve: {
