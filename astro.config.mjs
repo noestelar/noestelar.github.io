@@ -7,7 +7,10 @@ import react from "@astrojs/react";
 
 export default defineConfig({
   site: "https://noestelar.github.io",
-  // base: '/',
+  base: '/noestelar.github.io',
+  build: {
+    assets: '_assets'
+  },
   integrations: [tailwind(), react()],
   vite: {
     resolve: {

@@ -20,7 +20,7 @@ const posts = await Promise.all(
     let thumbnailUrl = "";
     if (page.data.thumbnail) {
       try {
-        const thumbnailImage = await import(`../assets/${page.data.thumbnail}`);
+        const thumbnailImage = await import(`${import.meta.env.BASE_URL}assets/${page.data.thumbnail}`);
         thumbnailUrl = thumbnailImage.default.src;
       } catch (error) {
         console.error(`Failed to load image: ${page.data.thumbnail}`, error);
