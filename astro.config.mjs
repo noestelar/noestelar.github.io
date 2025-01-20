@@ -4,11 +4,13 @@ import path from 'path';
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 
-
 export default defineConfig({
   site: "https://noestelar.github.io",
   // base: '/',
-  integrations: [tailwind(), react()],
+  integrations: [
+    tailwind(),
+    react()
+  ],
   vite: {
     resolve: {
       alias: {

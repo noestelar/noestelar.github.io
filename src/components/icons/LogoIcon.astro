@@ -1,0 +1,17 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "fill-cyaned-500" } = Astro.props;
+---
+
+<svg 
+  width="30" 
+  height="30" 
+  viewBox="0 0 1200 1200" 
+  xmlns="http://www.w3.org/2000/svg"
+  class={className}
+>
+  <path d="M12 2L2 19.78l2.546 2.22h14.908L22 19.78 12 2zm0 4.83L19.092 19H4.908L12 6.83z"/>
+</svg>

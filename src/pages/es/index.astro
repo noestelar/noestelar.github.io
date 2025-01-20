@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Body from "../../components/Body.astro";
-import PresentationCard from "../../components/presentationCard/presentationCard";
+import PresentationCard from "../../components/presentationCard/PresentationCard.astro";
 import BioTimeLine from "../../components/indexPage/bioTimeLine/bioTimeLine";
 import CompanyMarquee from "../../components/indexPage/marquee/CompanyMarquee.astro";
 import NavigationBar from "../../components/navigationBar/navigationBar.astro";
@@ -27,7 +27,7 @@ const t = useTranslations(lang);
 
   <Content>
     <main class="flex items-center justify-center">
-      <PresentationCard lang={lang} client:visible />
+      <PresentationCard lang={lang} />
     </main>
     <section>
       <article class="flex items-center justify-center">

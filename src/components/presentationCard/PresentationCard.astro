@@ -1,0 +1,67 @@
+---
+import { IoChevronForwardOutline } from "react-icons/io5/index.js";
+import { useTranslations, useTranslatedPath } from "@i18n/utils";
+import { Image } from "astro:assets";
+import pictureOfMyself from "../../assets/img/yo.webp";
+
+interface Props {
+    lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as "en" | "es");
+const translatePath = useTranslatedPath(lang as "en" | "es");
+---
+
+<section class="w-full max-w-screen-md p-10 mt-10 sm:mx-0 md:px-20">
+    <div
+        class="flex flex-col items-center justify-center pb-10 md:flex-row sm:justify-between"
+    >
+        <article>
+            <h1 class="font-portal md:text-[60px] text-[30px]">Noé Rivera</h1>
+            <p class="mt-5 text-lg text-cyaned-500">
+                {t("index.description")}
+            </p>
+        </article>
+        <figure class="flex mt-5 md:mt-0">
+            <div class="profile-card flex items-center justify-center">
+                <div class="rounded-full overflow-hidden w-[120px] h-[120px]">
+                    <Image
+                        src={pictureOfMyself}
+                        width={120}
+                        height={120}
+                        alt="Profile picture"
+                        class="w-full h-full object-cover object-top"
+                        quality="high"
+                    />
+                </div>
+            </div>
+        </figure>
+    </div>
+
+    <div class="flex flex-col w-full">
+        <p class="text-md font-quicksand-3 font-[400]">
+            {t("index.paragraph")}
+            <strong
+                class="ml-2 font-portal text-md text-zinc-900 dark:text-white"
+            >
+                {t("index.paragraph.impact")}
+            </strong>
+        </p>
+    </div>
+    <section class="flex items-center justify-center mt-4">
+        <a
+            href={translatePath("/works/")}
+            class="px-5 py-2 text-white rounded-lg dark:bg-cyaned-500 bg-cyaned-700 dark:text-black font-portal hover:opacity-80"
+        >
+            {t("index.button")}
+            <IoChevronForwardOutline className="inline mb-0.5" />
+        </a>
+    </section>
+</section>
+
+<style>
+    .profile-card {
+        /* Move any specific styles from CSS file here */
+    }
+</style>
