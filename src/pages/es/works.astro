@@ -1,7 +1,7 @@
 ---
 import Body from "@components/Body.astro";
 import Content from "@components/Content.astro";
-import ProjectCard from "@components/projects/projectCard";
+import ProjectCard from "@components/projects/projectCard.astro";
 import { getLangFromUrl, useTranslatedPath } from "@i18n/utils";
 import Layout from "@layouts/Layout.astro";
 import Footer from "@layouts/footer.astro";
@@ -17,15 +17,18 @@ const pages = await getCollection("projects", ({ id }) => {
 const posts = await Promise.all(
   pages.map(async (page) => {
     const [lang, ...slug] = page.slug.split("/");
-    let thumbnailUrl = "";
+    let thumbnailUrl;
+
     if (page.data.thumbnail) {
       try {
+        // Import the image directly using the relative path
         const thumbnailImage = await import(`../assets/${page.data.thumbnail}`);
-        thumbnailUrl = thumbnailImage.default.src;
+        thumbnailUrl = thumbnailImage.default;
       } catch (error) {
         console.error(`Failed to load image: ${page.data.thumbnail}`, error);
       }
     }
+
     return {
       params: { lang, slug: slug.join("/") || undefined },
       props: page,
@@ -79,7 +82,7 @@ const posts = await Promise.all(
               posts.map((project) => (
                 <li>
                   <a
-                    href={`${project.params.slug}`}
+                    href={`/${project.params.lang}/works/${project.params.slug}`}
                   >
                     <ProjectCard
                       title={project.data.title}

@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  url?: string;
+  thumbnail: string;
+}
+
+const { title, url, thumbnail } = Astro.props;
+---
+
+<div
+  class="overflow-hidden text-center rounded-lg shadow-md dark:bg-grayed-100 bg-slate-100 backdrop-blur-sm"
+>
+  {
+    thumbnail && (
+      <Image
+        src={thumbnail}
+        alt={title || "Project thumbnail"}
+        width={720}
+        height={360}
+        class="w-full h-auto object-cover object-top"
+      />
+    )
+  }
+  <div class="px-6 py-5">
+    <div class="mb-2 text-lg font-bold text-black dark:text-white">
+      {title ? title : ""}
+    </div>
+    <p class="text-base text-black dark:text-white">
+      <slot />
+    </p>
+  </div>
+</div>

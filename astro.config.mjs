@@ -40,4 +40,13 @@ export default defineConfig({
       ],
     ],
   },
+  image: {
+    // Enable image optimization
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    },
+    // Optional: Configure remote domains if you're using external images
+    domains: [],
+    remotePatterns: []
+  }
 });
