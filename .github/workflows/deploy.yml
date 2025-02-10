@@ -27,17 +27,21 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Clean install dependencies
+        run: |
+          npm cache clean --force
+          npm ci
 
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
-        with:
-          path: .
-          node-version: 20
-          package-manager: npm
+      - name: Build site
+        run: npm run build
         env:
           ASTRO_TELEMETRY_DISABLED: true
+          NODE_OPTIONS: "--max-old-space-size=4096"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
   deploy:
     needs: build
