@@ -20,14 +20,18 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+
       - name: Install, build, and upload your site
-        uses: withastro/action@v2
+        uses: withastro/action@v3
         with:
-            node-version: 20
+          # The root location of your Astro project inside the repository
+          path: .
+          # The specific version of Node that should be used to build your site
+          node-version: 20
+          # The Node package manager that should be used to install dependencies and build your site
+          package-manager: npm@latest
         env:
-            NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
-            # If you have a .npmrc file, you might need to add:
-            # NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
 
   deploy:
     needs: build
