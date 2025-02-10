@@ -27,3 +27,9 @@ export function getRelativeLocaleUrl(lang: keyof typeof languages, path: string)
   const baseUrl = lang === defaultLang ? '' : `/${lang}`;
   return `${baseUrl}${path.startsWith('/') ? path : `/${path}`}`;
 }
+
+export function useTranslatedPath(lang: keyof typeof languages) {
+  return function translatePath(path: string) {
+    return getRelativeLocaleUrl(lang, path);
+  }
+}
