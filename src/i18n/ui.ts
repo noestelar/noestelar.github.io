@@ -10,7 +10,9 @@ export const ui = {
   en: {
     "nav.home": "Home",
     "nav.works": "Works",
+    "nav.about": "About",
     "nav.uses": "Uses",
+    "common.readMore": "Read More",
 
     //index page
     "index.description": "Information Technology Engineer and Developer",
@@ -42,12 +44,18 @@ export const ui = {
 
     //works page
     "works.button": "Works",
+    'works.title': 'Projects',
+    'works.heading': 'Works',
+    'works.description': 'A collection of my projects and works',
   },
 
   es: {
     "nav.home": "Inicio",
     "nav.works": "Trabajos",
-    "nav.uses": "Equipo que uso",
+    "nav.about": "Sobre mí",
+    "nav.uses": "Utilizo",
+    "common.readMore": "Leer más",
+
     //index page
     "index.description":
       "Ingeniero en tecnologías de la información y desarrollador de software",
@@ -78,5 +86,8 @@ export const ui = {
 
     //works page
     "works.button": "Regresar",
+    'works.title': 'Proyectos',
+    'works.heading': 'Trabajos',
+    'works.description': 'Una colección de mis proyectos y trabajos',
   },
 } as const;

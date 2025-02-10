@@ -6,6 +6,14 @@ import react from "@astrojs/react";
 
 export default defineConfig({
   site: "https://noestelar.github.io",
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "es"],
+    routing: {
+      prefixDefaultLocale: false,
+      strategy: "prefix"
+    }
+  },
   // base: '/',
   integrations: [
     tailwind(),
