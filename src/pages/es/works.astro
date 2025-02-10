@@ -1,104 +1,24 @@
 ---
 import Body from "@components/Body.astro";
 import Content from "@components/Content.astro";
-import ProjectCard from "@components/projects/projectCard.astro";
-import { getLangFromUrl, useTranslatedPath } from "@i18n/utils";
 import Layout from "@layouts/Layout.astro";
 import Footer from "@layouts/footer.astro";
-import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
+import WorksContent from "@components/WorksContent.astro";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
-const translatePath = useTranslatedPath(lang);
-const pages = await getCollection("projects", ({ id }) => {
-  return id.startsWith(lang);
-});
-
-const posts = await Promise.all(
-  pages.map(async (page) => {
-    const [lang, ...slug] = page.slug.split("/");
-    let thumbnailUrl;
-
-    if (page.data.thumbnail) {
-      try {
-        // Import the image directly using the relative path
-        const thumbnailImage = await import(`../assets/${page.data.thumbnail}`);
-        thumbnailUrl = thumbnailImage.default;
-      } catch (error) {
-        console.error(`Failed to load image: ${page.data.thumbnail}`, error);
-      }
-    }
-
-    return {
-      params: { lang, slug: slug.join("/") || undefined },
-      props: page,
-      data: { ...page.data, thumbnailUrl },
-    };
-  }),
-);
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
-    <Layout title="Noé Rivera - Proyectos" />
+    <Layout title={`Noé Rivera - ${t('works.title')}`} />
   </head>
 
   <Body>
     <Content>
-      <!-- <section class="relative flex items-center justify-center mb-6 h-80">
-        <div class="absolute w-full h-full overflow-hidden"> -->
-      <!-- <img src="/assets/img/Jeanne.png" alt="Workspageimg"> -->
-      <!-- <video
-            class="absolute inset-0 object-cover min-w-full min-h-full opacity-30"
-            poster="/masthead-poster.jpg"
-            autoplay="autoplay"
-            muted="muted"
-            loop="loop"
-            playsinline
-            > -->
-      <!-- <source
-              src={baseAssetUrl + '/masthead.webm'}
-              type="video/webm; codecs=vp9"
-            />
-            <source
-              src={baseAssetUrl + '/masthead.m4v'}
-              type="video/mp4; codecs=hvc1"
-            /> -->
-      <!-- </video> -->
-      <!-- </div>
-        <div class="z-10 px-8 text-center drop-shadow-lg shadow-black">
-          <div class="mb-4 text-sm uppercase"></div>
-          <div class="text-4xl font-medium font-mplus">
-            <span class="text-cyaned-500">Works</span>
-          </div>
-        </div>
-      </section> -->
-
-      <main class="flex items-center justify-center">
-        <section class="w-full max-w-screen-md p-10 mt-10 sm:mx-0">
-          <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-14">
-            {
-              posts.map((project) => (
-                <li>
-                  <a
-                    href={`/${project.params.lang}/works/${project.params.slug}`}
-                  >
-                    <ProjectCard
-                      title={project.data.title}
-                      url={project.data.website}
-                      thumbnail={project.data.thumbnailUrl}
-                      client:load
-                    >
-                      {project.data.description}
-                    </ProjectCard>
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </section>
-      </main>
+      <WorksContent />
       <Footer />
     </Content>
   </Body>

@@ -1,0 +1,39 @@
+---
+import { languages } from '../i18n/utils';
+
+const { url } = Astro;
+const pathname = url.pathname;
+const currentLang = pathname.split('/')[1] || 'en';
+const route = pathname.split('/').slice(2).join('/');
+---
+
+<div class="language-picker">
+  {Object.entries(languages).map(([lang, label]) => {
+    const href = lang === 'en' ? `/${route}` : `/${lang}/${route}`;
+    return (
+      <a
+        href={href}
+        class={`lang-link ${currentLang === lang ? 'active' : ''}`}
+        aria-label={`Switch to ${label}`}
+      >
+        {label}
+      </a>
+    );
+  })}
+</div>
+
+<style>
+  .language-picker {
+    display: flex;
+    gap: 1rem;
+  }
+  .lang-link {
+    padding: 0.5rem;
+    text-decoration: none;
+    border-radius: 0.25rem;
+  }
+  .lang-link.active {
+    font-weight: bold;
+    color: var(--accent-color);
+  }
+</style> 

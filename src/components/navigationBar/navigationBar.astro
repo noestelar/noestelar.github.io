@@ -1,7 +1,7 @@
 ---
 import {
   getLangFromUrl,
-  useTranslatedPath,
+  getRelativeLocaleUrl,
   useTranslations,
 } from "../../i18n/utils";
 import {
@@ -15,26 +15,28 @@ import ThemeToggle from "./themeToggleButton";
 import NavigationMenu from "./navigationMenu";
 import { LanguagePicker } from "./LanguagePicker";
 import LogoIcon from "../icons/LogoIcon.astro";
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
-const links = [
-  // { name: t("nav.home"), href: translatePath("/") },
-  { name: t("nav.works"), href: translatePath("/works/") },
-  // { name: t("nav.uses"), href: translatePath("/uses/") },
-];
 
+const links = [
+  // { name: t("nav.home"), href: getRelativeLocaleUrl(lang, "/") },
+  { name: t("nav.works"), href: getRelativeLocaleUrl(lang, "works") },
+  // { name: t("nav.uses"), href: getRelativeLocaleUrl(lang, "uses") },
+];
 ---
 
-<header class="fixed w-full p-2 z-20 backdrop-blur-md" >
-  <div class="mx-auto max-w-3xl" >
+<header class="fixed w-full p-2 z-20 backdrop-blur-md">
+  <div class="mx-auto max-w-3xl">
     <nav class="flex items-center gap-3 text-base font-quicksand">
-      <a href={translatePath("/")} class="group ">
+      <a href={getRelativeLocaleUrl(lang, "/")} class="group">
         <h2 class="font-semibold tracking-tighter text-lg font-portal">
-          <LogoIcon  />
+          <LogoIcon />
         </h2>
       </a>
-      <a href={translatePath("/")} class="font-portal ">NOE RIVERA</a>
+      <a href={getRelativeLocaleUrl(lang, "/")} class="font-portal"
+        >NOE RIVERA</a
+      >
       <div class="hidden sm:flex gap-6 items-center md:flex">
         <ul class="inline-flex items-center">
           {

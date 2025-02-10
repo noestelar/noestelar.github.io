@@ -1,18 +1,25 @@
 import { Menu } from "@headlessui/react";
 
 import { languages } from "@i18n/ui";
-import {
-  useTranslations,
-  useTranslatedPath,
-} from "@i18n/utils";
+import { getRelativeLocaleUrl } from "@i18n/utils";
 import { IoChevronDown } from "react-icons/io5/index.js";
-import { Fragment, useState } from "react";
-import { Listbox, Transition } from "@headlessui/react";
+import { Fragment, useState, useEffect } from "react";
+import { Transition } from "@headlessui/react";
 
-export function LanguagePicker(currentLang: any) {
-  const crlang = currentLang.lang;
-  const [selected, setSelected] = useState(languages[crlang]);
-  const translatePath = useTranslatedPath(crlang);
+interface LanguagePickerProps {
+  lang: keyof typeof languages;
+}
+
+export function LanguagePicker({ lang }: LanguagePickerProps) {
+  const [selected, setSelected] = useState(languages[lang]);
+  const [currentRoute, setCurrentRoute] = useState("");
+
+  useEffect(() => {
+    const path = window.location.pathname;
+    const route = path.split("/").slice(2).join("/");
+    setCurrentRoute(route);
+  }, []);
+
   return (
     <div className="">
       <Menu as="div" className="relative inline-block text-left">
@@ -33,18 +40,17 @@ export function LanguagePicker(currentLang: any) {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 mt-2  w-full origin-top-right divide-y divide-gray-100 rounded-md dark:bg-zinc-600 bg-orange-300 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-              <div className="px-1 py-1 ">
-                {Object.entries(languages).map(([lang, label]) => (
-                  <Menu.Item value={lang} key={lang}>
+            <Menu.Items className="absolute right-0 mt-2 w-full origin-top-right divide-y divide-gray-100 rounded-md dark:bg-zinc-600 bg-orange-300 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <div className="px-1 py-1">
+                {Object.entries(languages).map(([langKey, label]) => (
+                  <Menu.Item key={langKey}>
                     {({ active }) => (
                       <a
-                        href={translatePath("/", lang)}
-                        className={`${
-                          active
+                        href={getRelativeLocaleUrl(langKey as keyof typeof languages, currentRoute)}
+                        className={`${active
                             ? "dark:bg-gray-500 dark:text-cyaned-500 bg-orange-200"
                             : "dark:text-white text-gray-900"
-                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
                         {label}
                       </a>

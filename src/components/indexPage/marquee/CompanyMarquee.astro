@@ -1,13 +1,15 @@
 ---
 import "./CompanyMarquee.css";
-import FordLogo from "@assets/img/FordLogo.webp";
-import SchaefflerLogo from "@assets/img/Schaeffler_logo.svg";
-import IdtLogo from "@assets/img/idt-logo.webp";
-import AltenLogo from "@assets/img/Alten_logo.webp";
+import FordLogo from "@assets/img/companies/FordLogo.webp";
+import SchaefflerLogo from "@assets/img/companies/Schaeffler_logo.svg";
+import IdtLogo from "@assets/img/companies/idt-logo.webp";
+import AltenLogo from "@assets/img/companies/Alten_logo.webp";
+import StarlightLogo from "@assets/img/companies/starlight-logo.webp";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
-const logos = [IdtLogo, SchaefflerLogo, FordLogo, AltenLogo];
+const logos = [IdtLogo, SchaefflerLogo, FordLogo, AltenLogo, StarlightLogo];
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
 
 let logosConcat = logos;
 
@@ -23,7 +25,7 @@ while (logosConcat.length < 10) {
 
   <div class="overflow-hidden marquee-container">
     <div
-      class="top-0 left-0 flex marquee-content flex-nowrap"
+      class="top-0 left-0 flex items-center marquee-content flex-nowrap"
       style={{ animation: "marquee 10s linear infinite" }}
     >
       {
@@ -31,7 +33,11 @@ while (logosConcat.length < 10) {
           <img
             src={logo.src}
             alt="Company logo"
-            class="w-auto h-8 mx-4 grayscale dark:invert marquee-img"
+            class={`h-8 mx-4 object-contain grayscale transition-all ${
+              logo === FordLogo || logo === AltenLogo
+                ? 'dark:invert hover:grayscale-0 dark:hover:invert-0'
+                : 'dark:brightness-[10] hover:grayscale-0 dark:hover:brightness-100'
+            }`}
           />
         ))
       }

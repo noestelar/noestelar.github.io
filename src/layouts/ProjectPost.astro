@@ -7,7 +7,7 @@ import { IoLogoGithub } from "react-icons/io5/index.js";
 import { IoChevronBackOutline } from "react-icons/io5/index.js";
 import {
   getLangFromUrl,
-  useTranslatedPath,
+  getRelativeLocaleUrl,
   useTranslations,
 } from "@i18n/utils";
 import Footer from "./footer.astro";
@@ -38,7 +38,6 @@ const {
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
-const translatePath = useTranslatedPath(lang);
 const t = useTranslations(lang);
 
 // Import the image dynamically
@@ -54,7 +53,7 @@ const thumbnailImage = thumbnail
       <Content className="pt-6 px-8">
         <span class="">
           <a
-            href={translatePath("/works/")}
+            href={getRelativeLocaleUrl(lang, "works")}
             class="text-blue-500 dark:text-cyaned-500 text-md"
           >
             <IoChevronBackOutline className={"inline"} />

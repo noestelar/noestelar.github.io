@@ -1,6 +1,6 @@
 ---
 import { IoChevronForwardOutline } from "react-icons/io5/index.js";
-import { useTranslations, useTranslatedPath } from "@i18n/utils";
+import { useTranslations, getRelativeLocaleUrl } from "@i18n/utils";
 import { Image } from "astro:assets";
 import pictureOfMyself from "../../assets/img/yo.webp";
 
@@ -10,7 +10,6 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang as "en" | "es");
-const translatePath = useTranslatedPath(lang as "en" | "es");
 ---
 
 <section class="w-full max-w-screen-md p-10 mt-10 sm:mx-0 md:px-20">
@@ -51,7 +50,7 @@ const translatePath = useTranslatedPath(lang as "en" | "es");
     </div>
     <section class="flex items-center justify-center mt-4">
         <a
-            href={translatePath("/works/")}
+            href={getRelativeLocaleUrl(lang as "en" | "es", "works")}
             class="px-5 py-2 text-white rounded-lg dark:bg-cyaned-500 bg-cyaned-700 dark:text-black font-portal hover:opacity-80"
         >
             {t("index.button")}
