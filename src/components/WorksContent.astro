@@ -3,6 +3,9 @@ import ProjectCard from "@components/projects/projectCard.astro";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import { getCollection } from "astro:content";
 
+// Use import.meta.glob without the explicit ImageMetadata generic for now
+const allThumbnails = import.meta.glob('../assets/**/*.{jpeg,jpg,png,webp,gif,svg,avif}');
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -13,14 +16,30 @@ const pages = await getCollection("projects", ({ id }) => {
 const posts = await Promise.all(
   pages.map(async (page) => {
     const [lang, ...slug] = page.slug.split("/");
-    let thumbnailUrl;
+    let thumbnailUrl: any; // Use 'any' for now to avoid import issues
 
     if (page.data.thumbnail) {
       try {
-        const thumbnailImage = await import(`../assets/${page.data.thumbnail}`);
-        thumbnailUrl = thumbnailImage.default;
+        let thumbnailPathKey = page.data.thumbnail;
+        if (thumbnailPathKey.startsWith('/')) {
+          thumbnailPathKey = thumbnailPathKey.substring(1);
+        }
+        const fullImportPath = `../assets/${thumbnailPathKey}`;
+
+        if (allThumbnails[fullImportPath]) {
+          const thumbnailModule = await allThumbnails[fullImportPath]();
+          // Assuming the module has a 'default' property for the image data
+          if (typeof thumbnailModule === 'object' && thumbnailModule !== null && 'default' in thumbnailModule) {
+            thumbnailUrl = (thumbnailModule as { default: any }).default;
+          } else {
+            console.error(`Dynamically imported module for ${fullImportPath} does not have a 'default' export or is not an object.`);
+            thumbnailUrl = undefined; // Or handle as error
+          }
+        } else {
+          console.error(`Thumbnail not found: ${fullImportPath}. Original path in frontmatter: "${page.data.thumbnail}". Check if the file exists at src/assets/${thumbnailPathKey} and the glob pattern is correct.`);
+        }
       } catch (error) {
-        console.error(`Failed to load image: ${page.data.thumbnail}`, error);
+        console.error(`Error processing thumbnail for "${page.data.thumbnail}":`, error);
       }
     }
 
@@ -48,7 +67,6 @@ const posts = await Promise.all(
                 title={project.data.title}
                 url={project.data.website}
                 thumbnail={project.data.thumbnailUrl}
-                client:load
               >
                 {project.data.description}
               </ProjectCard>

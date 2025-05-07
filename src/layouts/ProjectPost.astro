@@ -12,6 +12,11 @@ import {
 } from "@i18n/utils";
 import Footer from "./footer.astro";
 import { Image } from "astro:assets";
+// import type { ImageMetadata } from 'astro:assets'; // Keep commented or remove if ImageMetadata type causes issues
+
+// Use import.meta.glob to find all potential thumbnail images
+// Path is relative to this file (src/layouts/) to reach src/assets/
+const allThumbnailsGlob = import.meta.glob('../../src/assets/**/*.{jpeg,jpg,png,webp,gif,svg,avif}');
 
 export interface Props {
   content: {
@@ -29,7 +34,7 @@ const {
   content: {
     title,
     description,
-    thumbnail,
+    thumbnail: thumbnailPathFromFrontmatter, // Renamed for clarity
     githubLink,
     website,
     platform,
@@ -40,10 +45,37 @@ const {
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Import the image dynamically
-const thumbnailImage = thumbnail
-  ? await import(`../assets/${thumbnail}`)
-  : null;
+let resolvedThumbnail: any; // Use 'any' or specific type like ImageMetadata if import works
+
+if (thumbnailPathFromFrontmatter) {
+  try {
+    // Sanitize the thumbnail path from frontmatter
+    // Paths in frontmatter might be like "img/foo.webp" or "/img/foo.webp"
+    // We want them relative to the 'src/assets/' directory for the glob
+    let sanitizedPath = thumbnailPathFromFrontmatter;
+    if (sanitizedPath.startsWith('/')) {
+      sanitizedPath = sanitizedPath.substring(1); // Remove leading slash: "/img/foo.webp" -> "img/foo.webp"
+    }
+
+    // The glob keys are relative to the glob pattern's base.
+    // Our glob is '../../src/assets/**'. So a key would be '../../src/assets/img/foo.webp'.
+    // We need to construct this full key.
+    const globKey = `../../src/assets/${sanitizedPath}`;
+
+    if (allThumbnailsGlob[globKey]) {
+      const module = await allThumbnailsGlob[globKey]();
+      if (typeof module === 'object' && module !== null && 'default' in module) {
+        resolvedThumbnail = (module as { default: any }).default;
+      } else {
+        console.error(`Dynamically imported module for thumbnail ${globKey} does not have a 'default' export or is not an object.`);
+      }
+    } else {
+      console.error(`Thumbnail not found in glob: ${globKey}. Original path in frontmatter: "${thumbnailPathFromFrontmatter}". Check if the file exists at src/assets/${sanitizedPath}`);
+    }
+  } catch (error) {
+    console.error(`Error processing thumbnail for "${thumbnailPathFromFrontmatter}":`, error);
+  }
+}
 ---
 
 <!doctype html>
@@ -62,10 +94,10 @@ const thumbnailImage = thumbnail
         </span>
         <div class="mt-2 mb-8">
           {
-            thumbnailImage && (
+            resolvedThumbnail && (
               <Image
                 class="border border-slate-300 dark:border-zinc-700 rounded-xl"
-                src={thumbnailImage.default}
+                src={resolvedThumbnail}
                 alt={title}
                 width={720}
                 height={360}
