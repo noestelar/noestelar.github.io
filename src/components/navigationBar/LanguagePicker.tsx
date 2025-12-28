@@ -2,7 +2,7 @@ import { Menu } from "@headlessui/react";
 
 import { languages } from "@i18n/ui";
 import { getRelativeLocaleUrl } from "@i18n/utils";
-import { IoChevronDown } from "react-icons/io5/index.js";
+import { IoChevronDown } from "react-icons/io5";
 import { Fragment, useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 
