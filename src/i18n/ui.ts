@@ -32,7 +32,7 @@ export const ui = {
     "index.bioTimeline.2022-3":
       "Worked at Schaeffler Transmission Systems as a Full Stack Developer doing Web Services and Web Apps focused on security",
     "index.bioTimeline.1999": "Born in México City, México",
-    "index.bioTimeline.2024": "Currently Working at Starlight Labs Ltd as a Software Engineer and Technical Lead, focused in AI applications and startup development",
+    "index.bioTimeline.2024": "Currently Working at Starlight Labs Ltd as a Founder Engineer and Technical Lead, focused in AI applications and startup development",
 
     //marqee
     "marquee.title": "Companies that believed in me",
@@ -74,7 +74,7 @@ export const ui = {
     "index.bioTimeline.2022-3":
       "Trabajé en Schaeffler Transmission Systems como Desarrollador Full Stack haciendo Web Services y Web Apps enfocadas en seguridad",
     "index.bioTimeline.1999": "Nací en la Ciudad de México, México",
-    "index.bioTimeline.2024": "Actualmente trabajo en Starlight Labs Ltd como Ingeniero de Software y Líder Técnico, enfocado en aplicaciones de IA y desarrollo de startups",
+    "index.bioTimeline.2024": "Actualmente trabajo en Starlight Labs Ltd como Ingeniero Fundador y Líder Técnico, enfocado en aplicaciones de IA y desarrollo de startups",
 
     //marqee
     "marquee.title": "Compañías que creyeron en mí",
