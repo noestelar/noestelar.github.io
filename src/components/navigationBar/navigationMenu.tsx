@@ -1,6 +1,6 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, type ReactNode } from "react";
-import { IoMenuOutline } from "react-icons/io5/index.js";
+import { IoMenuOutline } from "react-icons/io5";
 
 function navigationMenu(props: { links: { name: string; href: string }[] }) {
   return (
