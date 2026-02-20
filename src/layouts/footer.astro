@@ -1,12 +1,11 @@
 ---
-import "../styles/global.css";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
-const today = new Date();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
 ---
 
-<footer class="text-zinc-500 p-4 text-center text-sm">
-  Created with Astro and <span class="text-red-500">&hearts;</span>
-  <br />
-  &copy; {today.getFullYear()}
-  <a href="/">Noé Rivera.</a> All rights reserved.
+<footer class="font-portal p-4 text-center text-zinc-500 dark:text-zinc-400">
+  &copy; {year} {t("footer.created")}
 </footer>

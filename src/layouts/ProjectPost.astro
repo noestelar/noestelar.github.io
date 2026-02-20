@@ -1,21 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Body from "../components/Body.astro";
-import NavigationBar from "../components/navigationBar/navigationBar.astro";
 import Content from "../components/Content.astro";
 import { IoLogoGithub, IoChevronBackOutline } from "react-icons/io5";
 import {
   getLangFromUrl,
   getRelativeLocaleUrl,
   useTranslations,
-} from "@i18n/utils";
+} from "../i18n/utils";
 import Footer from "./footer.astro";
 import { Image } from "astro:assets";
-// import type { ImageMetadata } from 'astro:assets'; // Keep commented or remove if ImageMetadata type causes issues
 
 // Use import.meta.glob to find all potential thumbnail images
-// Path is relative to this file (src/layouts/) to reach src/assets/
-const allThumbnailsGlob = import.meta.glob('../../src/assets/**/*.{jpeg,jpg,png,webp,gif,svg,avif}');
+const allThumbnailsGlob = import.meta.glob('../assets/**/*.{jpeg,jpg,png,webp,gif,svg,avif}');
 
 export interface Props {
   content: {
@@ -27,52 +24,76 @@ export interface Props {
     platform: string;
     stack: string;
   };
+  body?: string;
 }
 
 const {
   content: {
     title,
     description,
-    thumbnail: thumbnailPathFromFrontmatter, // Renamed for clarity
+    thumbnail,
     githubLink,
     website,
     platform,
     stack,
   },
+  body,
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-let resolvedThumbnail: any; // Use 'any' or specific type like ImageMetadata if import works
+let resolvedThumbnail: any;
 
-if (thumbnailPathFromFrontmatter) {
+// Determine the image path to use
+let imagePath = thumbnail;
+
+if (!imagePath && body) {
+  // Try to find first image in markdown
+  const match = body.match(/!\[.*?\]\((.*?)\)/);
+  if (match && match[1]) {
+    imagePath = match[1];
+  }
+}
+
+// Fallback if still no image
+if (!imagePath) {
+    // Default image path relative to assets if available
+    // For now, let's assume a default
+    imagePath = 'img/favicon.svg'; // Hypothetical default
+}
+
+if (imagePath) {
   try {
-    // Sanitize the thumbnail path from frontmatter
-    // Paths in frontmatter might be like "img/foo.webp" or "/img/foo.webp"
-    // We want them relative to the 'src/assets/' directory for the glob
-    let sanitizedPath = thumbnailPathFromFrontmatter;
+    let sanitizedPath = imagePath;
     if (sanitizedPath.startsWith('/')) {
-      sanitizedPath = sanitizedPath.substring(1); // Remove leading slash: "/img/foo.webp" -> "img/foo.webp"
+      sanitizedPath = sanitizedPath.substring(1);
     }
+    // Handle query params if any
+    sanitizedPath = sanitizedPath.split('?')[0];
 
-    // The glob keys are relative to the glob pattern's base.
-    // Our glob is '../../src/assets/**'. So a key would be '../../src/assets/img/foo.webp'.
-    // We need to construct this full key.
-    const globKey = `../../src/assets/${sanitizedPath}`;
-
-    if (allThumbnailsGlob[globKey]) {
-      const module = await allThumbnailsGlob[globKey]();
-      if (typeof module === 'object' && module !== null && 'default' in module) {
-        resolvedThumbnail = (module as { default: any }).default;
-      } else {
-        console.error(`Dynamically imported module for thumbnail ${globKey} does not have a 'default' export or is not an object.`);
-      }
+    // Check if it is a remote URL
+    if (sanitizedPath.startsWith('http')) {
+        resolvedThumbnail = imagePath;
     } else {
-      console.error(`Thumbnail not found in glob: ${globKey}. Original path in frontmatter: "${thumbnailPathFromFrontmatter}". Check if the file exists at src/assets/${sanitizedPath}`);
+        // Local asset resolution
+        // The glob is relative to this file's directory: src/layouts/
+        // So ../assets/ points to src/assets/
+        const globKey = `../assets/${sanitizedPath}`;
+
+        if (allThumbnailsGlob[globKey]) {
+          const module = await allThumbnailsGlob[globKey]();
+          if (typeof module === 'object' && module !== null && 'default' in module) {
+            resolvedThumbnail = (module as { default: any }).default;
+          }
+        } else {
+             // Try searching without path prefix if just filename given?
+             // For now assume path matches folder structure
+             // console.error(`Thumbnail not found in glob: ${globKey}`);
+        }
     }
   } catch (error) {
-    console.error(`Error processing thumbnail for "${thumbnailPathFromFrontmatter}":`, error);
+    console.error(`Error processing thumbnail:`, error);
   }
 }
 ---
@@ -100,6 +121,7 @@ if (thumbnailPathFromFrontmatter) {
                 alt={title}
                 width={720}
                 height={360}
+                transition:name={`image-${title}`}
               />
             )
           }
@@ -112,7 +134,7 @@ if (thumbnailPathFromFrontmatter) {
           <li>
             <span
               class="p-1 bg-green-300 rounded-lg text-cyaned-500 dark:bg-cyaned-900 dark:text-green-300"
-              >Website</span
+              >{t('project.website')}</span
             >
             <a
               class="ml-1 text-blue-500 dark:text-pink-400"
@@ -123,14 +145,14 @@ if (thumbnailPathFromFrontmatter) {
           <li>
             <span
               class="p-1 bg-green-300 rounded-lg text-cyaned-500 dark:bg-cyaned-900 dark:text-green-300"
-              >Platform</span
+              >{t('project.platform')}</span
             >
             <span class="ml-1">{platform}</span>
           </li>
           <li>
             <span
               class="p-1 bg-green-300 rounded-lg text-cyaned-500 dark:bg-cyaned-900 dark:text-green-300"
-              >Stack</span
+              >{t('project.stack')}</span
             >
             <span class="ml-1">{stack}</span>
           </li>
@@ -138,9 +160,6 @@ if (thumbnailPathFromFrontmatter) {
         <div>
           <slot />
         </div>
-        <span
-          class="text-2xl underline list-disc underline-offset-2 hover:text-cyaned-500 decoration-cyaned-500"
-        ></span>
 
         <ul class="flex flex-row mt-10">
           <li class="inline-block">
@@ -152,7 +171,7 @@ if (thumbnailPathFromFrontmatter) {
               <span style="font-size: 18px;">
                 <IoLogoGithub className={"inline"} />
               </span>
-              <span class="mx-2"> Source</span>
+              <span class="mx-2"> {t('project.source')}</span>
             </a>
           </li>
         </ul>

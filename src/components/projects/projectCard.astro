@@ -20,6 +20,7 @@ const { title, url, thumbnail } = Astro.props;
         alt={title || "Project thumbnail"}
         width={720}
         height={360}
+        transition:name={`image-${title}`}
         class="w-full h-auto object-cover object-top"
       />
     )

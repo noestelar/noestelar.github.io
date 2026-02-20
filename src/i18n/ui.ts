@@ -47,6 +47,15 @@ export const ui = {
     'works.title': 'Projects',
     'works.heading': 'Works',
     'works.description': 'A collection of my projects and works',
+
+    //project detail
+    'project.website': 'Website',
+    'project.platform': 'Platform',
+    'project.stack': 'Stack',
+    'project.source': 'Source',
+
+    //footer
+    'footer.created': 'Created by Noé Rivera',
   },
 
   es: {
@@ -89,5 +98,14 @@ export const ui = {
     'works.title': 'Proyectos',
     'works.heading': 'Trabajos',
     'works.description': 'Una colección de mis proyectos y trabajos',
+
+    //project detail
+    'project.website': 'Sitio web',
+    'project.platform': 'Plataforma',
+    'project.stack': 'Tecnologías',
+    'project.source': 'Código fuente',
+
+    //footer
+    'footer.created': 'Creado por Noé Rivera',
   },
 } as const;
