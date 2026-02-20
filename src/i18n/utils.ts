@@ -31,3 +31,9 @@ export function getRelativeLocaleUrl(lang: string, path: string) {
     }
     return `/${lang}/${cleanPath}`;
 }
+
+export function useTranslatedPath(lang: keyof typeof ui) {
+  return function translatePath(path: string, l: string = lang) {
+    return getRelativeLocaleUrl(l, path);
+  }
+}
