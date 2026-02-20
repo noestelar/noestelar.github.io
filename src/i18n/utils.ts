@@ -16,8 +16,18 @@ export function useTranslations(lang: keyof typeof ui) {
 }
 
 export function getRelativeLocaleUrl(lang: string, path: string) {
-    if (lang === defaultLang) {
-        return `/${path}`;
+    // Ensure path doesn't start with / if we are appending it,
+    // OR handle the leading slash correctly.
+    // If path is "/" and lang is default, return "/"
+    // If path is "/" and lang is not default, return "/es/" or "/es"
+
+    let cleanPath = path;
+    if (cleanPath.startsWith('/')) {
+        cleanPath = cleanPath.substring(1);
     }
-    return `/${lang}/${path}`;
+
+    if (lang === defaultLang) {
+        return `/${cleanPath}`;
+    }
+    return `/${lang}/${cleanPath}`;
 }
