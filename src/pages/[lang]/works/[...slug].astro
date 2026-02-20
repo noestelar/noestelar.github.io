@@ -18,6 +18,6 @@ const page = Astro.props || {};
 const { Content } = page && page.render ? await page.render() : {};
 ---
 
-<ProjectPost content={page.data}>
+<ProjectPost content={page.data} body={page.body}>
   <Content />
 </ProjectPost>
