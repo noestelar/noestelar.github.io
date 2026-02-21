@@ -22,7 +22,19 @@ const usesCollection = defineCollection({
   }),
 });
 
+const blogCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    thumbnail: z.string().optional(),
+    date: z.date(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+
 export const collections = {
   'projects': projectsCollection,
   'uses': usesCollection,
+  'blog': blogCollection,
 };

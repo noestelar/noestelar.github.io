@@ -1,0 +1,32 @@
+---
+import Body from "@components/Body.astro";
+import Content from "@components/Content.astro";
+import Layout from "@layouts/Layout.astro";
+import Footer from "@layouts/footer.astro";
+import BlogContent from "@components/BlogContent.astro";
+import { useTranslations } from "@i18n/utils";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "es" } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as any);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <Layout title={`Noé Rivera - Blog`} />
+  </head>
+
+  <Body>
+    <Content>
+      <BlogContent />
+      <Footer />
+    </Content>
+  </Body>
+</html>
