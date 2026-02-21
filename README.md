@@ -1,40 +1,26 @@
-# Welcome to [Astro](https://astro.build)
+# Noé Rivera - Personal Site
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/basics)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
-
+Sitio personal construido con [Astro](https://astro.build).
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
 ```
 /
-├── public/
-│   └── favicon.svg
 ├── src/
+│   ├── assets/
+│   │   └── img/           # Imágenes del sitio
 │   ├── components/
-│   │   └── Card.astro
+│   ├── content/
+│   │   ├── blog/          # Posts del blog (MDX)
+│   │   ├── projects/      # Proyectos/Works
+│   │   └── uses/          # Página de uses
 │   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── pages/
+│   └── i18n/              # Internacionalización (ES/EN)
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
 ## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
 
 | Command                | Action                                             |
 | :--------------------- | :------------------------------------------------- |
@@ -42,9 +28,60 @@ All commands are run from the root of the project, from a terminal:
 | `bun run dev`          | Starts local dev server at `localhost:3000`        |
 | `bun run build`        | Build your production site to `./dist/`            |
 | `bun run preview`      | Preview your build locally, before deploying       |
-| `bun run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `bun run astro --help` | Get help using the Astro CLI                       |
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 📝 Crear Posts del Blog
+
+### Frontmatter requerido
+
+```yaml
+---
+title: "Título del post"
+description: "Descripción corta para SEO y previews"
+date: 2026-02-21
+tags: ["tag1", "tag2"]
+thumbnail: "img/nombre-imagen.webp"
+---
+```
+
+### Imágenes (thumbnail)
+
+- **Formato:** WebP (mejor compatibilidad con redes sociales)
+- **Tamaño:** máx 1200x630px (tamaño ideal para og:image)
+- **Peso:** < 100KB (LinkedIn/Twitter fallan con imágenes grandes)
+- **Ubicación:** `src/assets/img/`
+- **Ruta en frontmatter:** `"img/nombre.webp"` (relativo a `assets/`)
+
+### Ejemplo completo
+
+```mdx
+---
+title: "Mi nuevo post"
+description: "Una descripción corta del post"
+date: 2026-02-21
+tags: ["astro", "web"]
+thumbnail: "img/mi-imagen.webp"
+---
+
+# Mi nuevo post
+
+Contenido del post aquí...
+
+![Imagen del post](../../../assets/img/mi-imagen.webp)
+```
+
+### Notas
+
+- El **favicon** del sitio es automático (🤠), no lo incluyas en el frontmatter
+- Si NO especificas `thumbnail`, se usa el favicon como fallback en og:image
+- El `thumbnail` es para redes sociales (Twitter, LinkedIn, Facebook)
+- Las imágenes dentro del contenido van con ruta completa: `../../../assets/img/...`
+
+---
+
+## 🌐 Internacionalización
+
+El sitio soporta español e inglés. Los posts van en:
+- `src/content/blog/en/` - Posts en inglés
+- `src/content/blog/es/` - Posts en español
