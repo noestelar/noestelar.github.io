@@ -1,0 +1,138 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Body from "../components/Body.astro";
+import Content from "../components/Content.astro";
+import { IoChevronBackOutline } from "react-icons/io5";
+import {
+  getLangFromUrl,
+  getRelativeLocaleUrl,
+  useTranslations,
+} from "../i18n/utils";
+import Footer from "./footer.astro";
+import { Image } from "astro:assets";
+
+const allThumbnailsGlob = import.meta.glob('../assets/**/*.{jpeg,jpg,png,webp,gif,svg,avif}');
+
+export interface Props {
+  content: {
+    title: string;
+    description: string;
+    thumbnail?: string;
+    date: Date;
+    tags?: string[];
+  };
+  body?: string;
+}
+
+const {
+  content: {
+    title,
+    description,
+    thumbnail,
+    date,
+    tags,
+  },
+  body,
+} = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+
+let resolvedThumbnail: any;
+let imagePath = thumbnail;
+
+if (!imagePath && body) {
+  const match = body.match(/!\[.*?\]\((.*?)\)/);
+  if (match && match[1]) {
+    imagePath = match[1];
+  }
+}
+
+if (imagePath) {
+  try {
+    let sanitizedPath = imagePath;
+    if (sanitizedPath.startsWith('/')) {
+      sanitizedPath = sanitizedPath.substring(1);
+    }
+    sanitizedPath = sanitizedPath.split('?')[0];
+
+    if (sanitizedPath.startsWith('http')) {
+        resolvedThumbnail = imagePath;
+    } else {
+        const globKey = `../assets/${sanitizedPath}`;
+        if (allThumbnailsGlob[globKey]) {
+          const module = await allThumbnailsGlob[globKey]();
+          if (typeof module === 'object' && module !== null && 'default' in module) {
+            resolvedThumbnail = (module as { default: any }).default;
+          }
+        }
+    }
+  } catch (error) {
+    console.error(`Error processing thumbnail:`, error);
+  }
+}
+
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat(lang === 'es' ? 'es-MX' : 'en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+};
+---
+
+<!doctype html>
+<Layout title={"Noé Rivera - " + title} description={description} image={resolvedThumbnail}>
+  <Body>
+    <main class="pt-[56px]">
+      <Content className="pt-6 px-8 max-w-screen-md mx-auto">
+        <span class="">
+          <a
+            href={getRelativeLocaleUrl(lang, "blog")}
+            class="text-blue-500 dark:text-cyaned-500 text-md hover:underline"
+          >
+            <IoChevronBackOutline className={"inline"} />
+            {lang === 'es' ? 'Volver al blog' : 'Back to blog'}
+          </a>
+        </span>
+
+        <header class="mt-8 mb-8 text-center">
+          <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+            {formatDate(date)}
+          </div>
+          <h1 class="text-4xl font-bold font-quicksand mb-4">{title}</h1>
+          <p class="text-lg text-gray-600 dark:text-gray-300">{description}</p>
+
+          {tags && (
+            <div class="flex flex-wrap justify-center gap-2 mt-4">
+              {tags.map(tag => (
+                <span class="text-xs bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded text-gray-700 dark:text-gray-300">#{tag}</span>
+              ))}
+            </div>
+          )}
+        </header>
+
+        <div class="mb-10">
+          {
+            resolvedThumbnail && (
+              <Image
+                class="w-full h-auto rounded-xl shadow-lg"
+                src={resolvedThumbnail}
+                alt={title}
+                width={720}
+                height={400}
+                transition:name={`image-${title}`}
+              />
+            )
+          }
+        </div>
+
+        <article class="prose dark:prose-invert max-w-none">
+          <slot />
+        </article>
+
+        <hr class="my-8 border-t border-zinc-200 dark:border-zinc-700" />
+      </Content>
+    </main>
+  </Body>
+  <Footer />
+</Layout>

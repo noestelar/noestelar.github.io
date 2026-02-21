@@ -1,0 +1,104 @@
+---
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+const allThumbnails = import.meta.glob('../assets/**/*.{jpeg,jpg,png,webp,gif,svg,avif}');
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const pages = await getCollection("blog", ({ id }) => {
+  return id.startsWith(lang);
+});
+
+const posts = await Promise.all(
+  pages.map(async (page) => {
+    const [lang, ...slug] = page.slug.split("/");
+    let thumbnailUrl: any;
+
+    if (page.data.thumbnail) {
+      try {
+        let thumbnailPathKey = page.data.thumbnail;
+        if (thumbnailPathKey.startsWith('/')) {
+          thumbnailPathKey = thumbnailPathKey.substring(1);
+        }
+        const fullImportPath = `../assets/${thumbnailPathKey}`;
+
+        if (allThumbnails[fullImportPath]) {
+          const thumbnailModule = await allThumbnails[fullImportPath]();
+          if (typeof thumbnailModule === 'object' && thumbnailModule !== null && 'default' in thumbnailModule) {
+            thumbnailUrl = (thumbnailModule as { default: any }).default;
+          }
+        }
+      } catch (error) {
+        console.error(`Error processing thumbnail for "${page.data.thumbnail}":`, error);
+      }
+    }
+
+    return {
+      params: { lang, slug: slug.join("/") || undefined },
+      props: page,
+      data: { ...page.data, thumbnailUrl },
+    };
+  }),
+);
+
+posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat(lang === 'es' ? 'es-MX' : 'en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+};
+---
+
+<main class="flex items-center justify-center">
+  <section class="w-full max-w-screen-md p-10 mt-10 sm:mx-0">
+    <h1 class="text-4xl font-medium font-mplus mb-8">
+      <span class="text-cyaned-500">Blog</span>
+    </h1>
+    <div class="flex flex-col gap-10">
+      {
+        posts.map((post) => (
+          <article class="flex flex-col sm:flex-row gap-6 items-start">
+            {post.data.thumbnailUrl && (
+              <a href={`/${post.params.lang}/blog/${post.params.slug}`} class="w-full sm:w-1/3 shrink-0">
+                <Image
+                  src={post.data.thumbnailUrl}
+                  alt={post.data.title}
+                  width={400}
+                  height={225}
+                  class="rounded-lg object-cover w-full h-auto aspect-video hover:opacity-90 transition-opacity"
+                />
+              </a>
+            )}
+            <div class="flex flex-col gap-2">
+              <a href={`/${post.params.lang}/blog/${post.params.slug}`} class="text-2xl font-bold hover:text-cyaned-500 transition-colors">
+                {post.data.title}
+              </a>
+              <div class="text-sm text-gray-500 dark:text-gray-400">
+                {formatDate(post.data.date)}
+              </div>
+              <p class="text-base text-gray-700 dark:text-gray-300">
+                {post.data.description}
+              </p>
+              {post.data.tags && (
+                <div class="flex flex-wrap gap-2 mt-1">
+                  {post.data.tags.map(tag => (
+                    <span class="text-xs bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded text-gray-700 dark:text-gray-300">#{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        ))
+      }
+      {posts.length === 0 && (
+        <p class="text-gray-500 italic">{lang === 'es' ? 'No hay entradas todavía.' : 'No posts yet.'}</p>
+      )}
+    </div>
+  </section>
+</main>

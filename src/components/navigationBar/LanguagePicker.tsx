@@ -16,7 +16,14 @@ export function LanguagePicker({ lang }: LanguagePickerProps) {
 
   useEffect(() => {
     const path = window.location.pathname;
-    const route = path.split("/").slice(2).join("/");
+    const pathParts = path.split("/");
+    const potentialLang = pathParts[1];
+    const isLangPrefix = Object.keys(languages).includes(potentialLang);
+
+    const route = isLangPrefix
+      ? pathParts.slice(2).join("/")
+      : pathParts.slice(1).join("/");
+
     setCurrentRoute(route);
   }, []);
 
