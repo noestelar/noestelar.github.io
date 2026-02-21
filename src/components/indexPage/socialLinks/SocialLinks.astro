@@ -1,0 +1,53 @@
+---
+import {
+  IoLogoLinkedin,
+  IoLogoGithub,
+  IoLogoTwitter,
+} from "react-icons/io5";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const socialLinks = [
+  {
+    href: "https://github.com/noestelar",
+    icon: IoLogoGithub,
+    label: "@noestelar",
+  },
+  {
+    href: "https://www.linkedin.com/in/noealirl/",
+    icon: IoLogoLinkedin,
+    label: "Noealirl",
+  },
+  {
+    href: "https://twitter.com/noestelar",
+    icon: IoLogoTwitter,
+    label: "@NoeStelar",
+  },
+];
+---
+
+<div class="max-w-screen-md w-full sm:mx-0 md:px-20 px-10">
+  <h1 class="text-lg font-bold underline underline-offset-2">
+    {t("index.findme")}
+  </h1>
+  <ul class="mt-4">
+    {
+      socialLinks.map(({ href, icon: Icon, label }) => (
+        <li class="my-3">
+          <a
+            href={href}
+            target="_blank"
+            class="bg-transparent dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:hover:bg-cyaned-900 hover:bg-cyaned-50"
+          >
+            <span style="font-size: 18px;">
+              <Icon className={"inline"} />
+            </span>
+            <span class="mx-2"> {label}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
