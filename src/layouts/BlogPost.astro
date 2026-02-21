@@ -38,13 +38,17 @@ const {
 const lang = getLangFromUrl(Astro.url);
 
 let resolvedThumbnail: any;
-let imagePath = thumbnail;
+let imagePath;
 
-if (!imagePath && body) {
+if (body) {
   const match = body.match(/!\[.*?\]\((.*?)\)/);
   if (match && match[1]) {
     imagePath = match[1];
   }
+}
+
+if (!imagePath && thumbnail) {
+  imagePath = thumbnail;
 }
 
 if (imagePath) {
