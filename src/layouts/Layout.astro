@@ -57,15 +57,6 @@ const { title, description, image = "/assets/img/favicon.svg" } = Astro.props;
       setDarkMode(getTheme() === "dark");
 
       if (typeof localStorage !== "undefined") {
-        const observer = new MutationObserver(() => {
-          const isDark = document.documentElement.classList.contains("dark");
-          localStorage.setItem("theme", isDark ? "dark" : "light");
-        });
-        observer.observe(document.documentElement, {
-          attributes: true,
-          attributeFilter: ["class"],
-        });
-
         // Listen for system preference changes
         window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
              // Only apply if no explicit preference is stored?
