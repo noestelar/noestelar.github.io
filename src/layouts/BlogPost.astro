@@ -78,10 +78,12 @@ const formatDate = (date: Date) => {
     day: 'numeric'
   }).format(date);
 };
+
+const ogImage = resolvedThumbnail?.src || resolvedThumbnail;
 ---
 
 <!doctype html>
-<Layout title={"Noé Rivera - " + title} description={description} image={resolvedThumbnail}>
+<Layout title={"Noé Rivera - " + title} description={description} image={ogImage}>
   <Body>
     <main class="pt-[56px]">
       <Content className="pt-6 px-8 max-w-screen-md mx-auto">
