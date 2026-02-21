@@ -139,7 +139,8 @@ if (imagePath) {
             <a
               class="ml-1 text-blue-500 dark:text-pink-400"
               href={website !== "" ? website : ""}
-              target="_blank">{website ? website : "Not available"}</a
+              target="_blank"
+              rel="noopener noreferrer">{website ? website : "Not available"}</a
             >
           </li>
           <li>
@@ -166,6 +167,7 @@ if (imagePath) {
             <a
               href={githubLink}
               target="_blank"
+              rel="noopener noreferrer"
               class="px-4 py-2 rounded-lg bg-cyaned-50 dark:text-cyaned-500 text-cyaned-700 font-portal dark:bg-cyaned-900"
             >
               <span style="font-size: 18px;">
