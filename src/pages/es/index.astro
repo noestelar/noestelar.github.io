@@ -5,13 +5,8 @@ import PresentationCard from "../../components/presentationCard/PresentationCard
 import BioTimeLine from "../../components/indexPage/bioTimeLine/bioTimeLine";
 import CompanyMarquee from "../../components/indexPage/marquee/CompanyMarquee.astro";
 import NavigationBar from "../../components/navigationBar/navigationBar.astro";
+import SocialLinks from "../../components/indexPage/socialLinks/SocialLinks.astro";
 
-import {
-  IoLogoLinkedin,
-  IoLogoGithub,
-  IoLogoTwitter,
-  IoMenu,
-} from "react-icons/io5";
 import Content from "../../components/Content.astro";
 import Footer from "../../layouts/footer.astro";
 import { getLangFromUrl, useTranslatedPath, useTranslations } from "@i18n/utils";
@@ -40,52 +35,7 @@ const t = useTranslations(lang);
     </section>
 
     <section class="flex items-center justify-center">
-      <div class="max-w-screen-md w-full sm:mx-0 md:px-20 px-10">
-        <h1 class="text-lg font-bold underline underline-offset-2">
-          {t("index.findme")}
-        </h1>
-        <ul class="mt-4">
-          <li class="my-3">
-            <a
-              href="https://github.com/noestelar"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-transparent dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:hover:bg-cyaned-900 hover:bg-cyaned-50"
-            >
-              <span style="font-size: 18px;">
-                <IoLogoGithub className={"inline"} />
-              </span>
-              <span class="mx-2"> @noestelar</span>
-            </a>
-          </li>
-          <li class="my-3">
-            <a
-              href="https://www.linkedin.com/in/noealirl/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-transparent dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:hover:bg-cyaned-900 hover:bg-cyaned-50"
-            >
-              <span style="font-size: 18px;">
-                <IoLogoLinkedin className={"inline"} />
-              </span>
-              <span class="mx-2"> Noealirl</span>
-            </a>
-          </li>
-          <li class="my-3">
-            <a
-              href="https://twitter.com/noestelar"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-transparent dark:text-cyaned-500 text-cyaned-700 font-portal py-2 px-4 rounded-lg dark:hover:bg-cyaned-900 hover:bg-cyaned-50"
-            >
-              <span style="font-size: 18px;">
-                <IoLogoTwitter className={"inline"} />
-              </span>
-              <span class="mx-2"> @NoeStelar</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+      <SocialLinks lang={lang} />
     </section>
     <Footer />
   </Content>
