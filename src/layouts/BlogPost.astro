@@ -40,20 +40,24 @@ const lang = getLangFromUrl(Astro.url);
 let resolvedThumbnail: any;
 let imagePath;
 
-if (body) {
+// Prioritize explicit thumbnail over body image
+if (thumbnail) {
+  imagePath = thumbnail;
+} else if (body) {
   const match = body.match(/!\[.*?\]\((.*?)\)/);
   if (match && match[1]) {
     imagePath = match[1];
   }
 }
 
-if (!imagePath && thumbnail) {
-  imagePath = thumbnail;
-}
-
 if (imagePath) {
   try {
     let sanitizedPath = imagePath;
+    // Handle relative paths like ../../../assets/img/file.jpg
+    const assetsMatch = sanitizedPath.match(/assets\/(.+)$/);
+    if (assetsMatch) {
+      sanitizedPath = assetsMatch[1];
+    }
     if (sanitizedPath.startsWith('/')) {
       sanitizedPath = sanitizedPath.substring(1);
     }
