@@ -3,7 +3,7 @@ title: "Conoce a Alia: cómo un agente de IA cambió todo mi flujo de desarrollo
 description: "Dejé de usar la IA como un buscador. Empecé a usarla como un sistema. Así se ve eso en el día a día — y por qué la arquitectura de contexto importa más que la elección del modelo."
 date: 2026-03-01
 tags: ["ia", "workflow", "agentes", "productividad", "hermes"]
-thumbnail: "img/blog/Pasted image 20260413112637.webp"
+thumbnail: "img/blog/Pasted-image-20260413112637.webp"
 ---
 
 La mayoría de la gente usa la IA como un buscador con mejor gramática. O como agente de código copiloto. Haces una pregunta, obtienes una respuesta, cierras la pestaña.
@@ -58,15 +58,15 @@ Otro excelente ejemplo es el de apps personales, aplicaciones que nunca vas a pu
 
 Algunas capturas del sistema que construyó y de nuestro flujo de trabajo:
 
-![Vista de asignación de presupuesto](../../../assets/img/blog/Pasted%20image%2020260413104254.webp)
+![Vista de asignación de presupuesto](../../../assets/img/blog/Pasted-image-20260413104254.webp)
 
 *Vista de system allocation — gasto por categoría con barras de progreso.*
 
-![Detalle de categoría con alertas](../../../assets/img/blog/Pasted%20image%2020260413104223.webp)
+![Detalle de categoría con alertas](../../../assets/img/blog/Pasted-image-20260413104223.webp)
 
 *Drill-down en la categoría Renta — presupuesto al 100%.*
 
-![Feed de transacciones diarias](../../../assets/img/blog/Pasted%20image%2020260413104206.webp)
+![Feed de transacciones diarias](../../../assets/img/blog/Pasted-image-20260413104206.webp)
 
 *Lista de transacciones con tracking en tiempo real.*
 

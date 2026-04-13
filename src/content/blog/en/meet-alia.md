@@ -3,7 +3,7 @@ title: "Meet Alia: how an AI agent changed my entire development workflow"
 description: "I stopped using AI as a search engine. I started using it as a system. Here's what that shift actually looks like day-to-day — and why context architecture matters more than model choice."
 date: 2026-03-01
 tags: ["ai", "workflow", "agents", "productivity", "hermes"]
-thumbnail: "img/blog/Pasted image 20260413112637.webp"
+thumbnail: "img/blog/Pasted-image-20260413112637.webp"
 ---
 
 Most people use AI like a search engine with better grammar. Or as a copilot code agent. You ask a question, you get an answer, you close the tab.
@@ -58,15 +58,15 @@ Another great example is personal apps — applications you're never going to pu
 
 Some screenshots of the system she built and our workflow:
 
-![Budget allocation overview](../../../assets/img/blog/Pasted%20image%2020260413104254.webp)
+![Budget allocation overview](../../../assets/img/blog/Pasted-image-20260413104254.webp)
 
 *System allocation view — spending by category with progress bars.*
 
-![Category detail with budget warnings](../../../assets/img/blog/Pasted%20image%2020260413104223.webp)
+![Category detail with budget warnings](../../../assets/img/blog/Pasted-image-20260413104223.webp)
 
 *Drilling into the Renta category — budget utilization at 100%.*
 
-![Daily transaction feed](../../../assets/img/blog/Pasted%20image%2020260413104206.webp)
+![Daily transaction feed](../../../assets/img/blog/Pasted-image-20260413104206.webp)
 
 *Transaction list with real-time tracking.*
 

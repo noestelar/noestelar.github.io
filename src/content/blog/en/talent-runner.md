@@ -20,7 +20,7 @@ Talent Runner is a data-driven RPG built with Phaser.js and TypeScript. The prem
 The challenge rules were simple — everything had to be developed with Kiro, a programming IDE powered by AWS, multiple models, spec-driven development.
 The initial idea came over dinner while reading the call for entries. My partner is a big fan of games like Fable, where the choices you make impact your performance in the game. We wanted to bring some of that to our version — a game where the track you choose to learn gives you advantages and disadvantages. A software developer who has maximized technical experiences will have offensive advantage, but defensive weakness if they lack knowledge about security or business. On paper, it sounds like a weird dynamic, but in practice it's really fun.
 
-![Talent Runner gameplay](../../../assets/img/blog/Pasted%20image%2020260413114220.webp)
+![Talent Runner gameplay](../../../assets/img/blog/Pasted-image-20260413114220.webp)
 
 ## The stack
 
