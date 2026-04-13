@@ -20,6 +20,7 @@ export function LanguagePicker({ lang }: LanguagePickerProps) {
     const potentialLang = pathParts[1];
     const isLangPrefix = Object.keys(languages).includes(potentialLang);
 
+    // Always strip the lang prefix — we'll add it back per-language below
     const route = isLangPrefix
       ? pathParts.slice(2).join("/")
       : pathParts.slice(1).join("/");
@@ -53,7 +54,7 @@ export function LanguagePicker({ lang }: LanguagePickerProps) {
                   <Menu.Item key={langKey}>
                     {({ active }) => (
                       <a
-                        href={getRelativeLocaleUrl(langKey as keyof typeof languages, currentRoute)}
+                        href={`/${langKey}/${currentRoute}`}
                         className={`${active
                             ? "dark:bg-gray-500 dark:text-cyaned-500 bg-orange-200"
                             : "dark:text-white text-gray-900"
