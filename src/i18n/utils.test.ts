@@ -55,6 +55,22 @@ describe("i18n utils", () => {
     test("handles root URL", () => {
       expect(getLangFromUrl(new URL("https://example.com/"))).toBe("en");
     });
+
+    test("does not return prototype properties as language", () => {
+      expect(getLangFromUrl(new URL("https://example.com/toString/about"))).toBe("en");
+    });
+
+    test("handles malformed paths with double slashes", () => {
+      expect(getLangFromUrl(new URL("https://example.com//es/about"))).toBe("en");
+    });
+
+    test("handles paths without trailing slashes", () => {
+      expect(getLangFromUrl(new URL("https://example.com/es"))).toBe("es");
+    });
+
+    test("ignores query parameters and fragments", () => {
+      expect(getLangFromUrl(new URL("https://example.com/es/about?q=test#hash"))).toBe("es");
+    });
   });
 
   describe("useTranslations", () => {
