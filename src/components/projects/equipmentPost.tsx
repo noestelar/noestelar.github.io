@@ -1,4 +1,13 @@
-const EquipmentPost = ({ children, title, url, thumbnail }: any) => {
+import type { ReactNode } from "react";
+
+interface EquipmentPostProps {
+  children: ReactNode;
+  title: string;
+  url: string;
+  thumbnail: string;
+}
+
+const EquipmentPost = ({ children, title, url, thumbnail }: EquipmentPostProps) => {
   return (
     <div className="">
       <div className="backdrop-blur-sm shadow-md rounded-md border-2 border-gray-300 md:max-h-40 sm:max-h-[360px] max-h-48 overflow-hidden">
@@ -6,9 +15,7 @@ const EquipmentPost = ({ children, title, url, thumbnail }: any) => {
           src={thumbnail}
           alt={title}
           width={720 * 2}
-          aspectratio={2.0}
           className="object-top object-cover "
-          placeholder="blur"
         />
       </div>
       <div className="px-6 py-5 text-center">

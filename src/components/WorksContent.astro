@@ -2,6 +2,7 @@
 import ProjectCard from "@components/projects/projectCard.astro";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import { getCollection } from "astro:content";
+import type { ImageMetadata } from "astro";
 
 // Use import.meta.glob without the explicit ImageMetadata generic for now
 const allThumbnails = import.meta.glob('../assets/**/*.{jpeg,jpg,png,webp,gif,svg,avif}');
@@ -16,7 +17,7 @@ const pages = await getCollection("projects", ({ id }) => {
 const posts = await Promise.all(
   pages.map(async (page) => {
     const [lang, ...slug] = page.slug.split("/");
-    let thumbnailUrl: any; // Use 'any' for now to avoid import issues
+    let thumbnailUrl: ImageMetadata | undefined;
 
     if (page.data.thumbnail) {
       try {
@@ -30,7 +31,7 @@ const posts = await Promise.all(
           const thumbnailModule = await allThumbnails[fullImportPath]();
           // Assuming the module has a 'default' property for the image data
           if (typeof thumbnailModule === 'object' && thumbnailModule !== null && 'default' in thumbnailModule) {
-            thumbnailUrl = (thumbnailModule as { default: any }).default;
+            thumbnailUrl = (thumbnailModule as { default: ImageMetadata }).default;
           } else {
             console.error(`Dynamically imported module for ${fullImportPath} does not have a 'default' export or is not an object.`);
             thumbnailUrl = undefined; // Or handle as error
