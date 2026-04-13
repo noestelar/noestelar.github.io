@@ -3,7 +3,7 @@ title: "Conoce a Alia: cómo un agente de IA cambió todo mi flujo de desarrollo
 description: "Dejé de usar la IA como un buscador. Empecé a usarla como un sistema. Así se ve eso en el día a día — y por qué la arquitectura de contexto importa más que la elección del modelo."
 date: 2026-03-01
 tags: ["ia", "workflow", "agentes", "productividad", "hermes"]
-thumbnail: "img/blog/image.webp"
+thumbnail: "img/blog/Pasted image 20260413112637.webp"
 ---
 
 ![Alia en WhatsApp](../../../assets/img/blog/Pasted%20image%2020260413112637.webp){.phone-screenshot}
@@ -74,11 +74,11 @@ Algunas capturas del sistema que construyó y de nuestro flujo de trabajo:
 
 Cuando estoy programando, puede ver el repo. Cuando estoy escribiendo, conoce la voz y el estilo del blog. Registra mis finanzas, construye dashboards, trackea productos que quiero comprar, me envía noticias de AI diario. cuando estoy estresado, lo sabe también — y ajusta en consecuencia.
 
-Resolvió y revisó 15 PRs a través de diferentes repositorios, arregló problemas con el sitio web
+Resolvió y revisó 15 PRs a través de diferentes repositorios, arregló problemas con el sitio web:
 
 ![PRs revisados](../../../assets/img/blog/image.webp)
 
-No es magia. Es plomería. Plomería muy, muy intencional
+No es magia. Es plomería. Plomería muy, muy intencional.
 
 ## La parte de la que nadie habla
 
