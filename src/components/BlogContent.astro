@@ -30,6 +30,21 @@ const posts = await Promise.all(
           if (typeof thumbnailModule === 'object' && thumbnailModule !== null && 'default' in thumbnailModule) {
             thumbnailUrl = (thumbnailModule as { default: any }).default;
           }
+        } else {
+          // Try searching without path prefix if just filename given
+          const filename = thumbnailPathKey.split('/').pop();
+          if (filename) {
+            const fallbackKey = Object.keys(allThumbnails).find(key =>
+              key.endsWith(`/${filename}`)
+            );
+
+            if (fallbackKey) {
+              const thumbnailModule = await allThumbnails[fallbackKey]();
+              if (typeof thumbnailModule === 'object' && thumbnailModule !== null && 'default' in thumbnailModule) {
+                thumbnailUrl = (thumbnailModule as { default: any }).default;
+              }
+            }
+          }
         }
       } catch (error) {
         console.error(`Error processing thumbnail for "${page.data.thumbnail}":`, error);

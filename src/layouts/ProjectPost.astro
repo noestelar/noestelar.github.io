@@ -87,9 +87,20 @@ if (imagePath) {
             resolvedThumbnail = (module as { default: any }).default;
           }
         } else {
-             // Try searching without path prefix if just filename given?
-             // For now assume path matches folder structure
-             // console.error(`Thumbnail not found in glob: ${globKey}`);
+          // Try searching without path prefix if just filename given
+          const filename = sanitizedPath.split('/').pop();
+          if (filename) {
+            const fallbackKey = Object.keys(allThumbnailsGlob).find(key =>
+              key.endsWith(`/${filename}`)
+            );
+
+            if (fallbackKey) {
+              const module = await allThumbnailsGlob[fallbackKey]();
+              if (typeof module === 'object' && module !== null && 'default' in module) {
+                resolvedThumbnail = (module as { default: any }).default;
+              }
+            }
+          }
         }
     }
   } catch (error) {
