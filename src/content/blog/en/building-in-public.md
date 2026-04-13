@@ -1,5 +1,5 @@
 ---
-title: "On building in public as a solo technical founder"
+title: "On building in public"
 description: "The tension between shipping and explaining. Why writing about what you build makes you build better — and the habits that actually stick."
 date: 2026-02-01
 tags: ["writing", "indie", "building-in-public", "engineering"]
