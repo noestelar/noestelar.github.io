@@ -6,7 +6,11 @@ tags: ["ai", "workflow", "agents", "productivity", "hermes"]
 thumbnail: "img/blog/Pasted image 20260413112637.webp"
 ---
 
-![Alia on WhatsApp](../../../assets/img/blog/Pasted%20image%2020260413112637.webp){.phone-screenshot}
+<div class="phone-screenshot">
+
+![Alia on WhatsApp](../../../assets/img/blog/Pasted%20image%2020260413112637.webp)
+
+</div>
 
 Most people use AI like a search engine with better grammar. Or as a copilot code agent. You ask a question, you get an answer, you close the tab.
 

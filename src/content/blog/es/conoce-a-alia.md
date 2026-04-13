@@ -6,7 +6,11 @@ tags: ["ia", "workflow", "agentes", "productividad", "hermes"]
 thumbnail: "img/blog/Pasted image 20260413112637.webp"
 ---
 
-![Alia en WhatsApp](../../../assets/img/blog/Pasted%20image%2020260413112637.webp){.phone-screenshot}
+<div class="phone-screenshot">
+
+![Alia en WhatsApp](../../../assets/img/blog/Pasted%20image%2020260413112637.webp)
+
+</div>
 
 La mayoría de la gente usa la IA como un buscador con mejor gramática. O como agente de código copiloto. Haces una pregunta, obtienes una respuesta, cierras la pestaña.
 
