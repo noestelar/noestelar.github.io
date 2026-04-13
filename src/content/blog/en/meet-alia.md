@@ -6,8 +6,6 @@ tags: ["ai", "workflow", "agents", "productivity", "hermes"]
 thumbnail: "img/blog/Pasted image 20260413112637.webp"
 ---
 
-![Alia on WhatsApp](../../../assets/img/blog/Pasted%20image%2020260413112637.webp)
-
 Most people use AI like a search engine with better grammar. Or as a copilot code agent. You ask a question, you get an answer, you close the tab.
 
 That's not wrong. But it's also not the interesting part.

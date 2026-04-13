@@ -6,8 +6,6 @@ tags: ["gamedev", "phaser", "typescript", "talentland", "ai"]
 thumbnail: "img/blog/CDC983A9-7546-4951-99CF-5357B23FEB58_1_105_c.webp"
 ---
 
-![Talent Runner](../../../assets/img/blog/CDC983A9-7546-4951-99CF-5357B23FEB58_1_105_c.webp)
-
 A few days ago I finished participating in the Talent Land Game Challenge 2026.
 This post is about the game, how we built it, and why it was one of the most interesting experiences I've had as an engineer.
 
