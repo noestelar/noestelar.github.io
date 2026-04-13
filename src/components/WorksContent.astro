@@ -36,7 +36,22 @@ const posts = await Promise.all(
             thumbnailUrl = undefined; // Or handle as error
           }
         } else {
-          console.error(`Thumbnail not found: ${fullImportPath}. Original path in frontmatter: "${page.data.thumbnail}". Check if the file exists at src/assets/${thumbnailPathKey} and the glob pattern is correct.`);
+          // Try searching without path prefix if just filename given
+          const filename = thumbnailPathKey.split('/').pop();
+          if (filename) {
+            const fallbackKey = Object.keys(allThumbnails).find(key =>
+              key.endsWith(`/${filename}`)
+            );
+
+            if (fallbackKey) {
+              const thumbnailModule = await allThumbnails[fallbackKey]();
+              if (typeof thumbnailModule === 'object' && thumbnailModule !== null && 'default' in thumbnailModule) {
+                thumbnailUrl = (thumbnailModule as { default: any }).default;
+              }
+            } else {
+              console.error(`Thumbnail not found: ${fullImportPath}. Original path in frontmatter: "${page.data.thumbnail}". Check if the file exists at src/assets/${thumbnailPathKey} and the glob pattern is correct.`);
+            }
+          }
         }
       } catch (error) {
         console.error(`Error processing thumbnail for "${page.data.thumbnail}":`, error);
