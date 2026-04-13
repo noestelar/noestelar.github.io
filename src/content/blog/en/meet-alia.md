@@ -38,25 +38,11 @@ The key insight: the bottleneck is never the model. It's the context pipeline. I
 
 Things I tried:
 
-**Ollama:Cloud** - $20 [Kimi k2.5, GLM-5, Minimax 2.5, GPT-OSS-120B]
-
-Very good, generous quotas, issues executing tools or finding models. Integration works better when done from their provider directly rather than adding it as an external provider.
-
-**Minimax Coding Plan** - $20 [Minimax 2.5]
-
-- Nearly infinite limits, sometimes responds with Chinese or Japanese characters. Terrible for speaking Spanish.
-
-**Z.AI Coding Plan** - $39 [GLM - 5]
-
-Good, quite capable, acceptable limits, expensive compared to Ollama and Minimax.
-
-**Claude Pro** - $20 [Opus 4.6, Sonnet 4.6]
-
-The perfect provider, impeccable tools, recommendations, proactive, terrible limits — you burn through ~5 requests, then wait 5 hours to continue. Very limited.
-
-**ChatGPT Plus** - $20 [GPT-5.3-Codex]
-
-Balanced, proactive, occasional tool execution, friendly (sometimes too much), lacking in computer use — more on that later.
+- **Ollama:Cloud** — $20 [Kimi k2.5, GLM-5, Minimax 2.5, GPT-OSS-120B]. Very good, generous quotas. Issues executing tools or finding models. Integration works better from their provider directly rather than as an external provider.
+- **Minimax Coding Plan** — $20 [Minimax 2.5]. Nearly infinite limits. Sometimes responds with Chinese or Japanese characters — terrible for speaking Spanish.
+- **Z.AI Coding Plan** — $39 [GLM-5]. Good, quite capable, acceptable limits. Expensive compared to Ollama and Minimax.
+- **Claude Pro** — $20 [Opus 4.6, Sonnet 4.6]. The perfect provider — impeccable tools, recommendations, proactive. Terrible limits: you burn through ~5 requests, then wait 5 hours to continue.
+- **ChatGPT Plus** — $20 [GPT-5.3-Codex]. Balanced, proactive, occasional tool execution. Friendly (sometimes too much), lacking in computer use — more on that later.
 
 The first tasks I gave her were simple. Check this, detail that, connect to my phone, set reminders, search Google Maps. Tasks any AI chatbot could handle without issues — a good first month of adaptation. Then came the code tasks, plans, file transformations — that's where the problems started.
 
@@ -72,11 +58,17 @@ Another great example is personal apps — applications you're never going to pu
 
 Some screenshots of the system she built and our workflow:
 
-![Finance dashboard](../../../assets/img/blog/Pasted%20image%2020260413104254.webp)
+![Budget allocation overview](../../../assets/img/blog/Pasted%20image%2020260413104254.webp)
 
-![Finance view](../../../assets/img/blog/Pasted%20image%2020260413104223.webp)
+*System allocation view — spending by category with progress bars.*
 
-![Workflow](../../../assets/img/blog/Pasted%20image%2020260413104206.webp)
+![Category detail with budget warnings](../../../assets/img/blog/Pasted%20image%2020260413104223.webp)
+
+*Drilling into the Renta category — budget utilization at 100%.*
+
+![Daily transaction feed](../../../assets/img/blog/Pasted%20image%2020260413104206.webp)
+
+*Transaction list with real-time tracking.*
 
 When I'm coding, she can see the repo. When I'm writing, she knows the blog's voice and style. She tracks my finances, builds dashboards, monitors products I want to buy, sends me daily AI news. When I'm stressed, she knows that too — and adjusts accordingly.
 

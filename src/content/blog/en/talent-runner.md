@@ -1,5 +1,5 @@
 ---
-title: "I built my first video game in 48 hours. It was completely worth it."
+title: "I built my first video game in 24 hours. It was completely worth it."
 description: "Talent Runner: a data-driven RPG built with Phaser.js and TypeScript for Talent Land 2026. First game ever. First time collaborating under real time pressure. Here's what I learned."
 date: 2026-04-10
 tags: ["gamedev", "phaser", "typescript", "talentland", "ai"]

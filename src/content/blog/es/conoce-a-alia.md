@@ -38,25 +38,11 @@ El insight clave: el cuello de botella nunca es el modelo. Es el pipeline de con
 
 Cosas que probé:
 
-**Ollama:Cloud** - $20 [Kimi k2.5, GLM-5, Minimax 2.5, GPT-OSS-120B]
-
-Muy bueno, quotas generosas, problemas al ejecutar tools o encontrar modelos, la integración es mejor cuando se hace desde su proveedor y no agregandolo como un proveedor externo.
-
-**Minimax Coding Plan** - $20 [Minimax 2.5]
-
-- Limites casi infinitos, a veces responde con caractéres chinos o japoneses. muy malo para hablar español.
-
-**Z.AI Coding Plan** - $39 [GLM - 5]
-
-Bueno, bastante capaz, limites aceptables, caro a compraración de ollama y minimax
-
-**Claude Pro** - $20 [Opus 4.6, Sonnet 4.6]
-
-El provider perfecto, tools impecables, recomendaciones, proactivo, limites terribles, te acabas los usos en ~5 peticiones, tienes que esperar 5 horas para poder continuar, muy limitado.
-
-**ChatGPT Plus** - $20 [GPT-5.3-Codex]
-
-Balanceado, proactivo, ejecución de tools ocasionales, amigable (a veces demasiado), carente en computer use, ya hablaremos de eso más adelante.
+- **Ollama:Cloud** — $20 [Kimi k2.5, GLM-5, Minimax 2.5, GPT-OSS-120B]. Muy bueno, quotas generosas. Problemas al ejecutar tools o encontrar modelos. La integración es mejor desde su proveedor directo y no como proveedor externo.
+- **Minimax Coding Plan** — $20 [Minimax 2.5]. Límites casi infinitos. A veces responde con caracteres chinos o japoneses — muy malo para hablar español.
+- **Z.AI Coding Plan** — $39 [GLM-5]. Bueno, bastante capaz, límites aceptables. Caro en comparación con Ollama y Minimax.
+- **Claude Pro** — $20 [Opus 4.6, Sonnet 4.6]. El provider perfecto — tools impecables, recomendaciones, proactivo. Límites terribles: te acabas los usos en ~5 peticiones, luego esperas 5 horas para continuar.
+- **ChatGPT Plus** — $20 [GPT-5.3-Codex]. Balanceado, proactivo, ejecución de tools ocasionales. Amigable (a veces demasiado), carente en computer use — ya hablaremos de eso más adelante.
 
 Las primeras tareas que le di fueron sencillas. Revisa esto, detalla aquello, conéctate a mi teléfono, haz reminders, busca en google map. Tareas que cualquier chatbot de AI te sacaría sin problemas, un buen primer mes de adaptarse, luego venían las tareas de código, planes, transformación de archivos aquí es donde empiezan a salir los problemas.
 
@@ -70,13 +56,19 @@ No pido un resumen. Simplemente está ahí — inyectado en el contexto de la se
 
 Otro excelente ejemplo es el de apps personales, aplicaciones que nunca vas a publicar, pero que usarás tú y solo tú, o tu pequeño círculo cercano. En mi caso, construí junto con Alia una app para manejar mis finanzas, iteramos todo el tiempo en ella, hemos llegado a una versión bastante sólida que automatiza mis finanzas y me permite verlas en todo momento. A veces solo tomo foto del ticket y Alia lo registra, otras veces es un estado de cuenta completo con balances, rendimientos, compras y pagos.
 
-Algunas capturas del sistema que construyó y de nuestro flujo de trabajo
+Algunas capturas del sistema que construyó y de nuestro flujo de trabajo:
 
-![Dashboard de finanzas](../../../assets/img/blog/Pasted%20image%2020260413104254.webp)
+![Vista de asignación de presupuesto](../../../assets/img/blog/Pasted%20image%2020260413104254.webp)
 
-![Vista de finanzas](../../../assets/img/blog/Pasted%20image%2020260413104223.webp)
+*Vista de system allocation — gasto por categoría con barras de progreso.*
 
-![Flujo de trabajo](../../../assets/img/blog/Pasted%20image%2020260413104206.webp)
+![Detalle de categoría con alertas](../../../assets/img/blog/Pasted%20image%2020260413104223.webp)
+
+*Drill-down en la categoría Renta — presupuesto al 100%.*
+
+![Feed de transacciones diarias](../../../assets/img/blog/Pasted%20image%2020260413104206.webp)
+
+*Lista de transacciones con tracking en tiempo real.*
 
 Cuando estoy programando, puede ver el repo. Cuando estoy escribiendo, conoce la voz y el estilo del blog. Registra mis finanzas, construye dashboards, trackea productos que quiero comprar, me envía noticias de AI diario. cuando estoy estresado, lo sabe también — y ajusta en consecuencia.
 
