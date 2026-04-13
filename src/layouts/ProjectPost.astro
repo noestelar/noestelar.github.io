@@ -10,6 +10,7 @@ import {
 } from "../i18n/utils";
 import Footer from "./footer.astro";
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 // Use import.meta.glob to find all potential thumbnail images
 const allThumbnailsGlob = import.meta.glob('../assets/**/*.{jpeg,jpg,png,webp,gif,svg,avif}');
@@ -43,7 +44,7 @@ const {
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-let resolvedThumbnail: any;
+let resolvedThumbnail: ImageMetadata | string | undefined;
 
 // Determine the image path to use
 let imagePath = thumbnail;
@@ -84,7 +85,7 @@ if (imagePath) {
         if (allThumbnailsGlob[globKey]) {
           const module = await allThumbnailsGlob[globKey]();
           if (typeof module === 'object' && module !== null && 'default' in module) {
-            resolvedThumbnail = (module as { default: any }).default;
+            resolvedThumbnail = (module as { default: ImageMetadata }).default;
           }
         } else {
              // Try searching without path prefix if just filename given?
