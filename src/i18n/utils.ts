@@ -21,10 +21,7 @@ export function getRelativeLocaleUrl(lang: string, path: string) {
     // If path is "/" and lang is default, return "/"
     // If path is "/" and lang is not default, return "/es/" or "/es"
 
-    let cleanPath = path;
-    if (cleanPath.startsWith('/')) {
-        cleanPath = cleanPath.substring(1);
-    }
+    let cleanPath = path.replace(/^\/+/, '');
 
     if (lang === defaultLang) {
         return `/${cleanPath}`;

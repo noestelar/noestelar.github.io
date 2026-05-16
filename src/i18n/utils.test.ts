@@ -16,6 +16,13 @@ describe("i18n utils", () => {
       expect(getRelativeLocaleUrl("es", "about")).toBe("/es/about");
       expect(getRelativeLocaleUrl("es", "")).toBe("/es/");
     });
+
+    test("mitigates open redirect vulnerability by stripping multiple leading slashes", () => {
+      expect(getRelativeLocaleUrl("en", "//evil.com")).toBe("/evil.com");
+      expect(getRelativeLocaleUrl("en", "///evil.com")).toBe("/evil.com");
+      expect(getRelativeLocaleUrl("es", "//evil.com")).toBe("/es/evil.com");
+      expect(getRelativeLocaleUrl("es", "///evil.com")).toBe("/es/evil.com");
+    });
   });
 
   describe("useTranslatedPath", () => {
